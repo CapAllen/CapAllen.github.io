@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="A positive attitude causes a chain reaction of positive thoughts,events and outcomes.  Hi，同学们，上周我们主要对python的基础知识进行了学习，从完全不懂到写出第一段代码，从畏惧发怵到解决第一个代码问题，大家已经从小白迈出了python入门的第一步！你们都是最棒的！那请继续保持着这样的学习动力，趁热打铁，">
+<meta name="keywords" content="lesson guide,Numpy,pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二轮第三周-Numpy&amp;Pandas基础">
+<meta property="og:url" content="http://yoursite.com/2018/12/12/2018-12-12-第二轮第三周-Numpy&Pandas基础 - 副本/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="A positive attitude causes a chain reaction of positive thoughts,events and outcomes.  Hi，同学们，上周我们主要对python的基础知识进行了学习，从完全不懂到写出第一段代码，从畏惧发怵到解决第一个代码问题，大家已经从小白迈出了python入门的第一步！你们都是最棒的！那请继续保持着这样的学习动力，趁热打铁，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/11/FJWC3F.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/11/FY9vQg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/11/FYPWKe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/11/FYkQDe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FYfMh6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FYh15q.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FY4lOe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FY4nW6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FY4tYt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FY4aSf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FY5x2V.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FYIIiR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FYIoJ1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/12/FYIzFA.png">
+<meta property="og:updated_time" content="2019-04-03T09:05:49.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二轮第三周-Numpy&amp;Pandas基础">
+<meta name="twitter:description" content="A positive attitude causes a chain reaction of positive thoughts,events and outcomes.  Hi，同学们，上周我们主要对python的基础知识进行了学习，从完全不懂到写出第一段代码，从畏惧发怵到解决第一个代码问题，大家已经从小白迈出了python入门的第一步！你们都是最棒的！那请继续保持着这样的学习动力，趁热打铁，">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/11/FJWC3F.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2018/12/12/2018-12-12-第二轮第三周-Numpy&Pandas基础 - 副本/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>第二轮第三周-Numpy&Pandas基础 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/2018-12-12-第二轮第三周-Numpy&Pandas基础 - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第二轮第三周-Numpy&Pandas基础
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-12 02:30:09" itemprop="dateCreated datePublished" datetime="2018-12-12T02:30:09+08:00">2018-12-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-03 17:05:49" itemprop="dateModified" datetime="2019-04-03T17:05:49+08:00">2019-04-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/12/12/2018-12-12-第二轮第三周-Numpy&Pandas基础 - 副本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/12/2018-12-12-第二轮第三周-Numpy&Pandas基础 - 副本/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>A positive attitude causes a chain reaction of positive thoughts,events and outcomes.</p>
+</blockquote>
+<p>Hi，同学们，上周我们主要对python的基础知识进行了学习，从完全不懂到写出第一段代码，从畏惧发怵到解决第一个代码问题，大家已经从小白迈出了python入门的第一步！你们都是最棒的！那请继续保持着这样的学习动力，趁热打铁，继续我们的课程吧！</p>
+<p>本周开始，我们就进入到了<strong>项目二(P2)阶段的第二周</strong>，需要针对数据分析来学习两个重要的第三方库<strong>Numpy</strong>和<strong>Pandas</strong>，它们是python实现科学计算和数据处理的重要库，在以后的数据分析路上会经常用到，所以一定要掌握，并且还要熟练！</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习重点</th>
+<th>对应课程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第1周</td>
+<td>Python基础内容</td>
+<td>数据类型和运算符、控制流、函数、脚本编写</td>
+</tr>
+<tr>
+<td><strong>第2周</strong></td>
+<td><strong>Python数据处理内容</strong></td>
+<td><strong>Numpy &amp; Pandas</strong></td>
+</tr>
+<tr>
+<td>第3周</td>
+<td>完成项目</td>
+<td>项目：探索美国共享单车数据</td>
+</tr>
+<tr>
+<td>第4周</td>
+<td>项目修改与通过</td>
+<td>修改项目、查缺补漏、休息调整</td>
+</tr>
+</tbody>
+</table>
+<p>对于非小白同学来说，本阶段内容不是很难，希望你们能在三周内完成并通过项目；  </p>
+<p>对于小白来说，本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
+<ul>
+<li>先自行查找问题答案（注意提取关键词），参考：谷歌/百度搜索、<a href="http://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a>、<a href="https://www.csdn.net/" target="_blank" rel="noopener">CSDN</a>、<a href="https://stackoverflow.com/" target="_blank" rel="noopener">stack<strong>overflow</strong></a>、<a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/Python%20for%20Data%20Analysis%2C%202nd%20Edition.pdf" target="_blank" rel="noopener"><strong>Python for Data Analysis, 2nd Edition</strong> </a>、<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">Python Cookbook</a></li>
+<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
+</ul>
+<p>饭要一口一口吃，路要一步一步走，大家不要被任务吓到，跟着导学一步一步来，肯定没问题哒！那我们开始吧！</p>
+<blockquote>
+<p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
+</blockquote>
+<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><ul>
+<li>学完课程<strong>Numpy&amp;Pandas</strong>。</li>
+<li>（可选）项目环境准备。</li>
+</ul>
+<h1 id="知识清单"><a href="#知识清单" class="headerlink" title="知识清单"></a>知识清单</h1><h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><h3 id="NumPy-简介"><a href="#NumPy-简介" class="headerlink" title="NumPy 简介"></a>NumPy 简介</h3><p><strong>NumPy</strong> 是 <em>Numerical Python</em> 的简称，它是 Python 中的科学计算基本软件包。NumPy 为 Python 提供了大量数学库，使我们能够高效地进行数字计算。更多可点击<a href="http://www.numpy.org/" target="_blank" rel="noopener">Numpy官网</a>查看。</p>
+<p><strong>关于Numpy需要知道的几点：</strong></p>
+<ul>
+<li>NumPy 数组在创建时有<strong>固定的大小</strong>，不同于Python列表（可以<strong>动态增长</strong>）。<strong>更改ndarray的大小将创建一个新的数组并删除原始数据</strong>。</li>
+<li>NumPy 数组中的元素都需要具有<strong>相同的数据类型</strong>，因此在存储器中将具有相同的大小。数组的元素如果也是数组（可以是 Python 的原生 array，也可以是 ndarray）的情况下，则构成了多维数组。</li>
+<li>NumPy 数组便于对大量数据进行高级数学和其他类型的操作。<strong>通常，这样的操作比使用Python的内置序列可能更有效和更少的代码执行</strong>。</li>
+</ul>
+<p>所以，Numpy 的核心是<code>ndarray</code>对象，这个对象封装了同质数据类型的n维数组。起名 <code>ndarray</code> 的原因就是因为是 <code>n-dimension-array</code> 的简写。接下来本节所有的课程都是围绕着ndarray来讲的，理论知识较少，代码量较多，所以大家在学习的时候，多自己动动手，尝试自己去运行一下代码。</p>
+<h3 id="创建ndarray"><a href="#创建ndarray" class="headerlink" title="创建ndarray"></a>创建ndarray</h3><blockquote>
+<p>课程中所说的，创建一个秩为2的ndarray，实际上指的是创建一个2维的ndarray，并不是矩阵的秩。</p>
+</blockquote>
+<ul>
+<li>由python list创建</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])  <span class="comment"># 1维数组</span></span><br><span class="line">print(type(a), a.shape, a[<span class="number">0</span>], a[<span class="number">1</span>], a[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">numpy</span>.<span class="title">ndarray</span>'&gt; <span class="params">(<span class="number">3</span>,)</span> 1 2 3</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">a[0] = 5                 # 重新赋值</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">[<span class="number">5</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])   <span class="comment"># 2维数组</span></span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"> [<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>]]</span><br><span class="line"></span><br><span class="line">print(b[<span class="number">0</span>, <span class="number">0</span>], b[<span class="number">0</span>, <span class="number">1</span>], b[<span class="number">1</span>, <span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>由numpy内置函数创建</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">a = np.zeros((<span class="number">2</span>,<span class="number">2</span>))  <span class="comment"># 创建2x2的全0数组</span></span><br><span class="line">print(a)</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"></span><br><span class="line">b = np.ones((<span class="number">1</span>,<span class="number">2</span>))   <span class="comment"># 创建1x2的全1数组</span></span><br><span class="line">print(b)</span><br><span class="line">[[ <span class="number">1.</span>  <span class="number">1.</span>]]</span><br><span class="line"></span><br><span class="line">c = np.full((<span class="number">2</span>,<span class="number">2</span>), <span class="number">7</span>) <span class="comment"># 创建2x2定值为7的数组</span></span><br><span class="line">print(c)</span><br><span class="line">[[<span class="number">7</span> <span class="number">7</span>]</span><br><span class="line"> [<span class="number">7</span> <span class="number">7</span>]]</span><br><span class="line"></span><br><span class="line">d = np.eye(<span class="number">2</span>)        <span class="comment"># 创建2x2的单位矩阵（对角元素为1）</span></span><br><span class="line">print(d)</span><br><span class="line">[[ <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">1.</span>]]</span><br><span class="line"></span><br><span class="line">d_1 = np.diag([<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">50</span>]) <span class="comment">#创建一个对角线为10,20,30,50的对角矩阵</span></span><br><span class="line">print(d_1)</span><br><span class="line">[[<span class="number">10</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [ <span class="number">0</span> <span class="number">20</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [ <span class="number">0</span> <span class="number">0</span> <span class="number">30</span> <span class="number">0</span>]</span><br><span class="line"> [ <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">50</span>]]</span><br><span class="line"></span><br><span class="line">e = np.arange(<span class="number">15</span>)   <span class="comment">#创建一个一维的0-14的数组</span></span><br><span class="line">print(e)</span><br><span class="line">[ <span class="number">0</span>  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span>]</span><br><span class="line"></span><br><span class="line">e_1 = np.arange(<span class="number">4</span>,<span class="number">10</span>)  <span class="comment">#创建一个一维的4-9的数组</span></span><br><span class="line">print(e_1)</span><br><span class="line">[<span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">e_2 = np.arange(<span class="number">1</span>,<span class="number">14</span>,<span class="number">3</span>)  <span class="comment">#创建一个一维的1-13且以间隔为3的数组</span></span><br><span class="line">print(e_2)</span><br><span class="line">[ <span class="number">1</span> <span class="number">4</span> <span class="number">7</span> <span class="number">10</span> <span class="number">13</span>]</span><br><span class="line"></span><br><span class="line">f = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">6</span>)  <span class="comment">#创建一个一维的范围在0-10，长度为6的数组</span></span><br><span class="line">print(f)</span><br><span class="line">[ <span class="number">0.</span>,  <span class="number">2.</span>,  <span class="number">4.</span>,  <span class="number">6.</span>,  <span class="number">8.</span>, <span class="number">10.</span>]  </span><br><span class="line"><span class="comment">#各个元素的间隔相等，为(10-0)/(6-1) = 2，若不想包含末尾的10，可以添加参数endpoint = False</span></span><br><span class="line"></span><br><span class="line">g = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)  <span class="comment">#把arange创建的一维数组转换为3行4列的二维数组</span></span><br><span class="line">print(g)                        <span class="comment">#同样方法也适用于linspace等</span></span><br><span class="line">[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],              <span class="comment">#注意：使用reshape转换前后的数据量应该相同，12 = 3x4</span></span><br><span class="line"> [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line"> [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]]              </span><br><span class="line"></span><br><span class="line">h = np.random.random((<span class="number">2</span>,<span class="number">2</span>)) <span class="comment"># 2x2的随机数组(矩阵),取值范围在[0.0,1.0)（包含0，不包含1）</span></span><br><span class="line">print(e)</span><br><span class="line">[[ <span class="number">0.72776966</span>  <span class="number">0.94164821</span>]</span><br><span class="line"> [ <span class="number">0.04652655</span>  <span class="number">0.2316599</span> ]]</span><br><span class="line"></span><br><span class="line">i = np.random.randint(<span class="number">4</span>,<span class="number">15</span>,size = (<span class="number">2</span>,<span class="number">2</span>))  <span class="comment">#创建一个取值范围在[4,15)，2行2列的随机整数矩阵</span></span><br><span class="line">print(i)</span><br><span class="line">[[<span class="number">6</span>, <span class="number">5</span>],</span><br><span class="line"> [<span class="number">5</span>, <span class="number">9</span>]]</span><br><span class="line"></span><br><span class="line">j = np.random.normal(<span class="number">0</span>,<span class="number">0.1</span>,size = (<span class="number">3</span>,<span class="number">3</span>))  </span><br><span class="line"><span class="comment">#创建一个从均值为0，标准差为0.1的正态分布中随机抽样的3x3矩阵</span></span><br><span class="line">print(j)</span><br><span class="line">[[<span class="number">-0.20783767</span>, <span class="number">-0.12406401</span>, <span class="number">-0.11775284</span>],</span><br><span class="line"> [ <span class="number">0.02037018</span>,  <span class="number">0.02898423</span>, <span class="number">-0.02548213</span>],</span><br><span class="line"> [<span class="number">-0.0149878</span> ,  <span class="number">0.05277648</span>,  <span class="number">0.08332239</span>]]</span><br></pre></td></tr></table></figure>
+<h3 id="访问、删除、增加ndarray中的元素"><a href="#访问、删除、增加ndarray中的元素" class="headerlink" title="访问、删除、增加ndarray中的元素"></a>访问、删除、增加ndarray中的元素</h3><p>这里主要是提供了一些访问、更改或增加ndarray中某一元素的基础方法。</p>
+<ul>
+<li>访问&amp;更改</li>
+</ul>
+<p>类似于访问python list中元素的方式，按照元素的index进行访问或更改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#访问某一元素，这里可以自己多尝试，摸索</span></span><br><span class="line">print(np.arange(<span class="number">6</span>)[<span class="number">3</span>]) <span class="comment">#访问一维数组的某一元素，中括号内填写index</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">print(np.arange(<span class="number">6</span>).reshape(<span class="number">3</span>,<span class="number">2</span>)[<span class="number">1</span>,<span class="number">1</span>]) <span class="comment">#访问二维数组的某一元素，中括号内填写[行,列]</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">print(np.arange(<span class="number">12</span>).reshape(<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>)[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>]) <span class="comment">#访问三位数组中的某一元素，中括号内[组，行，列]</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#更改某一元素，用 = 进行赋值和替换即可</span></span><br><span class="line">a = np.arange(<span class="number">6</span>)</span><br><span class="line">a[<span class="number">3</span>] = <span class="number">7</span>      <span class="comment">#先访问，再重新赋值</span></span><br><span class="line">print(a)</span><br><span class="line">[<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">4</span> <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除</li>
+</ul>
+<p>可使用<code>np.delete(ndarray, elements, axis)</code>函数进行删除操作。</p>
+<p>这里需要注意的是<code>axis</code>这个参数，课程中只讲到了2维数据中，<code>axis = 0</code>表示选择<code>行</code>，<code>axis = 1</code>表示选择<code>列</code>，但不能机械的认为0就表示行，1就表示列，注意前提<strong>2维数据中</strong>。</p>
+<p>在三维数据中，axis = 0表示组，1表示行，2表示列。这是为什么呢？提示一下，三位数组的shape中组、行和列是怎样排序的？</p>
+<p>所以，axis的赋值一定要考虑数组的shape。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">12</span>).reshape(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">print(np.delete(a,[<span class="number">0</span>],axis = <span class="number">0</span>))  <span class="comment">#思考下，这里删除axis = 0下的第0个，会是什么结果呢？自己试一下</span></span><br></pre></td></tr></table></figure>
+<p>再有一点需要注意的是，如果你想让原数据保留删除后的结果，需要重新替换一下才可以。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">6</span>).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">np.delete(a,[<span class="number">0</span>],axis = <span class="number">0</span>)</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])  <span class="comment">#原数据并未更改</span></span><br><span class="line"></span><br><span class="line">a = np.delete(a,[<span class="number">0</span>],axis = <span class="number">0</span>)  <span class="comment">#重新替换</span></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">array([[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])   <span class="comment">#原数据已更改</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>增加</li>
+</ul>
+<p>往ndarray中增加元素的办法跟python list也很类似，常用的有两种：</p>
+<ul>
+<li><p>一种是添加（append），就是将新增的元素添加到ndarray的尾部</p>
+<ul>
+<li>语法为：<code>np.append(ndarray, elements, axis)</code></li>
+<li>参数和delete函数一致，用法也一致，这里不再赘述</li>
+</ul>
+</li>
+<li><p>一种是插入（insert），可以让新增元素插入到指定位置</p>
+<ul>
+<li>语法为：<code>np.insert(ndarray, index, elements, axis)</code></li>
+<li>参数中就多了一个<code>index</code>，指示的是插入新元素的位置。</li>
+</ul>
+</li>
+</ul>
+<p>这里值得注意的是，不论是append还是insert，在往多维数组中插入元素时，一定要注意对应axis上的shape要一致。再一个就是，和delete一样，如果你想要更改原数据，需要用<code>a = np.append(a,elements,axis)</code>。</p>
+<h3 id="ndarray切片"><a href="#ndarray切片" class="headerlink" title="ndarray切片"></a>ndarray切片</h3><p>前面学了选择ndarray中的某个元素的方法，这里我们学习选择ndarray子集的方法——切片。</p>
+<p>对于切片大家并不陌生，在list里面我们也接触过切片，一维的ndarray切片与list无异。需要注意的是，就是理解2维及多维ndarray切片。</p>
+<ul>
+<li>2维矩阵切片</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(4*4).reshape(4,4)</span><br><span class="line">print(a)</span><br><span class="line">out:</span><br><span class="line">array([[ 0,  1,  2,  3],</span><br><span class="line">       [ 4,  5,  6,  7],</span><br><span class="line">       [ 8,  9, 10, 11],</span><br><span class="line">       [12, 13, 14, 15]])</span><br><span class="line">a[:,:-1]</span><br><span class="line">out:</span><br><span class="line">array([[ 0,  1,  2],</span><br><span class="line">       [ 4,  5,  6],</span><br><span class="line">       [ 8,  9, 10],</span><br><span class="line">       [12, 13, 14]])</span><br></pre></td></tr></table></figure>
+<p>这里可以看出，我们筛选了a矩阵中前三列的所有行，这是如何实现的呢？</p>
+<p>切片的第一个元素<code>:</code>表示的是选择所有行，第二个元素<code>:-1</code>表示的是从第0列至最后一列（不包含），所以结果如上所示。</p>
+<p>再看一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[1:3,:]</span><br><span class="line">out:</span><br><span class="line">array([[ 4,  5,  6,  7],</span><br><span class="line">       [ 8,  9, 10, 11]])</span><br></pre></td></tr></table></figure>
+<p>筛选的是第2-3行的所有列。</p>
+<ul>
+<li>一个常用的切片</li>
+</ul>
+<p>以列的形式获取最后一列数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a[:,3:]</span><br><span class="line">out:</span><br><span class="line">array([[ 3],</span><br><span class="line">       [ 7],</span><br><span class="line">       [11],</span><br><span class="line">       [15]])</span><br></pre></td></tr></table></figure>
+<p>以一维数组的形式获取最后一列数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a[:,-1]</span><br><span class="line">out:</span><br><span class="line">array([ 3,  7, 11, 15])</span><br></pre></td></tr></table></figure>
+<p>上面两种方法经常会用到，前者的shape为(4,1)，后者为(4,)。</p>
+<h3 id="ndarray筛选"><a href="#ndarray筛选" class="headerlink" title="ndarray筛选"></a>ndarray筛选</h3><ul>
+<li>选择ndarray的对角线</li>
+</ul>
+<p>所用函数为<code>np.diag(ndarray, k=N)</code>，其中参数k的取值决定了按照哪一条对角线选择数据。</p>
+<p>默认k = 0，取主对角线；</p>
+<p>k = 1时，取主对角线上面1行的元素；</p>
+<p>k = -1时，取主对角线下面1行的元素。</p>
+<p><strong>思考</strong>：这个函数只能选择主对角线上的元素，那如果想要获取副对角线上的元素呢？</p>
+<p>尝试自己搜索一下关键词<code>numpy opposite diagonal</code>寻找答案。</p>
+<p>不建议你直接点<a href="https://stackoverflow.com/questions/16114333/getting-the-opposite-diagonal-of-a-numpy-array" target="_blank" rel="noopener">getting the opposite diagonal of a numpy array</a>。</p>
+<ul>
+<li>提取ndarray中的唯一值</li>
+</ul>
+<p>所用函数为<code>np.unique(ndarray)</code>，注意unique也可以添加参数axis来控制评判唯一值的轴方向，不好理解可以看示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = [[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">     [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">     [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line">print(np.unique(a))    <span class="comment">#查看二维数组a中的唯一值</span></span><br><span class="line">array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">print(np.unique(a,axis = <span class="number">0</span>))  <span class="comment">#查看a中的唯一行（也就是没有重复的行）</span></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</span><br><span class="line"></span><br><span class="line">print(np.unique(a,axis = <span class="number">1</span>))  <span class="comment">#查看a中的唯一列</span></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line"></span><br><span class="line">print(np.unique(a[<span class="number">0</span>]))  <span class="comment">#查看a中第一行的唯一值</span></span><br><span class="line">array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过布尔运算筛选</li>
+</ul>
+<p>这里在中括号中添加筛选条件，当该条件的结果为True时（即满足条件时），返回该值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X[X &gt; <span class="number">10</span>] <span class="comment">#筛选数组X中大于10的数据</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是，当输入多个筛选条件时，<code>&amp;</code>表示与，<code>|</code>表示或，<code>~</code>表示非。</p>
+<h3 id="ndarray运算"><a href="#ndarray运算" class="headerlink" title="ndarray运算"></a>ndarray运算</h3><ul>
+<li>集合运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np.intersect1d(x,y) <span class="comment">#取x与y的交集</span></span><br><span class="line">np.setdiff1d(x,y)   <span class="comment">#取x与y的差集，返回的是在x中且没在y中的元素</span></span><br><span class="line">np.union1d(x,y)     <span class="comment">#取x与y的并集</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>算术运算</li>
+</ul>
+<p>我们可以通过<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>或<code>np.add</code>、<code>np.substract</code>、<code>np.multiply</code> 、<code>np.divide</code>来对两个矩阵进行元素级的加减乘除运算，因为是元素级的运算，所以两个矩阵的shape必须要严格一致。</p>
+<blockquote>
+<p>上面涉及到的乘法是元素对应相乘，也就是点乘，那矩阵的叉乘呢？可以了解下<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.matmul.html#numpy.matmul" target="_blank" rel="noopener">numpy.matmul</a>函数。</p>
+</blockquote>
+<p>这里需要注意的是，课程中讲的“可广播”，其实指的就是A和B两个矩阵shape可能不一致，但是A可以拆分为整数个与B具有相同shape的矩阵，这样在进行元素级别的运算时，就会先将A进行拆分，然后与B进行运算，结果再组合一起就可以。这里的A就是“可广播”矩阵。</p>
+<h3 id="ndarray排序"><a href="#ndarray排序" class="headerlink" title="ndarray排序"></a>ndarray排序</h3><p>我们使用<code>np.sort()</code>和<code>ndarray.sort()</code>来对ndarray进行排序。</p>
+<p>相同的是：</p>
+<p>二者都可以使用参数<code>axis</code>来决定依照哪个轴进行排序，axis = 0时按照列排序，axis = 1时按照行排序；</p>
+<p>不同的是：</p>
+<p><code>np.sort()</code>不会更改原数组；<code>ndarray.sort()</code>会更改原数组。</p>
+<h3 id="numpy迷你项目"><a href="#numpy迷你项目" class="headerlink" title="numpy迷你项目"></a>numpy迷你项目</h3><p>这里涉及到一个概念，叫做<strong>数据标准化</strong>。</p>
+<p>数据的标准化(normalization)是将数据按比例缩放，使之落入一个小的特定区间。在某些比较和评价的指标处理中经常会用到，去除数据的单位限制，将其转化为无量纲的纯数值，便于不同单位或量级的指标能够进行比较和加权。</p>
+<p>有很多种对数据进行标准化处理的方法，我们课程中选择的是利用数据均值和标准差进行标准化：</p>
+<p><img src="https://s1.ax1x.com/2018/12/11/FJWC3F.png" alt="FJWC3F.png"></p>
+<p>对某一列中某一值进行标准化就是将该值减去该列的平均值，然后除以该列的标准差。标准化后的序列，均值为0，标准差为1，且无量纲。</p>
+<p>标准化后的数据，没有量纲，方便计算和比较，在机器学习中的很多算法都需要将数据进行标准化。</p>
+<blockquote>
+<p>但是基于本章的要求，我们主要是学习numpy的基本操作即可，具体的数据标准化还有算法可以之后在机器学习课程中学习。</p>
+</blockquote>
+<p>这里需要注意的是：</p>
+<ul>
+<li><code>np.random.permutation()</code> </li>
+</ul>
+<p><code>np.random.permutation(N)</code> 函数会创建一个从 0 到 <code>N - 1</code>的随机排列的整数集。这个整数集也是ndarray类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.random.permutation(<span class="number">5</span>)</span><br><span class="line">array([<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将数据集切分为训练集、测试集和交叉集。</li>
+</ul>
+<p>这里的切分有两点隐形要求：</p>
+<p>1.随机性，三个数据集中的数据必须是随机分配的；</p>
+<p>2.三个数据集的合集必须为数据集。</p>
+<pre><code>考虑到上面学到的`np.random.permutation()` 函数，所以我们的思路可以是这样的：
+
+1. 使用`permutation()`函数，将数据集的行数当作N，这样就可以得到一个随机排列的行索引序列；
+2. 使用切片，将刚才的随机行索引序列，按照训练集、测试集和交叉集的比例`6:2:2`进行切分；
+3. 使用索引访问，获取切分后的数据，即`ndarray[index]`的方式。
+</code></pre><h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><h3 id="Pandas简介"><a href="#Pandas简介" class="headerlink" title="Pandas简介"></a>Pandas简介</h3><p><strong>Pandas</strong> 是 Python 中的数据操纵和分析软件包，它是基于Numpy去开发的，所以Pandas的数据处理速度也很快，而且Numpy中的有些函数在Pandas中也能使用，方法也类似。</p>
+<p>Pandas 为 Python 带来了两个新的数据结构，即 <strong>Pandas Series</strong>(可类比于表格中的某一列)和 <strong>Pandas DataFrame</strong>(可类比于表格)。借助这两个数据结构，我们能够轻松直观地处理<em>带标签</em>数据和<em>关系</em>数据。</p>
+<blockquote>
+<p>Series中各个元素的数据类型可以不一致，DataFrame也是如此，这与numpy的ndarray不同。</p>
+</blockquote>
+<h3 id="创建Pandas-Series"><a href="#创建Pandas-Series" class="headerlink" title="创建Pandas Series"></a>创建Pandas Series</h3><p>可以使用 <code>pd.Series(data, index)</code> 命令创建 Pandas Series，其中<code>data</code>表示输入数据， <code>index</code> 为对应数据的索引，除此之外，我们还可以添加参数<code>dtype</code>来设置该列的数据类型。</p>
+<p>示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series(data = [<span class="number">30</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">5</span>], index = [<span class="string">'eggs'</span>, <span class="string">'apples'</span>, <span class="string">'milk'</span>, <span class="string">'bread'</span>],dtype=float)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">eggs      <span class="number">30.0</span></span><br><span class="line">apples     <span class="number">6.0</span></span><br><span class="line">milk       <span class="number">7.0</span></span><br><span class="line">bread      <span class="number">5.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p><code>data</code>除了可以输入列表之外，还可以输入字典，或者是直接一个标量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#data输入字典</span></span><br><span class="line">pd.Series(data = &#123;<span class="string">'eggs'</span>:<span class="number">30</span>,<span class="string">'apples'</span>: <span class="number">6</span>,  <span class="string">'milk'</span>:<span class="number">7</span>, <span class="string">'bread'</span>:<span class="number">5</span>&#125;,dtype=float)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">apples     <span class="number">6.0</span></span><br><span class="line">bread      <span class="number">5.0</span></span><br><span class="line">eggs      <span class="number">30.0</span></span><br><span class="line">milk       <span class="number">7.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line"><span class="comment">#data输入某一标量</span></span><br><span class="line">pd.Series(data = <span class="number">7</span>, index = [<span class="string">'eggs'</span>, <span class="string">'apples'</span>, <span class="string">'milk'</span>, <span class="string">'bread'</span>])</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">eggs      <span class="number">7</span></span><br><span class="line">apples    <span class="number">7</span></span><br><span class="line">milk      <span class="number">7</span></span><br><span class="line">bread     <span class="number">7</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="访问和删除Series中的元素"><a href="#访问和删除Series中的元素" class="headerlink" title="访问和删除Series中的元素"></a>访问和删除Series中的元素</h3><ul>
+<li><strong>访问</strong></li>
+</ul>
+<p>访问Series中的元素有两种方法：</p>
+<p>一种类似于从列表中按照索引访问数据，一种类似于从字典中按照<strong>key</strong>来访问<strong>value</strong>。</p>
+<p>下面看示例：</p>
+<p><img src="https://s1.ax1x.com/2018/12/11/FY9vQg.png" alt="    FY9vQg.png"></p>
+<p>从上面代码里也能发现，Pandas提供的<code>iloc</code>与<code>loc</code>分别对应着按索引访问和按key访问。</p>
+<ul>
+<li><strong>修改</strong></li>
+</ul>
+<p>因为Series是可更改类型，若想更改其中某一项，只需访问它然后重新赋值即可。</p>
+<ul>
+<li><strong>删除</strong></li>
+</ul>
+<p>可以使用 <code>.drop()</code> 方法删除 Pandas Series 中的条目。<code>Series.drop(label)</code> 方法会从给定 <code>Series</code> 中删除给定的 <code>label</code>。这个<code>label</code>可以是单个label或这是label组成的list。</p>
+<p><img src="https://s1.ax1x.com/2018/12/11/FYPWKe.png" alt="FYPWKe.png"></p>
+<p>但需要注意的是，<code>.drop()</code>函数并不会修改原来的数据，如果你想要修改原数据的话，可以选择添加参数<code>inplace = True</code>或者是用原数据替换<code>s = s.drop(label)</code></p>
+<h3 id="Series运算"><a href="#Series运算" class="headerlink" title="Series运算"></a>Series运算</h3><p>和ndarray一样，Series也可以进行元素级的算术运算，也可以使用np中提供的各种运算函数，如<code>sqrt()</code>等等。</p>
+<p>这里可以想一下，如果Series中包含字符串，然后再进行乘法会是什么结果？</p>
+<p>可以回想下字符串的知识<code>&#39;*&#39;*10</code>的结果是什么？</p>
+<h3 id="创建DataFrame"><a href="#创建DataFrame" class="headerlink" title="创建DataFrame"></a>创建DataFrame</h3><p>我们使用<code>pd.DataFrame(data, index, columns)</code>来创建一个DataFrame。</p>
+<p>其中：</p>
+<p><code>data</code>是数据，可以输入ndarray，或者是字典（字典中可以包含Series或arrays或），或者是DataFrame；</p>
+<p><code>index</code>是索引，输入列表，如果没有设置该参数，会默认以0开始往下计数；</p>
+<p><code>columns</code>是列名，输入列表，如果没有设置该参数，会默认以0开始往右计数；</p>
+<p>示例：</p>
+<p><img src="https://s1.ax1x.com/2018/12/11/FYkQDe.png" alt="FYkQDe.png"></p>
+<p>从上述代码中可以看出，字典<code>d</code>中的<code>key</code>被当作列名，<code>value</code>被当作dataframe中的数据。</p>
+<p><strong>思考</strong>：如果在上述代码中添加一个columns列，如<code>df = pd.DataFrame(data=d,index = [&#39;a&#39;,&#39;b&#39;],columns = [&#39;col_1&#39;,&#39;col_2&#39;])</code>，会返回什么结果呢？</p>
+<h3 id="访问DataFrame中的元素"><a href="#访问DataFrame中的元素" class="headerlink" title="访问DataFrame中的元素"></a>访问DataFrame中的元素</h3><p>与访问Series中的元素类似，我们可以通过列表式索引访问，也可以通过字典式Key值访问。</p>
+<ul>
+<li>创建一个DataFrame</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FYfMh6.png" alt="FYfMh6.png"></p>
+<ul>
+<li>访问某一行</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FYh15q.png" alt="FYh15q.png"></p>
+<ul>
+<li>访问多行</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FY4lOe.png" alt="FY4lOe.png"></p>
+<ul>
+<li>访问某一列</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FY4nW6.png" alt="FY4nW6.png"></p>
+<ul>
+<li>访问多列</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FY4tYt.png" alt="FY4tYt.png"></p>
+<blockquote>
+<p>使用df.iloc[:,0:2]这种方法只能筛选出连续的列，那如果想要筛选的列分别在1,3,5,10:17怎么办呢？可以搜一下<code>np.r_</code>的用法。</p>
+</blockquote>
+<ul>
+<li>访问某一行列的元素</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/12/12/FY4aSf.png" alt="FY4aSf.png"></p>
+<h3 id="删除、增加元素"><a href="#删除、增加元素" class="headerlink" title="删除、增加元素"></a>删除、增加元素</h3><ul>
+<li>删除元素</li>
+</ul>
+<p>我们使用<code>.drop</code>函数删除元素，默认为删除行，添加参数<code>axis = 1</code>来删除列。</p>
+<p><img src="https://s1.ax1x.com/2018/12/12/FY5x2V.png" alt="FY5x2V.png"></p>
+<p>值得注意的是，<code>drop</code>函数不会修改原数据，如果想直接对原数据进行修改的话，可以选择添加参数<code>inplace = True</code>或用原变量名重新赋值替换。</p>
+<ul>
+<li>增加元素</li>
+</ul>
+<p>这里介绍了两种方法，一种是<code>append()</code>，另外一种是<code>insert()</code>，这两种方法都比较简单，可类比于python list中的两种方法进行学习。</p>
+<p>此外，Pandas还提供了其他更为复杂的做DataFrame融合的函数，比如说<code>concat()</code>、<code>merge()</code>、<code>join()</code>等等，相对难理解一些，我会单独出一份导学详细介绍这几个数据融合函数。</p>
+<h3 id="更改行列标签"><a href="#更改行列标签" class="headerlink" title="更改行列标签"></a>更改行列标签</h3><p>使用函数<code>rename()</code>即可。具体用法如下：</p>
+<p><img src="https://s1.ax1x.com/2018/12/12/FYIIiR.png" alt="FYIIiR.png"></p>
+<p>除此之外，还可以使用隐匿函数lambda来对行列标签进行统一处理，比如：</p>
+<p><img src="https://s1.ax1x.com/2018/12/12/FYIoJ1.png" alt="FYIoJ1.png"></p>
+<p>需要注意的是，<code>rename()</code>函数同样不会更改原数据，如果想直接对原数据进行修改的话，可以选择添加参数<code>inplace = True</code>或用原变量名重新赋值替换。</p>
+<h3 id="更改索引"><a href="#更改索引" class="headerlink" title="更改索引"></a>更改索引</h3><p>可以使用函数<code>set_index(index_label)</code>，将数据集的index设置为<code>index_label</code>。</p>
+<p>除此之外，还可以使用函数<code>reset_index()</code>重置数据集的index为0开始计数的数列。</p>
+<h3 id="缺失值-NaN-处理"><a href="#缺失值-NaN-处理" class="headerlink" title="缺失值(NaN)处理"></a>缺失值(NaN)处理</h3><p><code>NaN</code>就是<strong>Not a Number</strong>的缩写，表示这里有数据缺失。</p>
+<ul>
+<li>查找NaN</li>
+</ul>
+<p>我们可以使用<code>isnull()</code>和<code>notnull()</code>函数来查看数据集中是否存在缺失数据，在该函数后面添加<code>sum()</code>函数来对缺失数量进行统计。除此之外，还可以使用<code>count()</code>函数对非NaN数据进行统计计数。</p>
+<p><img src="https://s1.ax1x.com/2018/12/12/FYIzFA.png" alt="FYIzFA.png"></p>
+<ul>
+<li>删除NaN</li>
+</ul>
+<p>使用<code>dropna(axis)</code>函数可以删除包含NaN的行或列。</p>
+<blockquote>
+<p> <code>dropna()</code>函数还有一个参数是<code>how</code>，当<code>how = all</code>时，只会删除全部数据都为NaN的列或行。</p>
+</blockquote>
+<p>同样，该函数也不会修改原数据集。</p>
+<ul>
+<li>替换NaN</li>
+</ul>
+<p>使用<code>fillna()</code>函数可以替换NaN为某一值。其参数如下：</p>
+<ol>
+<li><strong>value</strong>：用来替换NaN的值</li>
+<li><strong>method</strong>：常用有两种，一种是<code>ffill</code>前向填充，一种是<code>backfill</code>后向填充</li>
+<li><strong>axis</strong>：0为行，1为列</li>
+<li><strong>inplace</strong>：是否替换原数据，默认为False</li>
+<li><strong>limit</strong>：接受int类型的输入，可以限定替换前多少个NaN</li>
+</ol>
+<blockquote>
+<p> 一般来说，我们常用均值去替换NaN。</p>
+</blockquote>
+<p>还可以使用<code>interpolate()</code>函数按照某一方法来替换NaN，课程中介绍了method为<code>linear</code>时的用法，即忽略索引并将值视为相等间距，这是该函数的默认方法。更多method及解读请戳<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.interpolate.html" target="_blank" rel="noopener">pandas.DataFrame.interpolate</a></p>
+<h3 id="在Pandas中处理数据"><a href="#在Pandas中处理数据" class="headerlink" title="在Pandas中处理数据"></a>在Pandas中处理数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(filename) <span class="comment">#读取csv文件</span></span><br><span class="line">df.info()  <span class="comment">#查看数据集信息</span></span><br><span class="line">df.head()  <span class="comment">#查看前五行</span></span><br><span class="line">df.tail()  <span class="comment">#查看后五行</span></span><br><span class="line">df.sample()  <span class="comment">#查看随机一行</span></span><br><span class="line">df.describe() <span class="comment">#查看数据类型的基本统计信息</span></span><br><span class="line">df.corr() <span class="comment">#查看各列之间的相关系数</span></span><br><span class="line"></span><br><span class="line">df.groupby() <span class="comment">#将数据按照某一列进行聚类，后续接数据统计函数，如mean()，sum()等</span></span><br></pre></td></tr></table></figure>
+<h1 id="项目内容"><a href="#项目内容" class="headerlink" title="项目内容"></a>项目内容</h1><p>本首是Python项目的第2周，主要还是理解项目和准备项目文件，请大家做到以下几点：</p>
+<p><strong>Project2/week1的项目要求：</strong>（应该已经做完）</p>
+<ul>
+<li>完成/项目：探索美国共享单车数据/的1-3节内容</li>
+<li>搭建本地anaconda环境（Python3版本）确保Spyder可以使用</li>
+<li>下载bikeshare-new-2.zip项目文件。如果教室里面不能下载，请尝试下载下面的链接：<a href="https://github.com/mengfanchun2017/DAND-Basic/blob/master/Project1/Project1Files/bikeshare-new-2.zip" target="_blank" rel="noopener">https://github.com/mengfanchun2017/DAND-Basic/blob/master/Project1/Project1Files/bikeshare-new-2.zip</a></li>
+</ul>
+<p><strong>Project2/week2的项目要求</strong> （本周要求和，做完了画第二个勾勾）</p>
+<ul>
+<li>用spyder打开项目文件浏览</li>
+<li>了解项目文件中有几个函数，函数名和输入是什么（不用看明白和尝试做）</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+          
+            <a href="/tags/Numpy/" rel="tag"># Numpy</a>
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/02/2018-12-2-Anaconda配置/" rel="next" title="Anaconda&Jupyter Notebook配置">
+                <i class="fa fa-chevron-left"></i> Anaconda&Jupyter Notebook配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/2019-3-24-BAND-VIP资源导览/" rel="prev" title="BAND-VIP资源导览">
+                BAND-VIP资源导览 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本周目标"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识清单"><span class="nav-number">2.</span> <span class="nav-text">知识清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy"><span class="nav-number">2.1.</span> <span class="nav-text">Numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NumPy-简介"><span class="nav-number">2.1.1.</span> <span class="nav-text">NumPy 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建ndarray"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建ndarray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问、删除、增加ndarray中的元素"><span class="nav-number">2.1.3.</span> <span class="nav-text">访问、删除、增加ndarray中的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray切片"><span class="nav-number">2.1.4.</span> <span class="nav-text">ndarray切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray筛选"><span class="nav-number">2.1.5.</span> <span class="nav-text">ndarray筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray运算"><span class="nav-number">2.1.6.</span> <span class="nav-text">ndarray运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray排序"><span class="nav-number">2.1.7.</span> <span class="nav-text">ndarray排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy迷你项目"><span class="nav-number">2.1.8.</span> <span class="nav-text">numpy迷你项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas"><span class="nav-number">2.2.</span> <span class="nav-text">Pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas简介"><span class="nav-number">2.2.1.</span> <span class="nav-text">Pandas简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Pandas-Series"><span class="nav-number">2.2.2.</span> <span class="nav-text">创建Pandas Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问和删除Series中的元素"><span class="nav-number">2.2.3.</span> <span class="nav-text">访问和删除Series中的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Series运算"><span class="nav-number">2.2.4.</span> <span class="nav-text">Series运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建DataFrame"><span class="nav-number">2.2.5.</span> <span class="nav-text">创建DataFrame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问DataFrame中的元素"><span class="nav-number">2.2.6.</span> <span class="nav-text">访问DataFrame中的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除、增加元素"><span class="nav-number">2.2.7.</span> <span class="nav-text">删除、增加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改行列标签"><span class="nav-number">2.2.8.</span> <span class="nav-text">更改行列标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改索引"><span class="nav-number">2.2.9.</span> <span class="nav-text">更改索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值-NaN-处理"><span class="nav-number">2.2.10.</span> <span class="nav-text">缺失值(NaN)处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Pandas中处理数据"><span class="nav-number">2.2.11.</span> <span class="nav-text">在Pandas中处理数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目内容"><span class="nav-number">3.</span> <span class="nav-text">项目内容</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz',
+    appKey: 'sAf2Iz8P4JMH7Ac7YKeoojii',
+    placeholder: '畅所欲言吧，朋友！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

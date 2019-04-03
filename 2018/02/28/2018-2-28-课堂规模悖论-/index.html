@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：  在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：  学生通常每学期修4到5门课，但是教授经常只教1门或2门； 上小课的学生很少，但上大课的学生人数非常之多。  一旦我们知道了第一个原因，其效应就是显而易">
+<meta name="keywords" content="statistics,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课堂规模悖论">
+<meta property="og:url" content="http://yoursite.com/2018/02/28/2018-2-28-课堂规模悖论-/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：  在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：  学生通常每学期修4到5门课，但是教授经常只教1门或2门； 上小课的学生很少，但上大课的学生人数非常之多。  一旦我们知道了第一个原因，其效应就是显而易">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/10/03/i30ncq.png">
+<meta property="og:updated_time" content="2019-04-03T04:51:55.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="课堂规模悖论">
+<meta name="twitter:description" content="在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：  在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：  学生通常每学期修4到5门课，但是教授经常只教1门或2门； 上小课的学生很少，但上大课的学生人数非常之多。  一旦我们知道了第一个原因，其效应就是显而易">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/10/03/i30ncq.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2018/02/28/2018-2-28-课堂规模悖论-/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>课堂规模悖论 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/2018-2-28-课堂规模悖论-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">课堂规模悖论
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 12:30:09" itemprop="dateCreated datePublished" datetime="2018-02-28T12:30:09+08:00">2018-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-03 12:51:55" itemprop="dateModified" datetime="2019-04-03T12:51:55+08:00">2019-04-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/02/28/2018-2-28-课堂规模悖论-/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/28/2018-2-28-课堂规模悖论-/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：</p>
+<hr>
+<p>在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：</p>
+<ul>
+<li>学生通常每学期修4到5门课，但是教授经常只教1门或2门；</li>
+<li>上小课的学生很少，但上大课的学生人数非常之多。</li>
+</ul>
+<p>一旦我们知道了第一个原因，其效应就是显而易见的，第二个就不那么明显了。让我们来看一个例子，假设一所学院某学期开了65门课，选课的人数分布如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">size</th>
+<th style="text-align:center">count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">5-9</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">10-14</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">15-19</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">20-24</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">25-29</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">30-34</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">35-39</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">40-44</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">45-49</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<p>如果你问院长，每门课平均的选课人数是多少，他会构建一个PMF( probability mass function，概率质量函数），计算出均值。</p>
+<blockquote>
+<p>PMF是将数据中的每个值映射到其概率上，是除直方图外的另一种表示数据分布的方法。</p>
+</blockquote>
+<hr>
+<p>书中的代码使用的是作者自建的一个python库thinkstats2，这里不再赘述，只是借书中的例子，用python还原如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义选课人数分布字典</span></span><br><span class="line">d = &#123;<span class="number">7</span>:<span class="number">8</span>,<span class="number">12</span>:<span class="number">8</span>,<span class="number">17</span>:<span class="number">14</span>,<span class="number">22</span>:<span class="number">4</span>,<span class="number">27</span>:<span class="number">6</span>,<span class="number">32</span>:<span class="number">12</span>,<span class="number">37</span>:<span class="number">8</span>,<span class="number">42</span>:<span class="number">3</span>,<span class="number">47</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="comment">#获取人数分布的array</span></span><br><span class="line">data = numpy.array(list(d.keys())).repeat(list(d.values()))</span><br><span class="line"><span class="comment">#计算均值</span></span><br><span class="line">act_mean = data.mean()</span><br></pre></td></tr></table></figure>
+<p>计算得到实际选课人数均值约为23.7。</p>
+<p>这是我们获取全部数据之后，站在类似于上帝视角去看的结果，那么如果我们对一组学生进行调查，询问他们的课堂上有多少学生，然后再次计算均值，会发现什么呢？</p>
+<p>首先，计算出学生观察到的分布，其中每个课堂规模值的概率受到选课学生人数的“影响”。</p>
+<blockquote>
+<p>具体实现：假设每门课的选课人数为x，而该规模人数的课程出现的概率为p，那么通过询问，获得的该规模课程总数应该为x*p。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们先构建课程规模与课程出现概率的字典</span></span><br><span class="line">pmf = &#123;size:(count/<span class="number">65</span>) <span class="keyword">for</span> size,count <span class="keyword">in</span> d.items()&#125;<span class="comment">#65为课程总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建课程规模与询问后得到的课程计数字典，我们把它叫做偏倚分布</span></span><br><span class="line">obs_data = &#123;size:size*count <span class="keyword">for</span> size,count <span class="keyword">in</span> pmf.items()&#125;</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数总数</span></span><br><span class="line">sum_students = sum(list(map(<span class="keyword">lambda</span> x:x[<span class="number">0</span>]*x[<span class="number">1</span>],zip(obs_data.keys(),obs_data.values()))))</span><br><span class="line"><span class="comment">#计算偏倚分布的总课程数</span></span><br><span class="line">sum_count = sum(list(obs_data.values()))</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数均值</span></span><br><span class="line">obs_mean = sum_students/sum_count</span><br></pre></td></tr></table></figure>
+<p>计算得到的结果为：29.1，比实际的均值高了约25%。</p>
+<p>接下来，我们构建这两组数据的PMF图，能更直观一些。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#构建偏倚分布课程规模与该课程出现概率的字典</span></span><br><span class="line">obs_pmf = &#123;size:count/sum_count <span class="keyword">for</span> size,count <span class="keyword">in</span> obs_data.items()&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化，并列柱状图</span></span><br><span class="line">sns.set(style=<span class="string">"white"</span>, context=<span class="string">"talk"</span>)<span class="comment">#设置样式</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">5</span>))<span class="comment">#设置图像大小</span></span><br><span class="line">ind = np.array(list(pmf.keys()))</span><br><span class="line">width = <span class="number">0.4</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind - width,pmf.values(),label = <span class="string">'actual'</span>)<span class="comment">#实际值</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind + width,ano_pmf.values(),label = <span class="string">'observed'</span>)<span class="comment">#观察值</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'class size'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'PMF'</span>)</span><br><span class="line">plt.xticks(list(pmf.keys()))</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2018/10/03/i30ncq.png" alt="i30ncq.png"></p>
+<p>从图中可以明显看出，在偏倚分布中，小课更少，大课更多。</p>
+<p>同样，你也可以反向进行如上的操作。假设你希望得到一所学院的课堂规模分布，但却无法从院长处得到可靠数据，你可以采用另一个办法：选择学生的一个随机样本，进行调查，询问他们的课堂上有多少学生，然后再进行“去偏倚”的操作，这里就需要用统计得来的同等规模课程计数除以它出现的概率。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/statistics/" rel="tag"># statistics</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/2018-2-1-windows创建只有拓展名的文件 (2)/" rel="next" title="Windows下创建只有拓展名的文件">
+                <i class="fa fa-chevron-left"></i> Windows下创建只有拓展名的文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/16/2018-7-16-第一周-项目一/" rel="prev" title="每周导学-第一周-项目一">
+                每周导学-第一周-项目一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz',
+    appKey: 'sAf2Iz8P4JMH7Ac7YKeoojii',
+    placeholder: '畅所欲言吧，朋友！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
