@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[利用python批量出报告]]></title>
+    <url>%2F2019%2F04%2F04%2F2019-4-4-%E5%88%A9%E7%94%A8python%E6%89%B9%E9%87%8F%E5%87%BAxx%E6%8A%A5%E5%91%8A%2F</url>
+    <content type="text"><![CDATA[概述最近单位需要批量输出报告，好在这些报告的整体模板相同，只有一些跟用户相关的信息需要替换。几千份的重复工作，还是交给Python去处理吧。 本文的技术路径为：利用docxtpl对word模板文件进行变量替换，然后利用 将word转换为pdf。 本文代码应用环境如下： 123* Windows 7* Python 3.7* docxtpl-0.5.17 Word文档处理安装 主要用docxtpl库实现。官方文档 直接pip install docxtpl即可，会自动安装依赖库：docx和jinja2。 模板文档准备如下所示，将需要进行变量替换的位置用两对大括号括起来，并在其中添加变量名，这是后续能通过python识别替换的关键。 表格 表格的变量设置比较麻烦，可以查看官方github，里面有很多示例代码，随用随取。 设置表格变量的时候，有两个关键，一个是行 ，一个是列，其中行用字段tr(row)表示，列用字段tc(column)表示。 如下表中所示，我们通过构建列表循环 和 调用字典key的方式，对表格中的各个项进行填充。 使用示例1234567891011121314151617181920212223242526272829from docxtpl import DocxTemplate,InlineImagefrom docx.shared import Mmimport jinja2#读取模板文档tpl = DocxTemplate('自主招生大数据报告模板.docx')#替换word中的变量#字典中的key为变量名，value为要替换的值context = &#123; 'stu_id':123, 'stu_phone':13612341234, 'stu_province':'河北', 'stu_grade':'高二', 'stu_wenli':'理科', 'stu_school':'南宫中学', 'stu_university':'西安交通大学', 'stu_prize_1':'化学省一', 'image_1':InlineImage(tpl,'E:/wallpapers/1.jpg',width=Mm(120)), 'items' : [ &#123;'university' : '西安交通大学', 'major' : '电气工程,能源动力','year':2018, 'prize' : '数学省一','nums':200 &#125;, &#123;'university' : '复旦大学', 'major' : '金融学', 'year':2018,'prize' : '数学省三','nums':20 &#125;, &#123;'university' : '北京理工大学', 'major' : '兵器学', 'year':2018,'prize' : '物理省二','nums':2 &#125;, ],&#125;#输出tpl.render(context)tpl.save('output/自主招生报告.docx') Word转PDF通过Windows Com组件（win32com），调用Word服务（Word.Application），实现Word到PDF文件的转换。因此，要求该Python程序需要在有Word服务（可能至少要求2007版本）的Windows机器上运行。 参考：批量转换Word文件为PDF文件 12345678910111213import win32com.client#WdSaveFormat指令，17表示转为PDF#更多信息可以查看：https://docs.microsoft.com/zh-cn/office/vba/api/word.wdsaveformatwdFormatPDF = 17word = win32com.client.Dispatch('Word.Application')#打开文档，绝对地址doc = word.Documents.Open('F:\\0 zizhuzhaosheng\\docs\\test.docx')#输出文档路径，绝对地址doc.SaveAs('F:\\0 zizhuzhaosheng\\docs\\test.pdf', FileFormat=wdFormatPDF)#退出doc.Close()word.Quit() 本作品采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>文档处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BAND-VIP资源导览]]></title>
     <url>%2F2019%2F03%2F24%2F2019-3-24-BAND-VIP%E8%B5%84%E6%BA%90%E5%AF%BC%E8%A7%88%2F</url>
     <content type="text"><![CDATA[A positive attitude causes a chain reaction of positive thoughts,events and outcomes. Hi，各位同学们，大家好，欢迎踏上数据分析的不归路列车~在发车之前，有几点需要给大家强调一下： 课程和项目： 课程以项目为导向，学习曲线十分平缓，我也是从一个小白一步步走过来的，所以请大家一定要对自己有信心 我们把整体的一个大任务（课程毕业）拆分成了四个子任务（项目），在每个子任务中又拆分成了知识学习、项目提交和修改、总结沉淀三个部分，在这三个部分之中，大家还可以自行再进行切分，如此将一个大难题拆分成若干个小问题，逐个击破，十分轻松 对于项目，大家一定要重视！切不可抄袭，一定要对自己负责任 如何提问： 在课程学习中难免会遇到问题，请按照以下流程进行问题提问： 课程知识问题： 先自行查找问题答案，参考：谷歌/必应搜索、菜鸟教程、CSDN、SQLCookbook.pdf) 若问题未解决，请将问题及其所在课程章节发送至微信群，并@讲师即可 非课程知识问题： 比如账号登录、课程加载等问题，请详细描述问题，反馈给助教即可 该说的也说了个差不多，那么，请大家系好安全带做好觉悟： 工作可能会很忙，但是每天至少要抽出一个小时来坚持学习，否则一日废，日日废 准备好一个笔记本或者有道云笔记、EverNote这种电子笔记本，用来记录学习笔记/问题 自律，自律，自律！自律才能让你更自由！ 准备发车！ 课程安排课程安排中包括每周学习的进度，以及优达日的时间&amp;内容，为了能有最佳的学习体验，大家尽量按照这个进度表来哦~ 每周导学每周导学部分，是对上面课程安排的细化，会对每周的课程内容进行难重点分析，分享相关学习资料链接等等~ 感谢优达学城优秀讲师吕华老师提供的导学文档，大家可以忽略文档的时间。 第二周-可视化与信息有效表达 第三周-描述统计学 想了解更多？可以戳统计学基础 第四周-电子表格（Excel） 第五周-分析问卷数据 第六周- 第七周- 第八周- 第九周- 优达日录屏我会把每次优达日的视频录制好，方便大家回顾~ 专题分享-可视化与信息的有效表达 其他资源 Makeover Monday，每周会分享一个专题，提供数据及可视化建议。 Adobe Color，Adobe官方提供的色彩和谐搭配方案，支持自定义。 可汗学院公开课：统计学，更基础一些的统计学课程。 一站式SQL学练指南，可以去这里锻炼SQL代码。 腾讯微云’’图书馆’’，搜集的一些数据分析相关书籍。]]></content>
