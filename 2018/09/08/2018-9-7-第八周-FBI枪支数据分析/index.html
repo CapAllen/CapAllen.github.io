@@ -52,10 +52,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=7.1.0">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
@@ -100,8 +100,8 @@
 <meta name="keywords" content="lesson guide,pandas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每周导学-第八周-FBI枪支数据分析">
-<meta property="og:url" content="http://yoursite.com/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://www.capallen.top/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/index.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="Stop being afraid of what could go wrong and start being positive about what could go right.  Hi，同学们，经过了前两周的学习，我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用以及使用matplotlib&amp;amp;Pandas进行可视化的技巧，那么本周我们就真刀实枪地找一套数据集">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/09/03/Pz6nds.md.png">
@@ -118,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/">
+  <link rel="canonical" href="http://www.capallen.top/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/">
 
 
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>每周导学-第八周-FBI枪支数据分析 | Hexo</title>
+  <title>每周导学-第八周-FBI枪支数据分析 | Allen's Blog</title>
   
 
 
@@ -187,10 +187,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Allen's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">体制山下的泼猴</p>
+      
     
     
   </div>
@@ -293,16 +297,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/">
+    <link itemprop="mainEntityOfPage" href="http://www.capallen.top/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Allen's Blog">
     </span>
 
     
@@ -397,6 +401,17 @@
           
 
           
+          
+            <span id="/2018/09/08/2018-9-7-第八周-FBI枪支数据分析/" class="leancloud_visitors" data-flag-title="每周导学-第八周-FBI枪支数据分析">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -612,7 +627,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先将有千位分隔符的列转为float类型</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [ <span class="string">'Population estimates, July 1, 2016,  (V2016)'</span>,<span class="string">'Housing units,  July 1, 2016,  (V2016)'</span>, <span class="string">'Building permits, 2016'</span>]:</span><br><span class="line">    df_census_2016[i] = df_census_2016[i].str.split(<span class="string">','</span>)</span><br><span class="line">    df_census_2016[i] = df_census_2016[i].str.join(<span class="string">''</span>)</span><br><span class="line">    df_census_2016[i] = df_census_2016[i].astype(float)</span><br></pre></td></tr></table></figure>
 <p>百分号的处理方式同上类似。</p>
 <p><strong>数据融合</strong></p>
-<p>我们在之前的导学中总结过Pandas做数据融合的方法，就此项目而言，两个数据以索引（Index，也就是各州的州名）为键进行融合，最简单的方法就是用join()函数了。如果你忘了，可以点<a href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/" target="_blank" rel="noopener">这里</a>复习一下。</p>
+<p>我们在之前的导学中总结过Pandas做数据融合的方法，就此项目而言，两个数据以索引（Index，也就是各州的州名）为键进行融合，最简单的方法就是用join()函数了。如果你忘了，可以点<a href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/">这里</a>复习一下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_2016 = df_gun_2016.join(df_census_2016)</span><br></pre></td></tr></table></figure>
 <p>好，至此我们的数据就算是整理完毕了，接下来就是探索性分析及可视化阶段，这里没有什么特别需要注意的地方，大家就随性而为。</p>
 </li>
@@ -741,8 +756,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <div class="site-description motion-element" itemprop="description"></div>
+              <p class="site-author-name" itemprop="name">Allen Jia</p>
+              <div class="site-description motion-element" itemprop="description">数据 算法 分享</div>
           </div>
 
           
@@ -752,7 +767,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -877,7 +892,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-fas fa-space-shuttle"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
 
   
 
@@ -1071,6 +1086,66 @@
 
 
   
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz',
+                'X-LC-Key': 'sAf2Iz8P4JMH7Ac7YKeoojii',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
 
   
 
