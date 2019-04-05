@@ -97,21 +97,20 @@
 
 
 
-  <meta name="description" content="Better together . —— Udacity  Hi，同学们，经过前两周的学习，我们掌握了描述统计学基础、概率论基础、推论统计学中的置信区间、假设检验以及机器学习入门知识——回归，本章的内容偏理论性更多一些，需要更多得去实操来加强自己的理解能力，这周呢我们就来个实打实的项目来检验前两周的所学。项目为分析A/B测试结果，在开始项目前，请一定要把前面的几个小测试做了，这样做项目更好上手">
-<meta name="keywords" content="statistics,lesson guide">
+  <meta name="description" content="这两天需要对公众号的信息进行爬取，原以为只是爬取信息，而不需要怕公众号，会比较简单，所以尝试了：  littlecodersh的ItChat 可以获取公众号的名称、功能描述以及地区，但并没有把公众号的ID以及认证公司等信息集成进去，而且必须要本人关注之后才能处理；  搜狗微信 搜狗微信的信息倒是齐全，完全可以满足要求，但是尝试了request+BeatifulSoup还有Selenium之后发现，">
+<meta name="keywords" content="Python,selenium,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每周导学-第十二周-项目四">
-<meta property="og:url" content="https://www.capallen.top/2018/09/26/2018-9-26-第十二周-项目四/index.html">
+<meta property="og:title" content="selenium爬取新榜公众号信息">
+<meta property="og:url" content="https://www.capallen.top/2019/04/05/selenium爬取新榜公众号信息/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
-<meta property="og:description" content="Better together . —— Udacity  Hi，同学们，经过前两周的学习，我们掌握了描述统计学基础、概率论基础、推论统计学中的置信区间、假设检验以及机器学习入门知识——回归，本章的内容偏理论性更多一些，需要更多得去实操来加强自己的理解能力，这周呢我们就来个实打实的项目来检验前两周的所学。项目为分析A/B测试结果，在开始项目前，请一定要把前面的几个小测试做了，这样做项目更好上手">
+<meta property="og:description" content="这两天需要对公众号的信息进行爬取，原以为只是爬取信息，而不需要怕公众号，会比较简单，所以尝试了：  littlecodersh的ItChat 可以获取公众号的名称、功能描述以及地区，但并没有把公众号的ID以及认证公司等信息集成进去，而且必须要本人关注之后才能处理；  搜狗微信 搜狗微信的信息倒是齐全，完全可以满足要求，但是尝试了request+BeatifulSoup还有Selenium之后发现，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/09/26/iMRliF.gif">
-<meta property="og:image" content="https://s1.ax1x.com/2018/09/27/iQQBSs.png">
-<meta property="og:updated_time" content="2019-04-03T04:51:55.488Z">
+<meta property="og:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
+<meta property="og:updated_time" content="2019-04-05T04:53:26.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每周导学-第十二周-项目四">
-<meta name="twitter:description" content="Better together . —— Udacity  Hi，同学们，经过前两周的学习，我们掌握了描述统计学基础、概率论基础、推论统计学中的置信区间、假设检验以及机器学习入门知识——回归，本章的内容偏理论性更多一些，需要更多得去实操来加强自己的理解能力，这周呢我们就来个实打实的项目来检验前两周的所学。项目为分析A/B测试结果，在开始项目前，请一定要把前面的几个小测试做了，这样做项目更好上手">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/09/26/iMRliF.gif">
+<meta name="twitter:title" content="selenium爬取新榜公众号信息">
+<meta name="twitter:description" content="这两天需要对公众号的信息进行爬取，原以为只是爬取信息，而不需要怕公众号，会比较简单，所以尝试了：  littlecodersh的ItChat 可以获取公众号的名称、功能描述以及地区，但并没有把公众号的ID以及认证公司等信息集成进去，而且必须要本人关注之后才能处理；  搜狗微信 搜狗微信的信息倒是齐全，完全可以满足要求，但是尝试了request+BeatifulSoup还有Selenium之后发现，">
+<meta name="twitter:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
 
 
 
@@ -119,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="https://www.capallen.top/2018/09/26/2018-9-26-第十二周-项目四/">
+  <link rel="canonical" href="https://www.capallen.top/2019/04/05/selenium爬取新榜公众号信息/">
 
 
 
@@ -129,7 +128,7 @@
   };
 </script>
 
-  <title>每周导学-第十二周-项目四 | Allen's Blog</title>
+  <title>selenium爬取新榜公众号信息 | Allen's Blog</title>
   
 
 
@@ -369,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/09/26/2018-9-26-第十二周-项目四/">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2019/04/05/selenium爬取新榜公众号信息/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Jia">
@@ -386,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">每周导学-第十二周-项目四
+          <h1 class="post-title" itemprop="name headline">selenium爬取新榜公众号信息
 
               
             
@@ -412,24 +411,12 @@
                 
               
 
-              <time title="创建时间：2018-09-26 22:30:09" itemprop="dateCreated datePublished" datetime="2018-09-26T22:30:09+08:00">2018-09-26</time>
+              <time title="创建时间：2019-04-05 12:29:20 / 修改时间：12:53:26" itemprop="dateCreated datePublished" datetime="2019-04-05T12:29:20+08:00">2019-04-05</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-03 12:51:55" itemprop="dateModified" datetime="2019-04-03T12:51:55+08:00">2019-04-03</time>
               
             
           </span>
@@ -446,7 +433,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工作/" itemprop="url" rel="index"><span itemprop="name">工作</span></a></span>
 
                 
                 
@@ -465,8 +452,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/09/26/2018-9-26-第十二周-项目四/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/26/2018-9-26-第十二周-项目四/" itemprop="commentCount"></span>
+                <a href="/2019/04/05/selenium爬取新榜公众号信息/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/05/selenium爬取新榜公众号信息/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -495,7 +482,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -509,7 +496,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -529,192 +516,21 @@
       
 
       
-        <blockquote>
-<p> Better together . —— Udacity</p>
-</blockquote>
-<p>Hi，同学们，经过前两周的学习，我们掌握了描述统计学基础、概率论基础、推论统计学中的置信区间、假设检验以及机器学习入门知识——回归，本章的内容偏理论性更多一些，需要更多得去实操来加强自己的理解能力，这周呢我们就来个实打实的项目来检验前两周的所学。项目为<strong>分析A/B测试结果</strong>，在开始项目前，请一定要把前面的几个小测试做了，这样做项目更好上手一些。大家加油！通过这个项目，就可以拿到入门的毕业证啦！！！</p>
-<p><strong>项目四(P4)阶段</strong>总共包含<strong>三周</strong>，在这三周内，我们要对<strong>统计学</strong>进行学习，掌握基础的<strong>描述统计学理论、基本的概率知识、二项分布和贝叶斯公式</strong>，并学会<strong>使用 Python 来实践</strong>；学习<strong>正态分布、抽样分布、置信区间以及假设检验的概念和计算方式</strong>；学习<strong>线性回归以及逻辑回归</strong>，在真实场景中应用，比如<strong>分析 A/B 测试</strong>结果，搭建简单的监督机器学习模型。可谓是时间紧任务重，但是也别怕，统计学的基础知识还是非常简单的，跟着课程内容一步步来，自己多做笔记多查资料，一定没问题的！</p>
-<p>那么我们的课程安排：</p>
-<table>
-<thead>
-<tr>
-<th>时间</th>
-<th>学习重点</th>
-<th>对应课程</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第1周</td>
-<td>统计学基础</td>
-<td>描述统计学 - 抽样分布与中心极限定理</td>
-</tr>
-<tr>
-<td>第2周</td>
-<td>统计学进阶</td>
-<td>置信区间 - 逻辑回归</td>
-</tr>
-<tr>
-<td><strong>第3周</strong></td>
-<td><strong>完成项目</strong></td>
-<td><strong>项目：分析A/B测试结果</strong></td>
-</tr>
-</tbody>
-</table>
-<p>本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
+        <p>这两天需要对公众号的信息进行爬取，原以为只是爬取信息，而不需要怕公众号，会比较简单，所以尝试了：</p>
 <ul>
-<li>先自行查找问题答案（注意提取关键词），参考：谷歌/必应搜索、<a href="https://www.csdn.net/" target="_blank" rel="noopener">CSDN</a>、<a href="https://stackoverflow.com/" target="_blank" rel="noopener">stack<strong>overflow</strong></a></li>
-<li>额外参考资料：<ul>
-<li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">可汗学院概率论与统计课程</a></li>
-<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/%E6%9C%BA%E4%BC%9A%E7%9A%84%E6%95%B0%E5%AD%A6-%E9%99%88%E5%B8%8C%E5%AD%BA.pdf" target="_blank" rel="noopener">机会的数学-陈希孺</a></li>
-<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%8F%8A%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E5%8F%8A%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F.pdf" target="_blank" rel="noopener">条件概率及全概率公式及贝叶斯公式</a></li>
-<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/statistics%20for%20data%20science.pdf" target="_blank" rel="noopener">statistics for data science</a></li>
-</ul>
+<li><p>littlecodersh的<a href="https://github.com/littlecodersh/itchat" target="_blank" rel="noopener">ItChat</a></p>
+<p>可以获取公众号的名称、功能描述以及地区，但并没有把公众号的ID以及认证公司等信息集成进去，而且必须要本人关注之后才能处理；</p>
 </li>
-<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
-</ul>
-<p>饭要一口一口吃，路要一步一步走，大家不要被任务吓到，跟着导学一步一步来，肯定没问题哒！那我们开始吧！</p>
-<blockquote>
-<p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
-</blockquote>
-<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><p>完成并通过项目四！</p>
-<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
-<thead>
-<tr>
-<th>时间</th>
-<th>学习资源</th>
-<th>学习内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>周二</td>
-<td>微信群 - 每周导学</td>
-<td>预览每周导学</td>
-</tr>
-<tr>
-<td>周三、周四</td>
-<td>Udacity - Classroom</td>
-<td>项目四</td>
-</tr>
-<tr>
-<td>周五</td>
-<td>微信/Classin - 1V1</td>
-<td>课程难点</td>
-</tr>
-<tr>
-<td>周六</td>
-<td>Classin - 优达日</td>
-<td>本周学习总结、答疑</td>
-</tr>
-<tr>
-<td>周日</td>
-<td>笔记本</td>
-<td>总结沉淀</td>
-</tr>
-<tr>
-<td>周一</td>
-<td>自主学习</td>
-<td>查漏补缺</td>
-</tr>
-</tbody>
-</table>
-<h1 id="项目指南"><a href="#项目指南" class="headerlink" title="项目指南"></a>项目指南</h1><h2 id="项目详情"><a href="#项目详情" class="headerlink" title="项目详情"></a>项目详情</h2><p>数据分析师和数据学家经常使用 A/B 测试。在这个项目中，你将会理解电子商务网站运营 A/B 测试的结果。你的目标是通过课程中给的Jupyter Notebook，帮助公司理解他们是否应该设计新页面、保留原有网页或延长测试时间以便做出决定。</p>
-<p>项目前面的几个小测试，需要大家针对项目提供的数据进行操作并回答，你可以打开两个网页，也可以在本地进行操作。</p>
-<blockquote>
-<p>当然还是建议大家下载到本地进行操作，如果文件下载失败，请微信联系我。</p>
-</blockquote>
-<blockquote>
-<p>关于A/B-test:</p>
-<p><strong>AB 测试</strong>就是为了验证在先验条件的存在的情况下，进行新的变更是否合理和可行以达到优化的目的。使用 AB 测试的方式能能够度量变更对某些指标的变化，是变更更具有合理性依据更充分。</p>
-<p>AB 测试也存在 <strong>不适用的场景</strong>：1）对没有明确参照的试验，AB 测试是基于先验条件的优化，如果没有一个参照对比是无法进行测试。2）数据获取时间长，AB 测试一般都是进行小规模快速的试验，所以对于数据获取的单周期较长的试验不太适用。</p>
-<p>影响测试效果的因素：1）<strong>新奇效应</strong>：即<code>Novelty Effect</code> 指老用户可能会觉得变化很新鲜，受变化吸引而偏爱新版本，哪怕从长远看来新版本并无益处。2）<strong>抗拒改变心理</strong>：即 <code>Change Aversion</code> 老用户可能会因为纯粹不喜欢改变而偏爱旧版本，哪怕从长远来看新版本更好。</p>
-</blockquote>
-<p>在课程项目中，我们分成了三块涵盖了本章的所有知识点，这三块分别为：</p>
-<ul>
-<li>概率</li>
-<li>A/B测试</li>
-<li>回归</li>
-</ul>
-<p>如果在项目进行中，有知识点遗漏或忘记的地方，可以去查看相关课程视频或者导学，之后，记在你的小本本上。</p>
-<h2 id="I-概率"><a href="#I-概率" class="headerlink" title="I - 概率"></a>I - 概率</h2><p>本节的问题都相对比较简单，所以在导学中不过多赘述了。</p>
-<h3 id="测试1-理解数据集"><a href="#测试1-理解数据集" class="headerlink" title="测试1-理解数据集"></a>测试1-理解数据集</h3><p>这里没什么难度，基本的pandas知识，如果这节有什么问题的话，请查看<a href="http://www.capallen.top/dand-vip/2018/08/19/%E7%AC%AC%E5%85%AD%E5%91%A8-1-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B/">第六周导学</a>并面壁十分钟-。-</p>
-<blockquote>
-<p>如果非要提醒一下的话，那就是在问题<strong>e.  <code>new_page</code> 与 <code>treatment</code> 不一致的次数</strong>中，不要忘了也看看old_page与control的不一致次数，二者相加才是结果。</p>
-</blockquote>
-<h3 id="测试3-更新后的数据集"><a href="#测试3-更新后的数据集" class="headerlink" title="测试3-更新后的数据集"></a>测试3-更新后的数据集</h3><ul>
-<li>a问题中，因为要将处理后的数据集保存为新的变量，所以使用drop函数时，可以不用使用inplace = True参数。</li>
-<li>d问题中，因为两个重复值除了时间戳不一致外，其他信息都是一致的，所以随便删除一个重复即可。</li>
-</ul>
-<h2 id="II-A-B测试"><a href="#II-A-B测试" class="headerlink" title="II - A/B测试"></a>II - A/B测试</h2><h3 id="1-零假设与备择假设"><a href="#1-零假设与备择假设" class="headerlink" title="1.零假设与备择假设"></a>1.零假设与备择假设</h3><p>这里只说一点，就是如何在Jupyter Notebook中使用公式的问题，其实也就是如何在Markdown中使用公式的问题，你只需要按照如下步骤即可：</p>
-<ul>
-<li><p>打开<a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Latex公式在线转换</a>，输入好公式后，复制代码</p>
+<li><p><a href="https://weixin.sogou.com/" target="_blank" rel="noopener">搜狗微信</a></p>
+<p>搜狗微信的信息倒是齐全，完全可以满足要求，但是尝试了request+BeatifulSoup还有Selenium之后发现，这个网址真的太小气了，我加了延时，用了代理，依然各种被封，或者是要求输入验证码；</p>
 </li>
-<li><p>将你想要输入公式的代码框，转为Markdown格式；</p>
-</li>
-<li><p>输入两个美元符号，即$$;</p>
-</li>
-<li><p>将刚复制的公式代码粘贴到两个美元符号中间，然后运行该代码框即可。</p>
-<p>录了一个gif在下面，可以参考下：</p>
+<li><p><a href="https://www.newrank.cn/" target="_blank" rel="noopener">新榜</a></p>
+<p>只能获取已经收录的公众号信息，好在收录的数量也很多，用request会出现搜索失败，但是用Selenium还是稳的，加了延时，顺利获取了几千条数据。而且，这里还可以查到各个行业时下最热文章、阅读量等等信息。</p>
 </li>
 </ul>
-<p><img src="https://s1.ax1x.com/2018/09/26/iMRliF.gif" alt="iMRliF.gif"></p>
-<h3 id="2-进行假设检验"><a href="#2-进行假设检验" class="headerlink" title="2.进行假设检验"></a>2.进行假设检验</h3><ul>
-<li>a、b</li>
-</ul>
-<p>注意题干中给的要求是：假定在零假设中，不管是新页面还是旧页面， pnew 和 pold 都具有等于 <strong>转化</strong> 成功率的“真”成功率，也就是说，  pnew 与 pold是相等的。此外，假设它们都等于<strong>ab_data.csv</strong> 中的 <strong>转化</strong> 率，新旧页面都是如此。</p>
-<p>也就是：p_new = p_old = p_ab_data</p>
-<blockquote>
-<p><strong>注意：</strong>这并不意味着零假设就是p_new = p_old，可以从后续的c-g步骤能看出，零假设为p_new - p_old ≤ 0</p>
-</blockquote>
-<ul>
-<li>c、d</li>
-</ul>
-<p>这里的n_new与n_old就是对ab_data中使用新旧页面的<strong>用户数量</strong>进行统计。</p>
-<ul>
-<li>e、f、g</li>
-</ul>
-<p>使用numpy.random.choice函数，将零假设中的p_new与p_old作为抽样概率，n_new与n_old作为抽样次数，用1表示‘转化成功’，0表示‘未转化成功’，并将结果储存在一个新变量当中。</p>
-<p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_page_converted = np.random.choice([<span class="number">0</span>,<span class="number">1</span>],n_new,p = [<span class="number">1</span>-p_new,p_new])</span><br></pre></td></tr></table></figure>
-<p>以上获得的这个新变量，就是我们按照零假设中的n_new抽样n_new次的转化与否的分布模拟，那如何看模拟后的转化率呢？很简单，一个函数就搞定了，这里自己想。</p>
-<ul>
-<li>h、i、j</li>
-</ul>
-<p>这三步是使用for循环，将上面的过程不断重复10000次，获得一个抽样分布直方图，这个图会是正态分布吗？</p>
-<p>关于实际观测值，即为你利用ab_data.csv直接计算得来的new_page与old_page转化率之差。</p>
-<p>j中得到的值是什么呢？是不是在零假设的条件下，观察到实际观测值甚至更极端（更支持备择假设）的概率？那这个值的学名叫什么？</p>
-<p>【这里实际上进行的是单尾检验，也就是对备择假设为p_new - p_old &gt; 0来进行的】</p>
-<ul>
-<li>i、m</li>
-</ul>
-<p>使用了statsmodels中的proportions_ztest函数进行检验。实现的功能和上述a-j是一致的。</p>
-<p>为什么要选择这个函数，以及这个函数的用法可以参考课程中给的链接<a href="http://knowledgetack.com/python/statsmodels/proportions_ztest/" target="_blank" rel="noopener">proportions_ztest</a>。</p>
-<p>不过值得注意的是，在链接的列子中，使用的是双尾检验，也就是针对备择假设为p_new ≠ p_old去做的；但是在课程项目中，我们的备择假设为p_new &gt; p_old，也就是单尾检验，所以函数中的某个参数要改一下。</p>
-<p>使用内置函数方法获得的p值应该与前面获得的p值相近，如果差太多，那肯定是有地方需要再琢磨琢磨。</p>
-<h2 id="III-回归"><a href="#III-回归" class="headerlink" title="III - 回归"></a>III - 回归</h2><ul>
-<li>a</li>
-</ul>
-<p>要想知道执行哪种类型的回归，就应该先看变量是属于数值变量还是分类变量，那题设中的变量是什么类型的变量呢？</p>
-<ul>
-<li>b</li>
-</ul>
-<p>要求是：创建一个 <strong>ab_page</strong> 列，当用户接收 <strong>treatment</strong> 时为1， <strong>control</strong> 时为0。所以在对group列使用get_dummies函数时，应该把生成的treatment列保存为ab_page列，而control列则应该被删掉。</p>
-<ul>
-<li>c、d</li>
-</ul>
-<p>注意的一点是：<strong>不要忘了添加截距。</strong>在进行结果解释的时候，我们并不关注截距，只是关注变量的coef系数和p值，先看p值是否具有显著性，若有再看coef系数，若没有，则该变量对因变量没有影响。</p>
-<ul>
-<li>e</li>
-</ul>
-<p>在思考零假设与备择假设之前，注意看结果中标红框的位置，想想这是什么意思，这说明在回归计算中，采用的是单尾检验还是双尾？单尾和双尾又分别对应的假设是什么？</p>
-<p><img src="https://s1.ax1x.com/2018/09/27/iQQBSs.png" alt="iQQBSs.png"></p>
-<ul>
-<li>g</li>
-</ul>
-<p><strong>数据集融合问题</strong>，之前单独出过一篇导学，如果忘了，请戳：<a href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/">Pandas数据融合</a>，提醒下，合并时采用内连接，可以省去一些麻烦；</p>
-<p><strong>get_dummies</strong>，注意该函数生成数据的顺序是按照字典顺序来的，所以，你在进行操作时，为了确保顺序不乱，最好能先看一下生成的结果，再进行重命名。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>大家能坚持到最后一个项目，十分不易，不过对于数据分析生涯来说，这只是你的开始，请继续保持这段时间的学习状态，如果非要给这个保持加一个期限的话，我希望是一辈子！大家加油！等你们的好消息！！</p>
+<p>用selenium爬取代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="comment"># 引入Keys类包 发起键盘操作</span></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">store_data</span><span class="params">(name,description,company)</span>:</span></span><br><span class="line">    <span class="comment">#储存信息</span></span><br><span class="line">    writer.writerow((name,description,company))    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_id</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="comment">#传入搜索关键词 并进行搜索</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">'txt_account'</span>).clear()</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    driver.find_element_by_id(<span class="string">'txt_account'</span>).send_keys(name)</span><br><span class="line">    driver.find_element_by_id(<span class="string">'txt_account'</span>).send_keys(Keys.ENTER)</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#获取信息并储存</span></span><br><span class="line">    description = driver.find_element_by_class_name(<span class="string">'wx-description-info'</span>).text</span><br><span class="line">    company = driver.find_element_by_class_name(<span class="string">'auth-span'</span>).text</span><br><span class="line">    store_data(name,description,company)</span><br><span class="line">    time.sleep(<span class="number">30</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#打开浏览器</span></span><br><span class="line">driver = webdriver.Firefox()</span><br><span class="line"><span class="comment">#打开网址</span></span><br><span class="line">driver.get(<span class="string">'https://www.newrank.cn/'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#爬取</span></span><br><span class="line">error_name = []</span><br><span class="line">csvfile = open(<span class="string">'公众号信息.csv'</span>,<span class="string">'a+'</span>)</span><br><span class="line">writer = csv.writer(csvfile)</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> id_list:</span><br><span class="line">    idx = id_list.index(name)</span><br><span class="line">    lenght = len(id_list)   </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:        </span><br><span class="line">        <span class="keyword">if</span> idx%<span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">f'<span class="subst">&#123;idx+<span class="number">1</span>&#125;</span>/<span class="subst">&#123;lenght&#125;</span> is working...'</span>)</span><br><span class="line">        get_id(name)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        error_name.append(name)</span><br><span class="line">        </span><br><span class="line">csvfile.close()</span><br></pre></td></tr></table></figure>
+<p><a rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a><br>本作品采用<a rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。</p>
 
       
     </div>
@@ -777,9 +593,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/statistics/" rel="tag"># statistics</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
-            <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+            <a href="/tags/selenium/" rel="tag"># selenium</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
           
         </div>
       
@@ -792,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/24/2018-9-24-第十一周-统计学进阶/" rel="next" title="每周导学-第十一周-统计学进阶">
-                <i class="fa fa-chevron-left"></i> 每周导学-第十一周-统计学进阶
+              <a href="/2019/04/04/2019-4-4-利用python批量出xx报告/" rel="next" title="利用python批量出报告">
+                <i class="fa fa-chevron-left"></i> 利用python批量出报告
               </a>
             
           </div>
@@ -801,10 +619,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/06/2018-10-6-SQL应知应会/" rel="prev" title="SQL应知应会">
-                SQL应知应会 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -852,17 +666,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1008,23 +813,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本周目标"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习计划"><span class="nav-number">2.</span> <span class="nav-text">学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目指南"><span class="nav-number">3.</span> <span class="nav-text">项目指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目详情"><span class="nav-number">3.1.</span> <span class="nav-text">项目详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-概率"><span class="nav-number">3.2.</span> <span class="nav-text">I - 概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试1-理解数据集"><span class="nav-number">3.2.1.</span> <span class="nav-text">测试1-理解数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试3-更新后的数据集"><span class="nav-number">3.2.2.</span> <span class="nav-text">测试3-更新后的数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#II-A-B测试"><span class="nav-number">3.3.</span> <span class="nav-text">II - A/B测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-零假设与备择假设"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.零假设与备择假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-进行假设检验"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.进行假设检验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#III-回归"><span class="nav-number">3.4.</span> <span class="nav-text">III - 回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
