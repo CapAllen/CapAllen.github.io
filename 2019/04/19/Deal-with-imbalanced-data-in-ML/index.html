@@ -108,9 +108,10 @@
 <meta property="og:image" content="https://www.svds.com/wp-content/uploads/2016/08/clean.png">
 <meta property="og:image" content="https://www.svds.com/wp-content/uploads/2016/08/messy.png">
 <meta property="og:image" content="https://www.svds.com/wp-content/uploads/2016/08/ImbalancedClasses_fig5.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/EpOrss.png">
 <meta property="og:image" content="https://scikit-learn.org/stable/_static/ml_map.png">
 <meta property="og:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
-<meta property="og:updated_time" content="2019-04-19T06:52:02.436Z">
+<meta property="og:updated_time" content="2019-04-19T07:15:25.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中不平衡数据的预处理">
 <meta name="twitter:description" content="概述最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是不平衡数据，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些处理不平衡数据的技巧。">
@@ -415,7 +416,7 @@
                 
               
 
-              <time title="创建时间：2019-04-19 09:33:08 / 修改时间：14:52:02" itemprop="dateCreated datePublished" datetime="2019-04-19T09:33:08+08:00">2019-04-19</time>
+              <time title="创建时间：2019-04-19 09:33:08 / 修改时间：15:15:25" itemprop="dateCreated datePublished" datetime="2019-04-19T09:33:08+08:00">2019-04-19</time>
             
 
             
@@ -571,7 +572,8 @@
 <h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"></span><br><span class="line"><span class="comment">#SMOTE合成</span></span><br><span class="line">sm = SMOTE(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = sm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
 <p><code>Resampled dataset shape Counter({0: 900, 1: 900})</code></p>
 <h2 id="更改权重"><a href="#更改权重" class="headerlink" title="更改权重"></a>更改权重</h2><p>更改权重就是针对不同类别的数据设置不同的分错代价，即提高少数类分错的代价或降低多数类分错的代价，最终使各类别平衡。</p>
-<p>常用的机器学习训练方法中，很多都提供了权重设置参数<code>class_weight</code>，可以手动设置该参数，但一般情况下只需要将其设置为<code>balanced</code>即可，模型会自动按照如下公式更新权重：<br>$$<br>w_j = \frac{n}{kn_{j}}<br>$$</p>
+<p>常用的机器学习训练方法中，很多都提供了权重设置参数<code>class_weight</code>，可以手动设置该参数，但一般情况下只需要将其设置为<code>balanced</code>即可，模型会自动按照如下公式更新权重：</p>
+<p><img src="https://s2.ax1x.com/2019/04/19/EpOrss.png" alt="EpOrss.png"></p>
 <h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#逻辑回归平衡权重</span></span><br><span class="line">clf_A = LogisticRegression(random_state=<span class="number">0</span>, class_weight=<span class="string">'balanced'</span>)</span><br><span class="line"><span class="comment">#随机森林平衡权重</span></span><br><span class="line">clf_B = RandomForestClassifier(random_state=<span class="number">0</span>, n_jobs=<span class="number">-1</span>, class_weight=<span class="string">"balanced"</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="一分类"><a href="#一分类" class="headerlink" title="一分类"></a>一分类</h2><p>这种方法比较适合极不平衡数据，或数据量比较小的数据集。</p>
 <p>主要方法为<code>OneClassSVM</code>，官方文档<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html" target="_blank" rel="noopener">在这里</a></p>
@@ -941,7 +943,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:15</span>
+    <span title="站点阅读时长">2:16</span>
   
 </div>
 
@@ -1480,5 +1482,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</body>
 </html>
