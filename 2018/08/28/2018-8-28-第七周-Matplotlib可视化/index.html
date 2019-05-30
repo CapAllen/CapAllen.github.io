@@ -564,7 +564,6 @@
 </blockquote>
 <p>Hi，同学们，上一周我们学习了数据分析的基本流程，以及Pandas在数据分析各个流程中的应用，本周呢就是在上周的基础上，掌握Python数据分析可视化的基础知识，包括<strong>matplotlib</strong>及<strong>pandas可视化</strong>。可视化是数据分析的重要环节，是你进行探索性数据分析、得出结论、传达结果的关键，所以，一定的可视化技巧是非常必须的，除了本章涉及到的两个知识点外，我还会在最后提供一些其他的python可视化库链接和其他可视化软件的链接，希望大家能不满足于导学，而去积极求索，加油！！</p>
 <p>本周开始，我们就进入到了<strong>项目三(P3)阶段</strong>，本阶段总共包含<strong>四周</strong>，在这一个月内，我们要对<strong>数据分析入门</strong>进行学习，学习数据分析思维，掌握Python数据分析及可视化方法，并使用所学知识完成<strong>项目三：探索数据集</strong>，尝试着自己完成整个数据分析的流程，得到一些饶有兴趣的结论，你一定会非常有成就感哒！那么以下便是这四周的学习安排：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -596,8 +595,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<font size="3" color="red">**！！看这里！！**：在P3课程里面安排了SQL的高阶课程，但是因为在项目三中并不会涉及到SQL知识，所以为了保证大家学习的连贯性，在完成前两周的课程之后，就开始项目。至于**！！SQL的高阶知识，大家可以放在课程通关后进行选修！！**； </font>
+<font size="3" color="red"><strong>！！看这里！！</strong>：在P3课程里面安排了SQL的高阶课程，但是因为在项目三中并不会涉及到SQL知识，所以为了保证大家学习的连贯性，在完成前两周的课程之后，就开始项目。至于<strong>！！SQL的高阶知识，大家可以放在课程通关后进行选修！！</strong>； </font>
 
 <p>本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
 <ul>
@@ -611,8 +609,7 @@
 <h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><ul>
 <li>学习总结课程中<strong>数据分析过程</strong>及<strong>案例研究1&amp;2</strong>中所用到的可视化知识，掌握可视化在数据分析中的应用。</li>
 </ul>
-<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><div class="table-container">
-<table>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
 <thead>
 <tr>
 <th>时间</th>
@@ -653,7 +650,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h1 id="本周知识清单"><a href="#本周知识清单" class="headerlink" title="本周知识清单"></a>本周知识清单</h1><h1 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h1><p>matplotlib是Python泰斗级别的绘图库，因受到Matlab的启发构建而成，所以你会觉得它的命令API，还有那九十年代感强烈的可视化图像跟matlab很相似。它非常适合在jupyter notebook中交互式作图，这个库“功能非常强大”，但也“非常复杂”，所以这里只能介绍matplotlib的一些基础和常用的方法，想了解更多就需要你自主探索啦！</p>
 <ul>
 <li>导入matplotlib</li>
@@ -723,13 +719,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(x,y,&apos;[color][marker][line]&apos;)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>常用颜色</p>
-<p>| 字符    | 颜色    | 字符 | 颜色   |<br>| ———- | ———- | —— | ——— |<br>| b       | 蓝色    | g    | 绿色   |<br>| r       | 红色    | y    | 黄色   |<br>| c       | 青色    | k    | 黑色   |<br>| m       | 洋红色  | w    | 白色   |<br>| #rrggbb | RGB颜色 | 0.7  | 灰度值 |</p>
+<p>| 字符    | 颜色    | 字符 | 颜色   |<br>| ——- | ——- | —- | —— |<br>| b       | 蓝色    | g    | 绿色   |<br>| r       | 红色    | y    | 黄色   |<br>| c       | 青色    | k    | 黑色   |<br>| m       | 洋红色  | w    | 白色   |<br>| #rrggbb | RGB颜色 | 0.7  | 灰度值 |</p>
 </li>
 <li><p>常用线条样式</p>
-<p>| 字符 | 描述         | 字符            | 描述          |<br>| —— | —————— | ———————- | ——————- |<br>| ‘-‘  | 实线         | ‘:’             | 虚线(·······) |<br>| ‘—‘ | 虚线(———) | ‘None’或’ ‘或’’ | 什么都不画    |<br>| ‘-.’ | 点划线       |                 |               |</p>
+<p>| 字符 | 描述         | 字符            | 描述          |<br>| —- | ———— | ————— | ————- |<br>| ‘-‘  | 实线         | ‘:’             | 虚线(·······) |<br>| ‘–’ | 虚线(——) | ‘None’或’ ‘或’’ | 什么都不画    |<br>| ‘-.’ | 点划线       |                 |               |</p>
 </li>
 <li><p>线条标记</p>
-<p>| 字符          | 描述    | 字符 | 描述             |<br>| ——————- | ———- | —— | ———————— |<br>| ‘o’           | 圆圈    | ‘.’  | 点               |<br>| ‘D’           | 菱形    | ‘s’  | 正方形           |<br>| ‘h’           | 六边形1 | ‘*’  | 星号             |<br>| ‘H’           | 六边形2 | ‘d’  | 小菱形           |<br>| ‘_’           | 水平线  | ‘v’  | 一角朝下的三角形 |<br>| ‘8’           | 八边形  | ‘&lt;’  | 一角朝左的三角形 |<br>| ‘p’           | 五边形  | ‘&gt;’  | 一角朝右的三角形 |<br>| ‘,’           | 像素    | ‘^’  | 一角朝上的三角形 |<br>| ‘+’           | 加号    | ‘\‘ | 竖线             |<br>| ‘None’,’’,’ ‘ | 无      | ‘x’  | X                |</p>
+<p>| 字符          | 描述    | 字符 | 描述             |<br>| ————- | ——- | —- | —————- |<br>| ‘o’           | 圆圈    | ‘.’  | 点               |<br>| ‘D’           | 菱形    | ‘s’  | 正方形           |<br>| ‘h’           | 六边形1 | ‘*’  | 星号             |<br>| ‘H’           | 六边形2 | ‘d’  | 小菱形           |<br>| ‘_’           | 水平线  | ‘v’  | 一角朝下的三角形 |<br>| ‘8’           | 八边形  | ‘&lt;’  | 一角朝左的三角形 |<br>| ‘p’           | 五边形  | ‘&gt;’  | 一角朝右的三角形 |<br>| ‘,’           | 像素    | ‘^’  | 一角朝上的三角形 |<br>| ‘+’           | 加号    | ‘\‘ | 竖线             |<br>| ‘None’,’’,’ ‘ | 无      | ‘x’  | X                |</p>
 </li>
 </ul>
 <p>示例：</p>
