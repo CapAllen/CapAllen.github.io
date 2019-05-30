@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">12k</span>
+                <span title="本文字数">11k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">11 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -561,27 +561,27 @@
 <h2 id="SQL中的注释"><a href="#SQL中的注释" class="headerlink" title="SQL中的注释"></a>SQL中的注释</h2><ul>
 <li><p>行内注释</p>
 <p>使用两个连字符-，添加注释。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name <span class="comment">-- 这是一条注释</span></span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name <span class="comment">-- 这是一条注释</span></span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>多行注释</p>
 <p>多行注释以<code>/*</code>起始，以<code>*/</code>结尾。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*SELECT col_name </span></span><br><span class="line"><span class="comment">FROM table_name;*/</span></span><br><span class="line"><span class="keyword">SELECT</span> col_2 </span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*SELECT col_name </span></span><br><span class="line"><span class="comment">FROM table_name;*/</span></span><br><span class="line"><span class="keyword">SELECT</span> col_2 </span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="检索数据-SELECT-FROM-LIMIT"><a href="#检索数据-SELECT-FROM-LIMIT" class="headerlink" title="检索数据(SELECT FROM LIMIT )"></a>检索数据(SELECT FROM LIMIT )</h2><p>检索数据主要用的语句为：<strong>SELECT</strong>。</p>
-<h3 id="检索单列"><a href="#检索单列" class="headerlink" title="检索单列"></a>检索单列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<h3 id="检索单列"><a href="#检索单列" class="headerlink" title="检索单列"></a>检索单列</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>从table_name表中检索col_name列。</p>
-<h3 id="检索多列"><a href="#检索多列" class="headerlink" title="检索多列"></a>检索多列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<h3 id="检索多列"><a href="#检索多列" class="headerlink" title="检索多列"></a>检索多列</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>从table_name表中检索col_1,col_2和col_3列。</p>
-<h3 id="检索所有列"><a href="#检索所有列" class="headerlink" title="检索所有列"></a>检索所有列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<h3 id="检索所有列"><a href="#检索所有列" class="headerlink" title="检索所有列"></a>检索所有列</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>使用通配符<code>*</code>，返回table_name表中的所有列；</p>
-<h3 id="检索某列中不同的值"><a href="#检索某列中不同的值" class="headerlink" title="检索某列中不同的值"></a>检索某列中不同的值</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+<h3 id="检索某列中不同的值"><a href="#检索某列中不同的值" class="headerlink" title="检索某列中不同的值"></a>检索某列中不同的值</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>检索col_1中具有唯一性的行，即唯一值。</p>
 <h3 id="限制检索的结果"><a href="#限制检索的结果" class="headerlink" title="限制检索的结果"></a>限制检索的结果</h3><p>使用LIMIT语句可以限制返回的行数。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>返回前10行（即第0-第9行）。</p>
 <p>也可以添加OFFSET语句，设置返回数据的起始行：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">5</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>从第五行之后，返回十行数据（即第5-第14行）。</p>
 <h2 id="排序检索数据-ORDER-BY"><a href="#排序检索数据-ORDER-BY" class="headerlink" title="排序检索数据(ORDER BY)"></a>排序检索数据(ORDER BY)</h2><ul>
 <li><p>ORDER BY 语句用于根据指定的单列或多列对结果集进行排序。</p>
@@ -592,9 +592,9 @@
 </li>
 <li>在指定一条ORDER BY子句时，应该保证它是SELECT语句中的最后一条子句。</li>
 </ul>
-<h3 id="按列排序"><a href="#按列排序" class="headerlink" title="按列排序"></a>按列排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_name;</span><br></pre></td></tr></table></figure>
+<h3 id="按列排序"><a href="#按列排序" class="headerlink" title="按列排序"></a>按列排序</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_name</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>返回的数据会按照col_name列进行升序排序，这里col_name可以是单列也可以是多列，当然也可以使用非检索的列进行排序。</p>
-<h3 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_2 <span class="keyword">DESC</span>,col_3;</span><br></pre></td></tr></table></figure>
+<h3 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_2 <span class="keyword">DESC</span>,col_3;</span><br></pre></td></tr></tbody></table></figure>
 <p>返回的数据会按照col_2列降序，col_3列升序对col_1和col_2两列进行排序。</p>
 <blockquote>
 <p>这里可以看出，DESC关键字的用法：只对跟在语句前面的变量有效。所以，想要对多列进行降序排序时，需要对每一列都指定DESC关键字。</p>
@@ -606,7 +606,7 @@
 </li>
 <li>在过滤条件中的value是区分大小写的。</li>
 </ul>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 运算符 <span class="keyword">value</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 运算符 <span class="keyword">value</span>;</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><table>
 <thead>
 <tr>
@@ -620,25 +620,25 @@
 <td>等于</td>
 </tr>
 <tr>
-<td>&lt;&gt;</td>
+<td><></td>
 <td>不等于</td>
 </tr>
 <tr>
-<td>&gt;</td>
+<td>></td>
 <td>大于</td>
 </tr>
 <tr>
-<td>&lt;</td>
+<td><</td>
 <td>小于</td>
 </tr>
 <tr>
-<td>&gt;=</td>
+<td>>=</td>
 <td>大于等于</td>
 </tr>
 <tr>
-<td>&lt;=</td>
+<td><=< td>
 <td>小于等于</td>
-</tr>
+</=<></td></tr>
 <tr>
 <td>BETWEEN…AND…</td>
 <td>在指定的两值之间</td>
@@ -700,33 +700,33 @@
 </tbody>
 </table>
 <p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 <span class="keyword">LIKE</span> <span class="string">'_[^JM]%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 <span class="keyword">LIKE</span> <span class="string">'_[^JM]%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_1;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上筛选出的是，第二个字符为非J或M的数据。</p>
 <h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><p>其实就是在检索数据的同时进行计算，并使用关键字AS将结果保存为某一列。</p>
 <ul>
 <li>数值类型的计算</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> prod_id,quantity,item_price,quantity*item_price <span class="keyword">AS</span> expanded_price</span><br><span class="line"><span class="keyword">FROM</span> orderitems</span><br><span class="line"><span class="keyword">WHERE</span> order_num = <span class="number">200008</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> prod_id,quantity,item_price,quantity*item_price <span class="keyword">AS</span> expanded_price</span><br><span class="line"><span class="keyword">FROM</span> orderitems</span><br><span class="line"><span class="keyword">WHERE</span> order_num = <span class="number">200008</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>输出：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">prod_id         quantity       item_price      expanded_price</span><br><span class="line"><span class="comment">--------------------------------------------------------------</span></span><br><span class="line">RGAN01			5				4.9900			24.9500</span><br><span class="line">BR03			5				11.9900			59.9500</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">prod_id         quantity       item_price      expanded_price</span><br><span class="line"><span class="comment">--------------------------------------------------------------</span></span><br><span class="line">RGAN01			5				4.9900			24.9500</span><br><span class="line">BR03			5				11.9900			59.9500</span><br></pre></td></tr></tbody></table></figure>
 <p>这里实现的就是使用quantity*item_price创建一个名为expanded_price的计算字段，也就是一个新列。</p>
 <p>同样适用于计算的操作符有<code>+</code>（加），<code>-</code>（减）和<code>/</code>（除）。</p>
 <ul>
 <li>字符类型的拼接</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">RTRIM</span>(col_name) + <span class="string">'('</span>+<span class="keyword">RTRIM</span>(col_country)+<span class="string">')'</span> <span class="keyword">AS</span> col_title</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">RTRIM</span>(col_name) + <span class="string">'('</span>+<span class="keyword">RTRIM</span>(col_country)+<span class="string">')'</span> <span class="keyword">AS</span> col_title</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>输出：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">col_title</span><br><span class="line"><span class="comment">------------------------</span></span><br><span class="line">Bear Emporium(USA)</span><br><span class="line">Bears R Us(USA)</span><br><span class="line">Jouets et ours(France)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">col_title</span><br><span class="line"><span class="comment">------------------------</span></span><br><span class="line">Bear Emporium(USA)</span><br><span class="line">Bears R Us(USA)</span><br><span class="line">Jouets et ours(France)</span><br></pre></td></tr></tbody></table></figure>
 <p>这里实现的就是将col_name列与col_country列进行了拼接，新列的名字叫做col_title。</p>
 <blockquote>
 <p>RTRIM()函数是去掉右边的所有空格，LTRIM()是去掉左边的所有空格，TRIM()是去掉两边的所有空格。</p>
 </blockquote>
 <h2 id="使用别名"><a href="#使用别名" class="headerlink" title="使用别名"></a>使用别名</h2><p>在上一节中我们使用AS来为变量设置别名，你可能也见过如下所示的语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 + col2 <span class="keyword">AS</span> total, col3</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 + col2 <span class="keyword">AS</span> total, col3</span><br></pre></td></tr></tbody></table></figure>
 <p>当然没有 <strong>AS</strong> 的语句也可以实现使用别名：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM tablename t1</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM tablename t1</span><br></pre></td></tr></tbody></table></figure>
 <p>以及</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 + col2 total, col3</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 + col2 total, col3</span><br></pre></td></tr></tbody></table></figure>
 <p>将col1+col2的结果设置名为total的列。</p>
 <h2 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h2><table>
 <thead>
@@ -759,7 +759,7 @@
 </tr>
 <tr>
 <td>WHERE</td>
-<td>WHERE <strong>Col &gt; 5</strong></td>
+<td>WHERE <strong>Col > 5</strong></td>
 <td>用于过滤结果的一个条件语句</td>
 </tr>
 <tr>
@@ -779,12 +779,12 @@
 </tr>
 <tr>
 <td>AND</td>
-<td>WHERE <strong>Col1 &gt; 5 AND Col2 &lt; 3</strong></td>
+<td>WHERE <strong>Col1 > 5 AND Col2 < 3</strong></td>
 <td>过滤两个或多个条件必须为真的行</td>
 </tr>
 <tr>
 <td>OR</td>
-<td>WHERE <strong>Col1 &gt; 5 OR Col2 &lt; 3</strong></td>
+<td>WHERE <strong>Col1 > 5 OR Col2 < 3</strong></td>
 <td>过滤一个条件必须为真的行</td>
 </tr>
 <tr>
@@ -797,11 +797,11 @@
 <h1 id="SQL进阶"><a href="#SQL进阶" class="headerlink" title="SQL进阶"></a>SQL进阶</h1><h2 id="链接表"><a href="#链接表" class="headerlink" title="链接表"></a>链接表</h2><h3 id="基本链接（JOIN）"><a href="#基本链接（JOIN）" class="headerlink" title="基本链接（JOIN）"></a>基本链接（JOIN）</h3><p>SQL最强大的功能之一就是能在数据查询的执行中进行表的链接（JOIN）。</p>
 <p>在关系数据库中，将数据分解为多个表能更有效地存储，更方便地处理，但这些数据储存在多个表中，怎样用一条SELECT语句就检索出数据呢？那就要使用链接。</p>
 <p>创建链接的方式很简单，如下便是使用WHERE创建链接：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1,table_2</span><br><span class="line"><span class="keyword">WHERE</span> table_1.id = table2.id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1,table_2</span><br><span class="line"><span class="keyword">WHERE</span> table_1.id = table2.id;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，col_1和col_2属于table_1表中，col_3属于table_2表中，而这两个表使用相同的id列进行匹配。这种方法被称为等值链接，也就是内链接，我们可以使用如下的语句，更直观地实现内连接：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> table_2</span><br><span class="line"><span class="keyword">ON</span> table_1.id = table2.id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,col_2,col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> table_2</span><br><span class="line"><span class="keyword">ON</span> table_1.id = table2.id;</span><br></pre></td></tr></tbody></table></figure>
 <p>当然你也可以使用别名，简化输入，并且标明各列与表的隶属关系：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t1.col_1,t1.col_2,t2.col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1 t1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> table_2 t2</span><br><span class="line"><span class="keyword">ON</span> t1.id = t2.id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t1.col_1,t1.col_2,t2.col_3</span><br><span class="line"><span class="keyword">FROM</span> table_1 t1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> table_2 t2</span><br><span class="line"><span class="keyword">ON</span> t1.id = t2.id;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上代码同样适用于左链接、右链接和外链接：</p>
 <ul>
 <li><p><strong>LEFT JOIN</strong> - 用于获取 <strong>FROM</strong> 中的表格中的所有行，即使它们不存在于 <strong>JOIN</strong> 语句中。</p>
@@ -812,9 +812,9 @@
 </ul>
 <h3 id="自链接"><a href="#自链接" class="headerlink" title="自链接"></a>自链接</h3><p>自链接经常用于对子查询的简化，如下示例：</p>
 <p>假如要给Jim同一公司的所有顾客发送一封邮件，需要你先筛选出Jim的公司，然后再根据该公司筛选出所有的顾客。使用子查询的方式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,cust_name,cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</span><br><span class="line">                  <span class="keyword">FROM</span> customers</span><br><span class="line">                  <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,cust_name,cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</span><br><span class="line">                  <span class="keyword">FROM</span> customers</span><br><span class="line">                  <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim'</span>)</span><br></pre></td></tr></tbody></table></figure>
 <p>如果改为自链接的方式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c1.cust_id,c1.cust_name,c1.cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers c1,customers c2</span><br><span class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</span><br><span class="line"><span class="keyword">AND</span> c2.cust_name = <span class="string">'Jim'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c1.cust_id,c1.cust_name,c1.cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers c1,customers c2</span><br><span class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</span><br><span class="line"><span class="keyword">AND</span> c2.cust_name = <span class="string">'Jim'</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>结果是一样的，但是使用自链接的处理速度比子查询要快得多。</p>
 <h3 id="组合查询（UNION）"><a href="#组合查询（UNION）" class="headerlink" title="组合查询（UNION）"></a>组合查询（UNION）</h3><p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集，使用方法也很简单，只要在多条SELECT语句中添加UNION关键字即可。</p>
 <blockquote>
@@ -830,16 +830,16 @@
 <ul>
 <li>原始语句</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询一</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">--查询二</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'str3'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询一</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">--查询二</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'str3'</span>;</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>使用UNION链接</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>)</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'str3'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> cust_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>)</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'str3'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> cust_name;</span><br></pre></td></tr></tbody></table></figure>
 <p>在最后添加了ORDER BY对所有SELECT语句进行排序，这里只是为了示例在使用UNION时如何进行排序。</p>
 <ul>
 <li>使用WHERE</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>)</span><br><span class="line"><span class="keyword">OR</span> cust_name = <span class="string">'str3'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name,cust_email</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'str1'</span>,<span class="string">'str2'</span>)</span><br><span class="line"><span class="keyword">OR</span> cust_name = <span class="string">'str3'</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>这里看起来使用UNION比WHERE更复杂，但对于较复杂的筛选条件，或者从多个表中检索数据时，使用UNION更简单一些。</p>
 <ul>
 <li><strong>UNION ALL</strong> 命令和 UNION 命令几乎是等效的，不过 UNION ALL 命令会列出所有的值。</li>
@@ -877,13 +877,13 @@
 </tbody>
 </table>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(col_1) <span class="keyword">AS</span> avg_col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(col_1) <span class="keyword">AS</span> avg_col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1;</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><strong>注意：</strong>聚合函数都会忽略列中的NULL值，但是COUNT(*)也就是统计全部数据的行数时，不会忽略NULL值。</p>
 </blockquote>
 <h3 id="聚合不同值"><a href="#聚合不同值" class="headerlink" title="聚合不同值"></a>聚合不同值</h3><p>当添加DISTINCT参数时，就可以只对不同值（也就是某列中的唯一值）进行函数操作。</p>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">DISTINCT</span> col_1) <span class="keyword">AS</span> avg_col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">DISTINCT</span> col_1) <span class="keyword">AS</span> avg_col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1;</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="数据分组"><a href="#数据分组" class="headerlink" title="数据分组"></a>数据分组</h2><h3 id="创建分组（GROUP-BY）"><a href="#创建分组（GROUP-BY）" class="headerlink" title="创建分组（GROUP BY）"></a>创建分组（GROUP BY）</h3><p>前面的函数操作都是基于整个表去进行的，那如果想要依据某列中的不同类别（比如说不同品牌 不同性别等等）进行分类统计时，就要用到数据分组，在SQL中数据分组是使用GROUP BY子句建立的。</p>
 <p>在使用GROUP BY时需要注意的几点：</p>
 <ul>
@@ -891,11 +891,11 @@
 <li>GROUP BY子句必须出现在WHERE子句之后，ORDER BY之前。</li>
 </ul>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_col</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> col_1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_col</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> col_1;</span><br></pre></td></tr></tbody></table></figure>
 <p>以上即可实现按col_1列中的不同类目进行行数统计。</p>
 <h3 id="过滤分组（HAVING）"><a href="#过滤分组（HAVING）" class="headerlink" title="过滤分组（HAVING）"></a>过滤分组（HAVING）</h3><p>在SQL入门中我们学过WHERE，它是对行数据进行筛选过滤的，那么，如果我想对创建的分组数据进行筛选过滤呢？这时候，你就要用到HAVING子句了，它与WHERE的操作符一致，只是换了关键字而已。</p>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_col</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> col_1</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1,<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_col</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> col_1</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) >= <span class="number">2</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>这里我们就筛选出了具有两个以上类别的分组。</p>
 <p><strong>注意：</strong>使用HAVING时应该结合GROUP BY子句。</p>
 <h2 id="时间序列的处理（DATE）"><a href="#时间序列的处理（DATE）" class="headerlink" title="时间序列的处理（DATE）"></a>时间序列的处理（DATE）</h2><p>在SQL中有一套专门的内置函数，用来处理时间序列，那就是DATE函数。</p>
@@ -916,20 +916,20 @@
 </ul>
 <h3 id="DATE-TRUNC函数"><a href="#DATE-TRUNC函数" class="headerlink" title="DATE_TRUNC函数"></a>DATE_TRUNC函数</h3><p><strong>DATE_TRUNC</strong> 使你能够将日期截取到日期时间列的特定部分。常见的截取依据包括<code>日期</code>、<code>月份</code> 和 <code>年份</code>。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_TRUNC('datepart', timestamp)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_TRUNC('datepart', timestamp)</span><br></pre></td></tr></tbody></table></figure>
 <p>其中<code>datepart</code>即为你的截取依据，后面的timestamp类型可以参考上面的Date数据类型。</p>
 <blockquote>
 <p> 我总结了一份SQL的<code>datepart</code>速查表放在了下面。</p>
 </blockquote>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'y'</span>,col_date) col_year</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span> <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'y'</span>,col_date) col_year</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span> <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，我们将col_date列按照年（’y’）进行了分组，并按由大至小的顺序排序，取前10组数据。</p>
 <h3 id="DATE-PART函数"><a href="#DATE-PART函数" class="headerlink" title="DATE_PART函数"></a>DATE_PART函数</h3><p><strong>DATE_PART</strong> 可以用来获取日期的特定部分，如获取日期2018-10-6的月份，只会获得一个结果6，这是它与DATE_TRUNC的最大区别。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_PART ('datepart', date或timestamp)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_PART ('datepart', date或timestamp)</span><br></pre></td></tr></tbody></table></figure>
 <p>其中<code>datepart</code>即为你的截取依据，后面的timestamp类型可以参考上面的Date数据类型。</p>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATE_PART(<span class="string">'y'</span>,col_date) col_year</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATE_PART(<span class="string">'y'</span>,col_date) col_year</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，我们筛选了col_date列的年份，并依据它做了分组。</p>
 <blockquote>
 <p>想了解更多DATE函数，可以戳<a href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/Date_functions_header.html" target="_blank" rel="noopener">SQL日期和时间函数参考</a></p>
@@ -1006,17 +1006,17 @@
 <li>你可以再次包含多个 WHEN 语句以及 ELSE 语句，以便处理任何未处理的条件。</li>
 </ul>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> account_id, <span class="keyword">CASE</span> <span class="keyword">WHEN</span> standard_qty = <span class="number">0</span> <span class="keyword">OR</span> standard_qty <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">THEN</span> <span class="number">0</span></span><br><span class="line">                        <span class="keyword">ELSE</span> standard_amt_usd/standard_qty <span class="keyword">END</span> <span class="keyword">AS</span> unit_price</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> account_id, <span class="keyword">CASE</span> <span class="keyword">WHEN</span> standard_qty = <span class="number">0</span> <span class="keyword">OR</span> standard_qty <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">THEN</span> <span class="number">0</span></span><br><span class="line">                        <span class="keyword">ELSE</span> standard_amt_usd/standard_qty <span class="keyword">END</span> <span class="keyword">AS</span> unit_price</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，我们使用CASE WHEN.(条件一).THEN.(条件一的结果).ELSE.(其他不符合条件一的结果).END语句，设立的两个条件，即当standard_qty为0或者不存在时我们返回0，当standard_qty不为0时进行计算，并储存为新列unit_price。</p>
 <h2 id="子查询与临时表格"><a href="#子查询与临时表格" class="headerlink" title="子查询与临时表格"></a>子查询与临时表格</h2><p>我们之前所涉及到的都是从数据库表中检索数据的单条语句，但当我们想要检索的数据并不能直接从数据库表中获取，而是需要从筛选后的表格中再度去查询时，就要用到子查询和临时表格了。</p>
 <p>子查询与临时表格所完成的任务是一致的，只不过子查询是通过嵌套查询完成，而另一种是通过WITH创建临时表格进行查询。</p>
 <h3 id="构建子查询"><a href="#构建子查询" class="headerlink" title="构建子查询"></a>构建子查询</h3><p>构建子查询十分简单，只需将被查询的语句放在小括号里，进行嵌套即可，但在使用时一定要注意格式要清晰。</p>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'day'</span>,occurred_at) <span class="keyword">AS</span> <span class="keyword">day</span>,channel, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">events</span></span><br><span class="line">      <span class="keyword">FROM</span> web_events </span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span></span><br><span class="line">      <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">3</span> <span class="keyword">DESC</span>) sub</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> channel</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'day'</span>,occurred_at) <span class="keyword">AS</span> <span class="keyword">day</span>,channel, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">events</span></span><br><span class="line">      <span class="keyword">FROM</span> web_events </span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span></span><br><span class="line">      <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">3</span> <span class="keyword">DESC</span>) sub</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> channel</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，我们创建了一个子查询，放在小括号里，并将其命名为sub。在子查询中也注意到了各个子句上下对齐，这样条例更清晰。</p>
 <h3 id="临时表格（WITH）"><a href="#临时表格（WITH）" class="headerlink" title="临时表格（WITH）"></a>临时表格（WITH）</h3><p>这种方法，就是使用WITH将子查询的部分创建为一个临时表格，然后再进行查询即可。</p>
 <p>我们还是使用上面子查询的例子，这次用临时表格的形式实现：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> sub <span class="keyword">AS</span>(</span><br><span class="line"><span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'day'</span>,occurred_at) <span class="keyword">AS</span> <span class="keyword">day</span>,channel, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">events</span></span><br><span class="line"><span class="keyword">FROM</span> web_events </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">3</span> <span class="keyword">DESC</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> sub</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> channel</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> sub <span class="keyword">AS</span>(</span><br><span class="line"><span class="keyword">SELECT</span> DATE_TRUNC(<span class="string">'day'</span>,occurred_at) <span class="keyword">AS</span> <span class="keyword">day</span>,channel, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">events</span></span><br><span class="line"><span class="keyword">FROM</span> web_events </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">3</span> <span class="keyword">DESC</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> sub</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> channel</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上，我们将被嵌套的子查询单独拎出来，用WITH创建了一个临时表格，再之后又使用SELECT根据该表格进行查询。</p>
 <h2 id="SQL数据清理"><a href="#SQL数据清理" class="headerlink" title="SQL数据清理"></a>SQL数据清理</h2><p>这一节主要针对数据清理讲解了几个SQL中的常用函数，一般来说，也都是用在筛选阶段，更详尽的数据清理还是要放在python中去进行。</p>
 <h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><ul>
@@ -1025,7 +1025,7 @@
 <p>LEFT和RIGHT相当于是字符串截取，<strong>LEFT</strong> 是从左侧起点开始，从特定列中的每行获取一定数量的字符，而<strong>RIGHT</strong>是从右侧。</p>
 <p><strong>LENGTH</strong>就是获取字符串的长度，相当于python中的len()。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LEFT(phone_number, 3) <span class="comment">-- 返回从左侧数，前三个字符</span></span><br><span class="line">RIGHT(phone_number, 8)</span><br><span class="line">LENGTH(phone_number)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LEFT(phone_number, 3) <span class="comment">-- 返回从左侧数，前三个字符</span></span><br><span class="line">RIGHT(phone_number, 8)</span><br><span class="line">LENGTH(phone_number)</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>POSITION</strong>、<strong>STRPOS</strong>、<strong>SUBSTR</strong></li>
 </ul>
@@ -1033,32 +1033,32 @@
 <p><strong>POSITION</strong> 和<strong>STRPOS</strong> 可以获取某一字符在字符串中的位置，这个位置是从左开始计数，最左侧第一个字符位置为1，但他俩的语法稍有不同。</p>
 <p><strong>SUBSTR</strong>可以筛选出指定位置后指定数量的字符。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POSITION(',' IN city_state)</span><br><span class="line">STRPOS(city_state, ‘,’) <span class="comment">--跟上面的语句等价</span></span><br><span class="line">SUBSTR(city_state,4,5) <span class="comment">-- 返回city_state字符串中，以第4个字符开头的5个字符。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POSITION(',' IN city_state)</span><br><span class="line">STRPOS(city_state, ‘,’) <span class="comment">--跟上面的语句等价</span></span><br><span class="line">SUBSTR(city_state,4,5) <span class="comment">-- 返回city_state字符串中，以第4个字符开头的5个字符。</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>字符串拼接（CONCAT）</strong></li>
 </ul>
 <p>顾名思义，就是将两个字符串进行拼接。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CONCAT(first_name, ' ', last_name) <span class="comment">-- 结果为：first_name last_name</span></span><br><span class="line"><span class="comment">--或者你也可以使用双竖线来实现上述任务</span></span><br><span class="line">first_name || ' ' || last_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CONCAT(first_name, ' ', last_name) <span class="comment">-- 结果为：first_name last_name</span></span><br><span class="line"><span class="comment">--或者你也可以使用双竖线来实现上述任务</span></span><br><span class="line">first_name || ' ' || last_name</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="更改数据格式"><a href="#更改数据格式" class="headerlink" title="更改数据格式"></a>更改数据格式</h3><ul>
 <li>TO_DATE函数</li>
 </ul>
 <p>TO_DATE函数可以将某列转为DATE格式，主要是将单独的月份或者年份等等转换为SQL可以读懂的DATE类型数据。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TO_DATE(col_name,'datepart') </span><br><span class="line">TO_DATE('02 Oct 2001', 'DD Mon YYYY');</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TO_DATE(col_name,'datepart') </span><br><span class="line">TO_DATE('02 Oct 2001', 'DD Mon YYYY');</span><br></pre></td></tr></tbody></table></figure>
 <p>这里是将col_name这列按照datepart转化为DATE类型的数据，datepart可以参考之前的总结。</p>
 <ul>
 <li>CAST函数</li>
 </ul>
 <p>CAST函数是SQL中进行数据类型转换的函数，但经常用于将字符串类型转换为时间类型。</p>
 <p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CAST(date_column AS DATE)</span><br><span class="line"><span class="comment">-- 你也可以写成这样</span></span><br><span class="line">date_column::DATE</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CAST(date_column AS DATE)</span><br><span class="line"><span class="comment">-- 你也可以写成这样</span></span><br><span class="line">date_column::DATE</span><br></pre></td></tr></tbody></table></figure>
 <p>这里是将date_column转换为DATE格式的数据，其他时间相关的数据类型与样式对照可以参考上面写过的<strong>SQL Date数据类型</strong>，确保你想转换的数据样式与数据类型对应。</p>
 <h3 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h3><p>之前有提到过如何筛选出缺失值，即使用<strong>WHERE</strong>加上<strong>IS NULL</strong>或者<strong>IS NOT NULL</strong>。</p>
 <p>那么如何对缺失值进行处理呢？（其实这里可以直接无视，筛选出来后在python中再进行处理）</p>
 <p>SQL中提供了一个替换NULL值的函数<strong>COALESCE</strong>。</p>
 <p>使用示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COALESCE(col_1,0) <span class="comment">-- 将col_1中的NULL值替换为0</span></span><br><span class="line">COALESCE(col_2,'no DATA') <span class="comment">-- 将col_2中的NULL值替换为no DATA</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COALESCE(col_1,0) <span class="comment">-- 将col_1中的NULL值替换为0</span></span><br><span class="line">COALESCE(col_2,'no DATA') <span class="comment">-- 将col_2中的NULL值替换为no DATA</span></span><br></pre></td></tr></tbody></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好啦，至此课程中的所有SQL知识点已经总结完了，并且也给大家做了适当的补充，希望大家能够用得上。未来的数据分析师之路，还要继续加油呀！</p>
 <p><img src="http://wx4.sinaimg.cn/bmiddle/006Cmetyly1fmtcyy5h20j30dw0dwaiw.jpg" alt></p>
 <h1 id="附：SELECT子句顺序"><a href="#附：SELECT子句顺序" class="headerlink" title="附：SELECT子句顺序"></a>附：SELECT子句顺序</h1><p>下表中列出了全文中涉及到的子句，在进行使用时，应严格遵循下表中从上至下的顺序。</p>
@@ -1113,7 +1113,25 @@
 </tr>
 </tbody>
 </table>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -1198,8 +1216,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/02/2018-12-2-Anaconda配置/" rel="prev" title="Anaconda&Jupyter Notebook配置">
-                Anaconda&Jupyter Notebook配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/02/2018-12-5-mini-batch-gradient-descent/" rel="prev" title="Python Code of Mini-Batch Gradient Descent">
+                Python Code of Mini-Batch Gradient Descent <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1460,7 +1478,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -1469,7 +1487,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 

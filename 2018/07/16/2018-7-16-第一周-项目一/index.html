@@ -497,7 +497,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.1k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -511,7 +511,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -611,7 +611,7 @@
 <p> 正确示范</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> account_id</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> account_id</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="SQL-基础命令及用法参考"><a href="#SQL-基础命令及用法参考" class="headerlink" title="SQL - 基础命令及用法参考"></a>SQL - 基础命令及用法参考</h3><table>
 <thead>
 <tr>
@@ -643,7 +643,7 @@
 </tr>
 <tr>
 <td style="text-align:center">WHERE</td>
-<td style="text-align:left">WHERE <strong>Col &gt; 5</strong></td>
+<td style="text-align:left">WHERE <strong>Col > 5</strong></td>
 <td style="text-align:left">用于过滤结果的一个条件语句</td>
 </tr>
 <tr>
@@ -663,12 +663,12 @@
 </tr>
 <tr>
 <td style="text-align:center">AND</td>
-<td style="text-align:left">WHERE <strong>Col1 &gt; 5 AND Col2 &lt; 3</strong></td>
+<td style="text-align:left">WHERE <strong>Col1 > 5 AND Col2 < 3</strong></td>
 <td style="text-align:left">过滤两个或多个条件必须为真的行</td>
 </tr>
 <tr>
 <td style="text-align:center">OR</td>
-<td style="text-align:left">WHERE <strong>Col1 &gt; 5 OR Col2 &lt; 3</strong></td>
+<td style="text-align:left">WHERE <strong>Col1 > 5 OR Col2 < 3</strong></td>
 <td style="text-align:left">过滤一个条件必须为真的行</td>
 </tr>
 <tr>
@@ -679,12 +679,12 @@
 </tbody>
 </table>
 <p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1, col2</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> col3  &gt; <span class="number">5</span> <span class="keyword">AND</span> col4 <span class="keyword">LIKE</span> <span class="string">'%os%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col5</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1, col2</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> col3  > <span class="number">5</span> <span class="keyword">AND</span> col4 <span class="keyword">LIKE</span> <span class="string">'%os%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col5</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="SQL-运算顺序"><a href="#SQL-运算顺序" class="headerlink" title="SQL - 运算顺序"></a>SQL - 运算顺序</h3><ul>
 <li><p>在 SQL 中使用<strong>算术运算符</strong>时，采用与数学中相同的运算顺序。</p>
 </li>
 <li><p>在 SQL中使用<strong>逻辑运算符</strong>时，要参考如下优先级顺序（操作符优先级由低到高，排列在同一行的操作符具有相同的优先级）</p>
-<p>| 优先级 | 操作符列表                                         |<br>| —— | ————————————————– |<br>| 1      | :=                                                 |<br>| 2      | ||，OR，XOR                                      |<br>| 3      | &amp;&amp;，AND                                            |<br>| 4      | NOT                                                |<br>| 5      | BETWEEN，CASE，WHEN，THEN，ELSE                    |<br>| 6      | =，&lt;=&gt;，&gt;=，&gt;，&lt;=，&lt;，&lt;&gt;，!=，IS，LIKE，REGEXP，IN |<br>| 7      | |                                                 |<br>| 8      | &amp;                                                  |<br>| 9      | &lt;&lt;，&gt;&gt;                                             |<br>| 10     | -，+                                               |<br>| 11     | *，/，DIV，%，MOD                                  |<br>| 12     | ^                                                  |<br>| 13     | - (一元减号)，~ (一元比特反转)                     |<br>| 14     | !                                                  |<br>| 15     | BINARY，COLLATE                                    |</p>
+<p>| 优先级 | 操作符列表                                         |<br>| —— | ————————————————– |<br>| 1      | :=                                                 |<br>| 2      | ||，OR，XOR                                      |<br>| 3      | &&，AND                                            |<br>| 4      | NOT                                                |<br>| 5      | BETWEEN，CASE，WHEN，THEN，ELSE                    |<br>| 6      | =，<=>，>=，>，<=，<，<>，!=，IS，LIKE，REGEXP，IN |<br>| 7      | |                                                 |<br>| 8      | &                                                  |<br>| 9      | <<，>>                                             |<br>| 10     | -，+                                               |<br>| 11     | *，/，DIV，%，MOD                                  |<br>| 12     | ^                                                  |<br>| 13     | - (一元减号)，~ (一元比特反转)                     |<br>| 14     | !                                                  |<br>| 15     | BINARY，COLLATE                                    |</，></=，<，<></=></p>
 <p><strong>HINT</strong>：看到如上这么复杂难记的优先级表，想必你也会头大，所以，为了避免因优先级导致的逻辑错误，请一定要将逻辑语句加上小括号，这样既清晰又不易出错！</p>
 </li>
 </ul>
@@ -720,7 +720,7 @@
 <p><strong>HINT</strong>：</p>
 <ul>
 <li><p>在提取感兴趣的城市之前，可以先通过如下代码查看数据库中，是否存在该城市数据</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> city_list</span><br><span class="line"><span class="keyword">WHERE</span> city = xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> city_list</span><br><span class="line"><span class="keyword">WHERE</span> city = xxx</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>提取出数据之后，可以先在工作区简单预览下，查看有连续记录数据的年份区间，并以这个区间作为筛选条件，重新提取数据并保存</p>
 </li>
@@ -732,7 +732,7 @@
 <ul>
 <li>计算移动平均值采用的函数为<code>AVERAGE</code></li>
 <li>两组数据的移动平均值要单独成列，并且有一个不与其他列重复且易于辨认的列名，如<code>global_temp</code></li>
-<li>为方便分析，你需要将两列数据合并到同一个文件中，注意在复制粘贴时，选择<code>粘贴选项</code> -&gt; <code>值和数据格式</code>，这样才会粘贴得到公式计算后的数据。</li>
+<li>为方便分析，你需要将两列数据合并到同一个文件中，注意在复制粘贴时，选择<code>粘贴选项</code> -> <code>值和数据格式</code>，这样才会粘贴得到公式计算后的数据。</li>
 </ul>
 <h3 id="数据可视化及分析"><a href="#数据可视化及分析" class="headerlink" title="数据可视化及分析"></a>数据可视化及分析</h3><p>利用Excel或Google Sheet将两组移动平均值进行线条图可视化，并对结果进行<strong>描述</strong>。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对可视化的分析结果进行总结，并发表结论性看法。</p>
@@ -745,7 +745,25 @@
 <li>整理学习笔记</li>
 <li>开始下一阶段的学习：找助教要下一周的导学呀~</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -1094,7 +1112,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -1103,7 +1121,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 

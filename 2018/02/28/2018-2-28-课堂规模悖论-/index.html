@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2k</span>
+                <span title="本文字数">2.6k</span>
               
 
               
@@ -588,21 +588,39 @@
 </blockquote>
 <hr>
 <p>书中的代码使用的是作者自建的一个python库thinkstats2，这里不再赘述，只是借书中的例子，用python还原如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义选课人数分布字典</span></span><br><span class="line">d = &#123;<span class="number">7</span>:<span class="number">8</span>,<span class="number">12</span>:<span class="number">8</span>,<span class="number">17</span>:<span class="number">14</span>,<span class="number">22</span>:<span class="number">4</span>,<span class="number">27</span>:<span class="number">6</span>,<span class="number">32</span>:<span class="number">12</span>,<span class="number">37</span>:<span class="number">8</span>,<span class="number">42</span>:<span class="number">3</span>,<span class="number">47</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="comment">#获取人数分布的array</span></span><br><span class="line">data = numpy.array(list(d.keys())).repeat(list(d.values()))</span><br><span class="line"><span class="comment">#计算均值</span></span><br><span class="line">act_mean = data.mean()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义选课人数分布字典</span></span><br><span class="line">d = {<span class="number">7</span>:<span class="number">8</span>,<span class="number">12</span>:<span class="number">8</span>,<span class="number">17</span>:<span class="number">14</span>,<span class="number">22</span>:<span class="number">4</span>,<span class="number">27</span>:<span class="number">6</span>,<span class="number">32</span>:<span class="number">12</span>,<span class="number">37</span>:<span class="number">8</span>,<span class="number">42</span>:<span class="number">3</span>,<span class="number">47</span>:<span class="number">2</span>}</span><br><span class="line"><span class="comment">#获取人数分布的array</span></span><br><span class="line">data = numpy.array(list(d.keys())).repeat(list(d.values()))</span><br><span class="line"><span class="comment">#计算均值</span></span><br><span class="line">act_mean = data.mean()</span><br></pre></td></tr></tbody></table></figure>
 <p>计算得到实际选课人数均值约为23.7。</p>
 <p>这是我们获取全部数据之后，站在类似于上帝视角去看的结果，那么如果我们对一组学生进行调查，询问他们的课堂上有多少学生，然后再次计算均值，会发现什么呢？</p>
 <p>首先，计算出学生观察到的分布，其中每个课堂规模值的概率受到选课学生人数的“影响”。</p>
 <blockquote>
 <p>具体实现：假设每门课的选课人数为x，而该规模人数的课程出现的概率为p，那么通过询问，获得的该规模课程总数应该为x*p。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们先构建课程规模与课程出现概率的字典</span></span><br><span class="line">pmf = &#123;size:(count/<span class="number">65</span>) <span class="keyword">for</span> size,count <span class="keyword">in</span> d.items()&#125;<span class="comment">#65为课程总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建课程规模与询问后得到的课程计数字典，我们把它叫做偏倚分布</span></span><br><span class="line">obs_data = &#123;size:size*count <span class="keyword">for</span> size,count <span class="keyword">in</span> pmf.items()&#125;</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数总数</span></span><br><span class="line">sum_students = sum(list(map(<span class="keyword">lambda</span> x:x[<span class="number">0</span>]*x[<span class="number">1</span>],zip(obs_data.keys(),obs_data.values()))))</span><br><span class="line"><span class="comment">#计算偏倚分布的总课程数</span></span><br><span class="line">sum_count = sum(list(obs_data.values()))</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数均值</span></span><br><span class="line">obs_mean = sum_students/sum_count</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们先构建课程规模与课程出现概率的字典</span></span><br><span class="line">pmf = {size:(count/<span class="number">65</span>) <span class="keyword">for</span> size,count <span class="keyword">in</span> d.items()}<span class="comment">#65为课程总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建课程规模与询问后得到的课程计数字典，我们把它叫做偏倚分布</span></span><br><span class="line">obs_data = {size:size*count <span class="keyword">for</span> size,count <span class="keyword">in</span> pmf.items()}</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数总数</span></span><br><span class="line">sum_students = sum(list(map(<span class="keyword">lambda</span> x:x[<span class="number">0</span>]*x[<span class="number">1</span>],zip(obs_data.keys(),obs_data.values()))))</span><br><span class="line"><span class="comment">#计算偏倚分布的总课程数</span></span><br><span class="line">sum_count = sum(list(obs_data.values()))</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数均值</span></span><br><span class="line">obs_mean = sum_students/sum_count</span><br></pre></td></tr></tbody></table></figure>
 <p>计算得到的结果为：29.1，比实际的均值高了约25%。</p>
 <p>接下来，我们构建这两组数据的PMF图，能更直观一些。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#构建偏倚分布课程规模与该课程出现概率的字典</span></span><br><span class="line">obs_pmf = &#123;size:count/sum_count <span class="keyword">for</span> size,count <span class="keyword">in</span> obs_data.items()&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化，并列柱状图</span></span><br><span class="line">sns.set(style=<span class="string">"white"</span>, context=<span class="string">"talk"</span>)<span class="comment">#设置样式</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">5</span>))<span class="comment">#设置图像大小</span></span><br><span class="line">ind = np.array(list(pmf.keys()))</span><br><span class="line">width = <span class="number">0.4</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind - width,pmf.values(),label = <span class="string">'actual'</span>)<span class="comment">#实际值</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind + width,ano_pmf.values(),label = <span class="string">'observed'</span>)<span class="comment">#观察值</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'class size'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'PMF'</span>)</span><br><span class="line">plt.xticks(list(pmf.keys()))</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#构建偏倚分布课程规模与该课程出现概率的字典</span></span><br><span class="line">obs_pmf = {size:count/sum_count <span class="keyword">for</span> size,count <span class="keyword">in</span> obs_data.items()}</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化，并列柱状图</span></span><br><span class="line">sns.set(style=<span class="string">"white"</span>, context=<span class="string">"talk"</span>)<span class="comment">#设置样式</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">5</span>))<span class="comment">#设置图像大小</span></span><br><span class="line">ind = np.array(list(pmf.keys()))</span><br><span class="line">width = <span class="number">0.4</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind - width,pmf.values(),label = <span class="string">'actual'</span>)<span class="comment">#实际值</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind + width,ano_pmf.values(),label = <span class="string">'observed'</span>)<span class="comment">#观察值</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'class size'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'PMF'</span>)</span><br><span class="line">plt.xticks(list(pmf.keys()))</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>);</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://s1.ax1x.com/2018/10/03/i30ncq.png" alt="i30ncq.png"></p>
 <p>从图中可以明显看出，在偏倚分布中，小课更少，大课更多。</p>
 <p>同样，你也可以反向进行如上的操作。假设你希望得到一所学院的课堂规模分布，但却无法从院长处得到可靠数据，你可以采用另一个办法：选择学生的一个随机样本，进行调查，询问他们的课堂上有多少学生，然后再进行“去偏倚”的操作，这里就需要用统计得来的同等规模课程计数除以它出现的概率。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -925,7 +943,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -934,7 +952,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 

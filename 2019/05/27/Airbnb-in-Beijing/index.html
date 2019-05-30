@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.1k</span>
+                <span title="本文字数">5.7k</span>
               
 
               
@@ -601,7 +601,25 @@
 <li>If you want to experience a real local life in Beijing ,please choose the personal host.</li>
 </ul>
 <p>Finally, I hope you’ll be <strong>welcomed home</strong> by Airbnb :). </p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -950,7 +968,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -959,7 +977,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 

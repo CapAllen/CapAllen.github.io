@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4k</span>
+                <span title="本文字数">4.6k</span>
               
 
               
@@ -676,7 +676,7 @@
 </ul>
 <p>使用numpy.random.choice函数，将零假设中的p_new与p_old作为抽样概率，n_new与n_old作为抽样次数，用1表示‘转化成功’，0表示‘未转化成功’，并将结果储存在一个新变量当中。</p>
 <p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_page_converted = np.random.choice([<span class="number">0</span>,<span class="number">1</span>],n_new,p = [<span class="number">1</span>-p_new,p_new])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_page_converted = np.random.choice([<span class="number">0</span>,<span class="number">1</span>],n_new,p = [<span class="number">1</span>-p_new,p_new])</span><br></pre></td></tr></tbody></table></figure>
 <p>以上获得的这个新变量，就是我们按照零假设中的n_new抽样n_new次的转化与否的分布模拟，那如何看模拟后的转化率呢？很简单，一个函数就搞定了，这里自己想。</p>
 <ul>
 <li>h、i、j</li>
@@ -684,13 +684,13 @@
 <p>这三步是使用for循环，将上面的过程不断重复10000次，获得一个抽样分布直方图，这个图会是正态分布吗？</p>
 <p>关于实际观测值，即为你利用ab_data.csv直接计算得来的new_page与old_page转化率之差。</p>
 <p>j中得到的值是什么呢？是不是在零假设的条件下，观察到实际观测值甚至更极端（更支持备择假设）的概率？那这个值的学名叫什么？</p>
-<p>【这里实际上进行的是单尾检验，也就是对备择假设为p_new - p_old &gt; 0来进行的】</p>
+<p>【这里实际上进行的是单尾检验，也就是对备择假设为p_new - p_old > 0来进行的】</p>
 <ul>
 <li>i、m</li>
 </ul>
 <p>使用了statsmodels中的proportions_ztest函数进行检验。实现的功能和上述a-j是一致的。</p>
 <p>为什么要选择这个函数，以及这个函数的用法可以参考课程中给的链接<a href="http://knowledgetack.com/python/statsmodels/proportions_ztest/" target="_blank" rel="noopener">proportions_ztest</a>。</p>
-<p>不过值得注意的是，在链接的列子中，使用的是双尾检验，也就是针对备择假设为p_new ≠ p_old去做的；但是在课程项目中，我们的备择假设为p_new &gt; p_old，也就是单尾检验，所以函数中的某个参数要改一下。</p>
+<p>不过值得注意的是，在链接的列子中，使用的是双尾检验，也就是针对备择假设为p_new ≠ p_old去做的；但是在课程项目中，我们的备择假设为p_new > p_old，也就是单尾检验，所以函数中的某个参数要改一下。</p>
 <p>使用内置函数方法获得的p值应该与前面获得的p值相近，如果差太多，那肯定是有地方需要再琢磨琢磨。</p>
 <h2 id="III-回归"><a href="#III-回归" class="headerlink" title="III - 回归"></a>III - 回归</h2><ul>
 <li>a</li>
@@ -715,7 +715,25 @@
 <p><strong>数据集融合问题</strong>，之前单独出过一篇导学，如果忘了，请戳：<a href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/">Pandas数据融合</a>，提醒下，合并时采用内连接，可以省去一些麻烦；</p>
 <p><strong>get_dummies</strong>，注意该函数生成数据的顺序是按照字典顺序来的，所以，你在进行操作时，为了确保顺序不乱，最好能先看一下生成的结果，再进行重命名。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>大家能坚持到最后一个项目，十分不易，不过对于数据分析生涯来说，这只是你的开始，请继续保持这段时间的学习状态，如果非要给这个保持加一个期限的话，我希望是一辈子！大家加油！等你们的好消息！！</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -1064,7 +1082,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -1073,7 +1091,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 

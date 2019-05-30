@@ -492,7 +492,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">299</span>
+                <span title="本文字数">954</span>
               
 
               
@@ -530,11 +530,29 @@
 <p><code>请输入文件名</code>，那就只能通过命令符来咯，摸索了下总结如下：</p>
 <p>1.在你想创建文件的路径下，<code>Shift</code>+右击，<code>在此处打开命令符</code>;</p>
 <p>2.逐一输入如下行，每输入完一行按一次回车，搞定！</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">copy con .fileext</span><br><span class="line">I wanna create a file without ext.</span><br><span class="line">^Z</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">copy con .fileext</span><br><span class="line">I wanna create a file without ext.</span><br><span class="line">^Z</span><br></pre></td></tr></tbody></table></figure>
 <p>其中，<code>.fileext</code>替换为你想创建的拓展名文件；</p>
 <p>第二行替换为：你创建文件中的内容，或者可以随便输入什么，然后再用记事本打开后进行修改；</p>
 <p>第三行可以通过<code>Ctrl+Z</code>或者<code>F6</code>进行输入。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -851,7 +869,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
   
 
   
@@ -860,7 +878,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 
