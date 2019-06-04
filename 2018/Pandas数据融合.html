@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="7q8JgIc9CG">
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="msvalidate.01" content="5F362EF356A097ADF493CCDA6E7E7149">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="It’s not about where your starting point is, but your end goal and the journey that will get you there.  在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下Pandas如何做数据合并之后，发现除了merge之外，还有con">
+<meta name="keywords" content="lesson guide,pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周导学-第六周导学-Pandas数据融合">
+<meta property="og:url" content="https://www.capallen.top/2018/Pandas数据融合.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="It’s not about where your starting point is, but your end goal and the journey that will get you there.  在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下Pandas如何做数据合并之后，发现除了merge之外，还有con">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_multiple.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_left.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_right.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_outer.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_index_outer.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_overlapped_suffix.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_outer.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_inner.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_key_columns.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multikeys.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multiindex_inner.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_two_multiindex.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_overlapped_multi_suffix.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multi_df.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_basic.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_keys.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1_inner.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1_join_axes.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_ignore_index.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_mixed_ndim.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_series_ignore_index.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append1.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append2.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_ignore_index.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append3.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_series_as_row.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_combine_first.png">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_update.png">
+<meta property="og:updated_time" content="2019-04-03T04:51:55.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每周导学-第六周导学-Pandas数据融合">
+<meta name="twitter:description" content="It’s not about where your starting point is, but your end goal and the journey that will get you there.  在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下Pandas如何做数据合并之后，发现除了merge之外，还有con">
+<meta name="twitter:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.capallen.top/2018/Pandas数据融合">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>每周导学-第六周导学-Pandas数据融合 | Allen's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">体制山下的泼猴</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="https://allenresume.github.io/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">21</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">25</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/Pandas数据融合.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">每周导学-第六周导学-Pandas数据融合
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-21 12:30:09" itemprop="dateCreated datePublished" datetime="2018-08-21T12:30:09+08:00">2018-08-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-03 12:51:55" itemprop="dateModified" datetime="2019-04-03T12:51:55+08:00">2019-04-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/Pandas数据融合.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/Pandas数据融合.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">12k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">11 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>It’s not about where your starting point is, but your end goal and the journey that will get you there.</p>
+</blockquote>
+<p>在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下<strong>Pandas如何做数据合并</strong>之后，发现除了merge之外，还有concat、还有join，还有append，更是一脸懵了，那这期导学呢，我们就来一起梳理一下pandas数据合并的知识点，同学们不要慌，除了代码之外，还嵌入了DataFrame的图片方便大家理解。当然，看完之后还是要自己多练习才行！加油！</p>
+<h1 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html" target="_blank" rel="noopener">pandas.DataFrame.merge</a></p>
+<h3 id="常用参数解读"><a href="#常用参数解读" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
+<li><p>right：合并的另一个DataFrame</p>
+</li>
+<li><p>how：数据融合的方式，包括：left、right、outer和inner，默认是inner</p>
+<blockquote>
+<p>merge的连接方式与SQL对比</p>
+</blockquote>
+<blockquote>
+<p>| 合并方式 | SQL JOIN           | 描述                    |<br>| ——– | —————— | ———————– |<br>| <code>left</code>   | <code>LEFT OUTER JOIN</code>  | 只用左表的key去匹配链接 |<br>| <code>right</code>  | <code>RIGHT OUTER JOIN</code> | 只用右表的key去匹配链接 |<br>| <code>outer</code>  | <code>FULL OUTER JOIN</code>  | 两表中key的并集         |<br>| <code>inner</code>  | <code>INNER JOIN</code>       | 两表中key的交集         |</p>
+</blockquote>
+</li>
+<li><p>on：进行合并的共有列的名字，用到这个参数的时候一定要保证左表和右表的共有列都有相同的列名</p>
+</li>
+<li>left_on：左表对齐的列，可以是列名，也可以是和dataframe同样长度的arrays。</li>
+<li>right_on：右表对齐的列，可以是列名，也可以是和dataframe同样长度的arrays。</li>
+<li>left_index/ right_index: 布尔值，如果是True的话，以index作为key</li>
+<li>sort：布尔值，会根据dataframe合并的keys按字典顺序(abcd…这种)排序，默认为True，设置为False可以提高运算速率。</li>
+</ul>
+<h2 id="合并方法"><a href="#合并方法" class="headerlink" title="合并方法"></a>合并方法</h2><ul>
+<li><p>一对一 : 联接两个 DataFrame 的key唯一</p>
+</li>
+<li><p>多对一 : 将一个DataFrame的唯一key连接到另一个 DataFrame 中的一个或多个key</p>
+<ul>
+<li>多对多 : keys 对 keys</li>
+</ul>
+</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li><p>一对一</p>
+<blockquote>
+<p>默认连接方式为inner，即取交集</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [1]: left = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],</span><br><span class="line">   ....:                      'A': ['A0', 'A1', 'A2', 'A3'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2', 'B3']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [2]: right = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],</span><br><span class="line">   ....:                       'C': ['C0', 'C1', 'C2', 'C3'],</span><br><span class="line">   ....:                       'D': ['D0', 'D1', 'D2', 'D3']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [3]: result = pd.merge(left, right, on='key')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key.png" alt="_images/merging_merge_on_key.png"> </p>
+<ul>
+<li>多对多（默认内链接）</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [4]: left = pd.DataFrame({'key1': ['K0', 'K0', 'K1', 'K2'],</span><br><span class="line">   ....:                      'key2': ['K0', 'K1', 'K0', 'K1'],</span><br><span class="line">   ....:                      'A': ['A0', 'A1', 'A2', 'A3'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2', 'B3']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [5]: right = pd.DataFrame({'key1': ['K0', 'K1', 'K1', 'K2'],</span><br><span class="line">   ....:                       'key2': ['K0', 'K0', 'K0', 'K0'],</span><br><span class="line">   ....:                       'C': ['C0', 'C1', 'C2', 'C3'],</span><br><span class="line">   ....:                       'D': ['D0', 'D1', 'D2', 'D3']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [6]: result = pd.merge(left, right, on=['key1', 'key2'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_multiple.png" alt="_images/merging_merge_on_key_multiple.png"> </p>
+<ul>
+<li>左链接</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [7]: result = pd.merge(left, right, how='left', on=['key1', 'key2'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_left.png" alt="_images/merging_merge_on_key_left.png"> </p>
+<ul>
+<li>右链接</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [8]: result = pd.merge(left, right, how='right', on=['key1', 'key2'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_right.png" alt="_images/merging_merge_on_key_right.png"> </p>
+<ul>
+<li>外链接</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [9]: result = pd.merge(left, right, how='outer', on=['key1', 'key2'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_outer.png" alt="_images/merging_merge_on_key_outer.png"> </p>
+<ul>
+<li><p>利用index链接</p>
+<p>这里就要用到<code>left_index</code>和<code>right_index</code>参数了，实例如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [10]: result = pd.merge(left, right, left_index=True, right_index=True, how='outer')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_index_outer.png" alt="_images/merging_merge_index_outer.png"> </p>
+</li>
+</ul>
+<h3 id="重复列的处理"><a href="#重复列的处理" class="headerlink" title="重复列的处理"></a>重复列的处理</h3><p>当你进行合并时，key有重复的话，会额外输出<code>行数X重名列数</code>的数据，不仅结果错误，还会导致电脑运行速度巨慢，所以，合并前一定要检查是否有重复列名，当然你可以直接比对两表的列名，或者选择如下方法：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [10]: left = pd.DataFrame({'A' : [1,2], 'B' : [1, 2]})</span><br><span class="line"></span><br><span class="line">In [11]: right = pd.DataFrame({'A' : [4,5,6], 'B': [2, 2, 2]})</span><br><span class="line"></span><br><span class="line">In [12]: result = pd.merge(left, right, on='B', how='outer', validate="one_to_one")</span><br><span class="line">...</span><br><span class="line">MergeError: Merge keys are not unique in right dataset; not a one-to-one merge</span><br></pre></td></tr></tbody></table></figure>
+<p>当有重名列的时候，就会报错，那么如果想继续合并的话，只需把<code>validate</code>参数改为<code>"one_to_many"</code>。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [13]: pd.merge(left, right, on='B', how='outer', validate="one_to_many")</span><br><span class="line">Out[13]: </span><br><span class="line">   A_x  B  A_y</span><br><span class="line">0    1  1  NaN</span><br><span class="line">1    2  2  4.0</span><br><span class="line">2    2  2  5.0</span><br><span class="line">3    2  2  6.0</span><br></pre></td></tr></tbody></table></figure>
+<p>如果你想在合并后，把两表中重名的列加上后缀的话，可以使用<code>suffixes</code>参数</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [27]: left = pd.DataFrame({'k': ['K0', 'K1', 'K2'], 'v': [1, 2, 3]})</span><br><span class="line"></span><br><span class="line">In [28]: right = pd.DataFrame({'k': ['K0', 'K0', 'K3'], 'v': [4, 5, 6]})</span><br><span class="line"></span><br><span class="line">In [29]: result = pd.merge(left, right, on='k', suffixes=['_l', '_r'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_overlapped_suffix.png" alt="_images/merging_merge_overlapped_suffix.png"> </p>
+<h3 id="indicator参数"><a href="#indicator参数" class="headerlink" title="indicator参数"></a><code>indicator</code>参数</h3><p>在merge里，还有一个有意思的参数叫<code>indicator</code>，可以输入布尔值（默认为False），当你设置为True的时候，会在你合并的表中，增加一列<code>_merge</code>，元素则表示了合并后的数据来自左表还是右表或者二者皆有。</p>
+<p>看示例：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [14]: df1 = pd.DataFrame({'col1': [0, 1], 'col_left':['a', 'b']})</span><br><span class="line"></span><br><span class="line">In [15]: df2 = pd.DataFrame({'col1': [1, 2, 2],'col_right':[2, 2, 2]})</span><br><span class="line"></span><br><span class="line">In [16]: pd.merge(df1, df2, on='col1', how='outer', indicator=True)</span><br><span class="line">Out[16]: </span><br><span class="line">   col1 col_left  col_right      _merge</span><br><span class="line">0     0        a        NaN   left_only</span><br><span class="line">1     1        b        2.0        both</span><br><span class="line">2     2      NaN        2.0  right_only</span><br><span class="line">3     2      NaN        2.0  right_only</span><br></pre></td></tr></tbody></table></figure>
+<p>或者也可以输入一个字符串作为列名：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [17]: pd.merge(df1, df2, on='col1', how='outer', indicator='indicator_column')</span><br><span class="line">Out[17]: </span><br><span class="line">   col1 col_left  col_right indicator_column</span><br><span class="line">0     0        a        NaN        left_only</span><br><span class="line">1     1        b        2.0             both</span><br><span class="line">2     2      NaN        2.0       right_only</span><br><span class="line">3     2      NaN        2.0       right_only</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><h2 id="官方文档-1"><a href="#官方文档-1" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-1"><a href="#文档链接-1" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.join.html" target="_blank" rel="noopener">pandas.DataFrame.join</a></p>
+<h3 id="常用参数解读-1"><a href="#常用参数解读-1" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
+<li><strong>other</strong> : DataFrame , 或者是有列名的Series</li>
+<li><strong>on</strong> : 也就是merge的key，可以输入key或者keys，默认为<strong>index</strong></li>
+<li><strong>how</strong> : left、right、outer、inner，默认为<strong>left</strong></li>
+</ul>
+<h2 id="合并方法-1"><a href="#合并方法-1" class="headerlink" title="合并方法"></a>合并方法</h2><p>join是一种快速合并方法，所需参数较少，默认以index作为链接键。</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>最常用</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [18]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2']},</span><br><span class="line">   ....:                      index=['K0', 'K1', 'K2'])</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [19]: right = pd.DataFrame({'C': ['C0', 'C2', 'C3'],</span><br><span class="line">   ....:                       'D': ['D0', 'D2', 'D3']},</span><br><span class="line">   ....:                       index=['K0', 'K2', 'K3'])</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [20]: result = left.join(right)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join.png" alt="_images/merging_join.png"> </p>
+<ul>
+<li>外连接</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [21]: result = left.join(right, how='outer')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_outer.png" alt="_images/merging_join_outer.png"> </p>
+<ul>
+<li>内连接</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [22]: result = left.join(right, how='inner')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_inner.png" alt="_images/merging_join_inner.png"> </p>
+<ul>
+<li>键为列与index</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [23]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2', 'B3'],</span><br><span class="line">   ....:                      'key': ['K0', 'K1', 'K0', 'K1']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [24]: right = pd.DataFrame({'C': ['C0', 'C1'],</span><br><span class="line">   ....:                       'D': ['D0', 'D1']},</span><br><span class="line">   ....:                       index=['K0', 'K1'])</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [25]: result = left.join(right, on='key')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_key_columns.png" alt="_images/merging_join_key_columns.png"> </p>
+<ul>
+<li>键为多列与多index</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [26]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2', 'B3'],</span><br><span class="line">   ....:                      'key1': ['K0', 'K0', 'K1', 'K2'],</span><br><span class="line">   ....:                      'key2': ['K0', 'K1', 'K0', 'K1']})</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [27]: index = pd.MultiIndex.from_tuples([('K0', 'K0'), ('K1', 'K0'),</span><br><span class="line">   ....:                                   ('K2', 'K0'), ('K2', 'K1')])</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [28]: right = pd.DataFrame({'C': ['C0', 'C1', 'C2', 'C3'],</span><br><span class="line">   ....:                    'D': ['D0', 'D1', 'D2', 'D3']},</span><br><span class="line">   ....:                   index=index)</span><br><span class="line">   ....: </span><br><span class="line">In [29]: result = left.join(right, on=['key1', 'key2'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multikeys.png" alt="_images/merging_join_multikeys.png"> </p>
+<ul>
+<li>键为单index与多重index</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [30]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2'],</span><br><span class="line">   ....:                      'B': ['B0', 'B1', 'B2']},</span><br><span class="line">   ....:                      index=pd.Index(['K0', 'K1', 'K2'], name='key'))</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [31]: index = pd.MultiIndex.from_tuples([('K0', 'Y0'), ('K1', 'Y1'),</span><br><span class="line">   ....:                                   ('K2', 'Y2'), ('K2', 'Y3')],</span><br><span class="line">   ....:                                    names=['key', 'Y'])</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [32]: right = pd.DataFrame({'C': ['C0', 'C1', 'C2', 'C3'],</span><br><span class="line">   ....:                       'D': ['D0', 'D1', 'D2', 'D3']},</span><br><span class="line">   ....:                       index=index)</span><br><span class="line">   ....: </span><br><span class="line"></span><br><span class="line">In [33]: result = left.join(right, how='inner')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multiindex_inner.png" alt="_images/merging_join_multiindex_inner.png"> </p>
+<blockquote>
+<p>你也可以用merge来实现：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">> In [34]: result = pd.merge(left.reset_index(), right.reset_index(),</span><br><span class="line">>    ....:       on=['key'], how='inner').set_index(['key','Y'])</span><br><span class="line">>    ....: </span><br><span class="line">></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+<ul>
+<li>键为两个多重index</li>
+</ul>
+<p>这里用join就不能实现了，但是你可以用merge，方法跟上面merge的用法类似</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">> In [35]: index = pd.MultiIndex.from_tuples([('K0', 'X0'), ('K0', 'X1'),</span><br><span class="line">>    ....:                                    ('K1', 'X2')],</span><br><span class="line">>    ....:                                     names=['key', 'X'])</span><br><span class="line">>    ....: </span><br><span class="line">> </span><br><span class="line">> In [36]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2'],</span><br><span class="line">>    .....:                      'B': ['B0', 'B1', 'B2']},</span><br><span class="line">>    .....:                       index=index)</span><br><span class="line">>    .....: </span><br><span class="line">> </span><br><span class="line">> In [37]: result = pd.merge(left.reset_index(), right.reset_index(),</span><br><span class="line">>    .....:                   on=['key'], how='inner').set_index(['key','X','Y'])</span><br><span class="line">>    .....: </span><br><span class="line">></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_two_multiindex.png" alt="_images/merging_merge_two_multiindex.png"> </p>
+</blockquote>
+<h3 id="重复列的处理-1"><a href="#重复列的处理-1" class="headerlink" title="重复列的处理"></a>重复列的处理</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [38]: left = pd.DataFrame({ 'v': [1, 2, 3]},index = ['K0', 'K1', 'K2'])</span><br><span class="line"></span><br><span class="line">In [39]: right = pd.DataFrame({ 'v': [4, 5, 6]},index = ['K0', 'K0', 'K3'])</span><br><span class="line"></span><br><span class="line">In [40]: result = left.join(right, lsuffix='_l', rsuffix='_r')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_overlapped_multi_suffix.png" alt="_images/merging_merge_overlapped_multi_suffix.png"> </p>
+<h3 id="多表的连接"><a href="#多表的连接" class="headerlink" title="多表的连接"></a>多表的连接</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [41]: right2 = pd.DataFrame({'v': [7, 8, 9]}, index=['K1', 'K1', 'K2'])</span><br><span class="line"></span><br><span class="line">In [42]: result = left.join([right, right2])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multi_df.png" alt="_images/merging_join_multi_df.png"> </p>
+<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><h2 id="官方文档-2"><a href="#官方文档-2" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-2"><a href="#文档链接-2" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat" target="_blank" rel="noopener">pandas.concat</a></p>
+<h3 id="常用参数解读-2"><a href="#常用参数解读-2" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
+<li>objs:：series或者dataframe  </li>
+<li>axis： 需要合并连接的轴，0表示行，1表示列   </li>
+<li>join：inner或者outer，默认为outer </li>
+</ul>
+<h2 id="合并方法-2"><a href="#合并方法-2" class="headerlink" title="合并方法"></a>合并方法</h2><h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>纵向连接相同列名的表</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">In [1]: df1 = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],</span><br><span class="line">   ...:                     'B': ['B0', 'B1', 'B2', 'B3'],</span><br><span class="line">   ...:                     'C': ['C0', 'C1', 'C2', 'C3'],</span><br><span class="line">   ...:                     'D': ['D0', 'D1', 'D2', 'D3']},</span><br><span class="line">   ...:                     index=[0, 1, 2, 3])</span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [2]: df2 = pd.DataFrame({'A': ['A4', 'A5', 'A6', 'A7'],</span><br><span class="line">   ...:                     'B': ['B4', 'B5', 'B6', 'B7'],</span><br><span class="line">   ...:                     'C': ['C4', 'C5', 'C6', 'C7'],</span><br><span class="line">   ...:                     'D': ['D4', 'D5', 'D6', 'D7']},</span><br><span class="line">   ...:                      index=[4, 5, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [3]: df3 = pd.DataFrame({'A': ['A8', 'A9', 'A10', 'A11'],</span><br><span class="line">   ...:                     'B': ['B8', 'B9', 'B10', 'B11'],</span><br><span class="line">   ...:                     'C': ['C8', 'C9', 'C10', 'C11'],</span><br><span class="line">   ...:                     'D': ['D8', 'D9', 'D10', 'D11']},</span><br><span class="line">   ...:                     index=[8, 9, 10, 11])</span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [4]: frames = [df1, df2, df3]</span><br><span class="line"></span><br><span class="line">In [5]: result = pd.concat(frames)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_basic.png" alt="_images/merging_concat_basic.png"> </p>
+<p>你也可以设置<code>key</code>参数，来区分数据来自哪张表</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [6]: result = pd.concat(frames, keys=['x', 'y', 'z'])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_keys.png" alt="_images/merging_concat_keys.png"> </p>
+<ul>
+<li>行拼接（默认外连接）</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [8]: df4 = pd.DataFrame({'B': ['B2', 'B3', 'B6', 'B7'],</span><br><span class="line">   ...:                     'D': ['D2', 'D3', 'D6', 'D7'],</span><br><span class="line">   ...:                     'F': ['F2', 'F3', 'F6', 'F7']},</span><br><span class="line">   ...:                    index=[2, 3, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [9]: result = pd.concat([df1, df4], axis=1, sort=False)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1.png" alt="_images/merging_concat_axis1.png"> </p>
+<ul>
+<li>行拼接（设置内连接）</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [10]: result = pd.concat([df1, df4], axis=1, join='inner')</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1_inner.png" alt="_images/merging_concat_axis1_inner.png"> </p>
+<ul>
+<li>行拼接（只筛选出某一表的index）</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [11]: result = pd.concat([df1, df4], axis=1, join_axes=[df1.index])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_axis1_join_axes.png" alt="_images/merging_concat_axis1_join_axes.png"> </p>
+<ul>
+<li><p>无视index的合并</p>
+<p>当数据表的index没有实际意义时，可以使用<code>ignore_index</code>参数，来重置合并后的数据集index</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [15]: result = pd.concat([df1, df4], ignore_index=True)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_ignore_index.png" alt="_images/merging_concat_ignore_index.png"> </p>
+<ul>
+<li>合并DataFrame与Series</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [17]: s1 = pd.Series(['X0', 'X1', 'X2', 'X3'], name='X')</span><br><span class="line"></span><br><span class="line">In [18]: result = pd.concat([df1, s1], axis=1)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_mixed_ndim.png" alt="_images/merging_concat_mixed_ndim.png"> </p>
+<p>当然你也可以使用<code>ignore_index</code>参数，将列名重置</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [21]: result = pd.concat([df1, s1], axis=1, ignore_index=True)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_concat_series_ignore_index.png" alt="_images/merging_concat_series_ignore_index.png"> </p>
+<ul>
+<li>合并若干Series</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [22]: s3 = pd.Series([0, 1, 2, 3], name='foo')</span><br><span class="line"></span><br><span class="line">In [23]: s4 = pd.Series([0, 1, 2, 3])</span><br><span class="line"></span><br><span class="line">In [24]: s5 = pd.Series([0, 1, 4, 5])</span><br><span class="line"></span><br><span class="line">In [25]: pd.concat([s3, s4, s5], axis=1)</span><br><span class="line">Out[25]: </span><br><span class="line">   foo  0  1</span><br><span class="line">0    0  0  0</span><br><span class="line">1    1  1  1</span><br><span class="line">2    2  2  4</span><br><span class="line">3    3  3  5</span><br></pre></td></tr></tbody></table></figure>
+<p>你可以添加<code>keys</code>参数，来给合并后的数据集添加列名</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [26]: pd.concat([s3, s4, s5], axis=1, keys=['red','blue','yellow'])</span><br><span class="line">Out[26]: </span><br><span class="line">   red  blue  yellow</span><br><span class="line">0    0     0       0</span><br><span class="line">1    1     1       1</span><br><span class="line">2    2     2       4</span><br><span class="line">3    3     3       5</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="append"><a href="#append" class="headerlink" title="append"></a>append</h1><p>append其实就是concat的一个便捷函数，实现列的拼接</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [12]: result = df1.append(df2)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append1.png" alt="_images/merging_append1.png"> </p>
+<ul>
+<li>当两表列名不一致时</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [13]: result = df1.append(df4)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append2.png" alt="_images/merging_append2.png"> </p>
+<blockquote>
+<p>你可以添加参数<code>ignore_index = True</code>，来重置合并数据集的index</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">> In [16]: result = df1.append(df4, ignore_index=True)</span><br><span class="line">></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_ignore_index.png" alt="_images/merging_append_ignore_index.png"> </p>
+</blockquote>
+<ul>
+<li>合并多个表</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [14]: result = df1.append([df2, df3])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append3.png" alt="_images/merging_append3.png"> </p>
+<ul>
+<li>DataFrame添加Series</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [34]: s2 = pd.Series(['X0', 'X1', 'X2', 'X3'], index=['A', 'B', 'C', 'D'])</span><br><span class="line"></span><br><span class="line">In [35]: result = df1.append(s2, ignore_index=True)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_series_as_row.png" alt="_images/merging_append_series_as_row.png"> </p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="合并两表中的值"><a href="#合并两表中的值" class="headerlink" title="合并两表中的值"></a>合并两表中的值</h2><p>你以后也许会在工作中遇到这种情况，你的团队中针对同一情况统计了两份数据，但是这两份数据都有一些缺失值，那么如何让他们相互“弥补”这些缺失值呢？</p>
+<p>试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.combine_first.html#pandas.DataFrame.combine_first" target="_blank" rel="noopener">pandas.DataFrame.combine_first</a></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [43]: df1 = pd.DataFrame([[np.nan, 3., 5.], [-4.6, np.nan, np.nan],</span><br><span class="line">   .....:                    [np.nan, 7., np.nan]])</span><br><span class="line">   .....: </span><br><span class="line"></span><br><span class="line">In [44]: df2 = pd.DataFrame([[-42.6, np.nan, -8.2], [-5., 1.6, 4]],</span><br><span class="line">   .....:                    index=[1, 2])</span><br><span class="line">   .....: </span><br><span class="line">In [45]: result = df1.combine_first(df2)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_combine_first.png" alt="_images/merging_combine_first.png"> </p>
+<p>但是，此方法只是利用右表中的值替换了左表中的NaN。</p>
+<p>另外，你还可以试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.update.html#pandas.DataFrame.update" target="_blank" rel="noopener">pandas.DataFrame.update</a>，这次替换的不仅仅是NaN值，还有其他所有能在右表中找到的相同位置的值。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [46]: df1.update(df2)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_update.png" alt="_images/merging_update.png"> </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>merge主要用来根据key对数据集进行合并；</li>
+<li>join相当于简化版的merge，key默认为index，所以你如果想按照index对数据集合并时，join就是你的首选；</li>
+<li>concat其实是concatenate的简称，翻译过来是“连接”，所以，如果你想对数据集进行横向连接（axis = 1）或者纵向链接时，记得想起来用concat；</li>
+<li>append相当于是简化版的concat，用得频次比concat要多得多。</li>
+</ul>
+<p>希望能通过这篇导学，给大家扫除Pandas数据融合的疑惑，当然还是那句话，<strong>Learning by doing</strong>，光看不练可不行哦，打开你的Jupyter Notebook，试试看！</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.svg" alt="Allen Jia wechat" style="width: 200px; max-width: 100%;">
+  <div>扫一扫订阅我的公众号</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>听说你要请我喝杯咖啡？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/数据分析过程.html" rel="next" title="每周导学-第六周-数据分析过程">
+                <i class="fa fa-chevron-left"></i> 每周导学-第六周-数据分析过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/Matplotlib可视化.html" rel="prev" title="每周导学-第七周-Matplotlib可视化">
+                每周导学-第七周-Matplotlib可视化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Jia">
+            
+              <p class="site-author-name" itemprop="name">Allen Jia</p>
+              <div class="site-description motion-element" itemprop="description">数据 算法 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#merge"><span class="nav-number">1.</span> <span class="nav-text">merge</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">1.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档链接"><span class="nav-number">1.1.1.</span> <span class="nav-text">文档链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用参数解读"><span class="nav-number">1.1.2.</span> <span class="nav-text">常用参数解读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并方法"><span class="nav-number">1.2.</span> <span class="nav-text">合并方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.2.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复列的处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">重复列的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indicator参数"><span class="nav-number">1.2.3.</span> <span class="nav-text">indicator参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">2.</span> <span class="nav-text">join</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档-1"><span class="nav-number">2.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档链接-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">文档链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用参数解读-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用参数解读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">合并方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复列的处理-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">重复列的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表的连接"><span class="nav-number">2.2.3.</span> <span class="nav-text">多表的连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档-2"><span class="nav-number">3.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档链接-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">文档链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用参数解读-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">常用参数解读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并方法-2"><span class="nav-number">3.2.</span> <span class="nav-text">合并方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#append"><span class="nav-number">4.</span> <span class="nav-text">append</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#合并两表中的值"><span class="nav-number">5.1.</span> <span class="nav-text">合并两表中的值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">160k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:25</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz',
+    appKey: 'sAf2Iz8P4JMH7Ac7YKeoojii',
+    placeholder: '畅所欲言吧，朋友！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="f81ab21913c947569f92faf1282280d2" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_f81ab21913c947569f92faf1282280d2 = echarts.init(
+            document.getElementById('f81ab21913c947569f92faf1282280d2'), 'white', {renderer: 'canvas'});
+        var option_f81ab21913c947569f92faf1282280d2 = {
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "sankey",
+            "data": [
+                {
+                    "name": "Professional Hosts"
+                },
+                {
+                    "name": "Sublessors"
+                },
+                {
+                    "name": "Personal Hosts"
+                },
+                {
+                    "name": "Professional Listings"
+                },
+                {
+                    "name": "Personal Listings"
+                },
+                {
+                    "name": "Sublessor Listings"
+                },
+                {
+                    "name": "Airbnb"
+                }
+            ],
+            "links": [
+                {
+                    "source": "Professional Hosts",
+                    "target": "Airbnb",
+                    "value": 0.1447991138858121
+                },
+                {
+                    "source": "Sublessors",
+                    "target": "Airbnb",
+                    "value": 0.2855704360084584
+                },
+                {
+                    "source": "Personal Hosts",
+                    "target": "Airbnb",
+                    "value": 0.5696304501057295
+                },
+                {
+                    "source": "Airbnb",
+                    "target": "Professional Listings",
+                    "value": 0.54813332413222
+                },
+                {
+                    "source": "Airbnb",
+                    "target": "Sublessor Listings",
+                    "value": 0.25667655786350146
+                },
+                {
+                    "source": "Airbnb",
+                    "target": "Personal Listings",
+                    "value": 0.19519011800427852
+                }
+            ],
+            "nodeWidth": 20,
+            "nodeGap": 8,
+            "label": {
+                "show": true,
+                "position": "right",
+                "margin": 8,
+                "fontSize": 12
+            },
+            "lineStyle": {
+                "width": 1,
+                "opacity": 0.2,
+                "curveness": 0.5,
+                "type": "solid"
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                ""
+            ],
+            "selected": {
+                "": true
+            },
+            "show": true
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "Professional Hosts and Personal Hosts"
+        }
+    ]
+};
+        chart_f81ab21913c947569f92faf1282280d2.setOption(option_f81ab21913c947569f92faf1282280d2);
+    </script>
+</body>
+</html>
