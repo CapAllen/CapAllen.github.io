@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="7q8JgIc9CG">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="If you tell yourself you can’t, you won’t.  Hi，同学们，上一阶段我们学习了数据分析的基本流程、Pandas在数据分析各个过程中的应用以及Matplotlib&amp;Pandas的可视化基础，截至目前，你们已经算是掌握了基础的数据分析技能啦！撒花！但是在统计学理论和预测方面仍有欠缺，那么P4阶段就是解决这个欠缺哒！ 本周开始，我们就进入到了项目四(P4)阶段">
+<meta name="keywords" content="statistics,lesson guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周导学-第十周-统计学基础">
+<meta property="og:url" content="https://www.capallen.top/2018-9-13-第十周-统计学基础.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="If you tell yourself you can’t, you won’t.  Hi，同学们，上一阶段我们学习了数据分析的基本流程、Pandas在数据分析各个过程中的应用以及Matplotlib&amp;Pandas的可视化基础，截至目前，你们已经算是掌握了基础的数据分析技能啦！撒花！但是在统计学理论和预测方面仍有欠缺，那么P4阶段就是解决这个欠缺哒！ 本周开始，我们就进入到了项目四(P4)阶段">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tse4.mm.bing.net/th?id=OIP.eJMf4CCd_ylkXqyGPD0NbQHaE8&pid=Api">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/12/iAkgoj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFI3Q.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFocj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFTjs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/13/iA5UMT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFHun.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFqH0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFbBq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFOEV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/13/iAIrnS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/14/iEkWCR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/22/iuFXNT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/14/iEr4AK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/14/iEcyUx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/14/iEc656.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Local/Temp/1536915532459.png">
+<meta property="og:updated_time" content="2019-04-03T04:51:55.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每周导学-第十周-统计学基础">
+<meta name="twitter:description" content="If you tell yourself you can’t, you won’t.  Hi，同学们，上一阶段我们学习了数据分析的基本流程、Pandas在数据分析各个过程中的应用以及Matplotlib&amp;Pandas的可视化基础，截至目前，你们已经算是掌握了基础的数据分析技能啦！撒花！但是在统计学理论和预测方面仍有欠缺，那么P4阶段就是解决这个欠缺哒！ 本周开始，我们就进入到了项目四(P4)阶段">
+<meta name="twitter:image" content="https://tse4.mm.bing.net/th?id=OIP.eJMf4CCd_ylkXqyGPD0NbQHaE8&pid=Api">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.capallen.top/2018-9-13-第十周-统计学基础">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>每周导学-第十周-统计学基础 | Allen's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">体制山下的泼猴</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="https://allenresume.github.io/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">21</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018-9-13-第十周-统计学基础.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">每周导学-第十周-统计学基础
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-13 12:30:09" itemprop="dateCreated datePublished" datetime="2018-09-13T12:30:09+08:00">2018-09-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-03 12:51:55" itemprop="dateModified" datetime="2019-04-03T12:51:55+08:00">2019-04-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018-9-13-第十周-统计学基础.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018-9-13-第十周-统计学基础.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>If you tell yourself you can’t, you won’t.</p>
+</blockquote>
+<p>Hi，同学们，上一阶段我们学习了数据分析的基本流程、Pandas在数据分析各个过程中的应用以及Matplotlib&Pandas的可视化基础，截至目前，你们已经算是掌握了基础的数据分析技能啦！撒花！但是在统计学理论和预测方面仍有欠缺，那么P4阶段就是解决这个欠缺哒！</p>
+<p>本周开始，我们就进入到了<strong>项目四(P4)阶段</strong>，本阶段总共包含<strong>三周</strong>，在这三周内，我们要对<strong>统计学</strong>进行学习，掌握基础的<strong>描述统计学理论、基本的概率知识、二项分布和贝叶斯公式</strong>，并学会<strong>使用 Python 来实践</strong>；学习<strong>正态分布、抽样分布、置信区间以及假设检验的概念和计算方式</strong>；学习<strong>线性回归以及逻辑回归</strong>，在真实场景中应用，比如<strong>分析 A/B 测试</strong>结果，搭建简单的监督机器学习模型。可谓是时间紧任务重，但是也别怕，统计学的基础知识还是非常简单的，跟着课程内容一步步来，自己多做笔记多查资料，一定没问题的！</p>
+<p>那么我们的课程安排：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习重点</th>
+<th>对应课程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>第1周</strong></td>
+<td><strong>统计学基础</strong></td>
+<td><strong>描述统计学 - 抽样分布与中心极限定理</strong></td>
+</tr>
+<tr>
+<td>第2周</td>
+<td>统计学进阶</td>
+<td>置信区间 - 逻辑回归</td>
+</tr>
+<tr>
+<td>第3周</td>
+<td>完成项目</td>
+<td>项目：分析A/B测试结果</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
+<ul>
+<li>先自行查找问题答案（注意提取关键词），参考：谷歌/必应搜索、<a href="https://www.csdn.net/" target="_blank" rel="noopener">CSDN</a>、<a href="https://stackoverflow.com/" target="_blank" rel="noopener">stack<strong>overflow</strong></a></li>
+<li>额外参考资料：<ul>
+<li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">可汗学院概率论与统计课程</a></li>
+<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/%E6%9C%BA%E4%BC%9A%E7%9A%84%E6%95%B0%E5%AD%A6-%E9%99%88%E5%B8%8C%E5%AD%BA.pdf" target="_blank" rel="noopener">机会的数学-陈希孺</a></li>
+<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%8F%8A%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E5%8F%8A%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F.pdf" target="_blank" rel="noopener">条件概率及全概率公式及贝叶斯公式</a></li>
+<li><a href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/statistics%20for%20data%20science.pdf" target="_blank" rel="noopener">statistics for data science</a></li>
+</ul>
+</li>
+<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
+</ul>
+<p>饭要一口一口吃，路要一步一步走，大家不要被任务吓到，跟着导学一步一步来，肯定没问题哒！那我们开始吧！</p>
+<blockquote>
+<p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
+</blockquote>
+<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><p>学习课程中的<strong>描述统计学 - 抽样分布与中心极限定理</strong>课程，掌握统计学基础知识。</p>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习资源</th>
+<th>学习内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>周二</td>
+<td>微信群 - 每周导学</td>
+<td>预览每周导学</td>
+</tr>
+<tr>
+<td>周三、周四</td>
+<td>Udacity - Classroom</td>
+<td>描述统计学 - 抽样分布与中心极限定理</td>
+</tr>
+<tr>
+<td>周五</td>
+<td>微信/Classin - 1V1</td>
+<td>课程难点</td>
+</tr>
+<tr>
+<td>周六</td>
+<td>Classin - 优达日</td>
+<td>本周学习总结、答疑</td>
+</tr>
+<tr>
+<td>周日</td>
+<td>笔记本</td>
+<td>总结沉淀</td>
+</tr>
+<tr>
+<td>周一</td>
+<td>自主学习</td>
+<td>查漏补缺</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="本周知识清单"><a href="#本周知识清单" class="headerlink" title="本周知识清单"></a>本周知识清单</h1><h2 id="描述统计学基础"><a href="#描述统计学基础" class="headerlink" title="描述统计学基础"></a>描述统计学基础</h2><p>描述统计分析就是通过数字或可视化的方法，对数据集进行整理、分析，并对数据的分布状态、数字特征和随机变量之间的关系进行估计和描述。其简要可以分为集中趋势分析、离散程度分析以及相关分析三大部分。所以，虽然这部分是选修内容，但拜托各位一定要看，这部分理论是数据分析的基础。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型是基础，尤其是之后在进行回归预测时，针对不同的数据类型可以选择不同的算法，所以必须掌握。</p>
+<p>数据类型可以分为两大类：数值和分类；进而分为四小类：连续、离散、定序和定类。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数值:</strong></td>
+<td><strong>连续</strong></td>
+<td><strong>离散</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>身高、年龄、收入</td>
+<td>书中的页数、院子里的树、咖啡店里的狗</td>
+</tr>
+<tr>
+<td><strong>分类:</strong></td>
+<td><strong>定序</strong></td>
+<td><strong>定类</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>字母成绩等级、调查评级</td>
+<td>性别、婚姻状况、早餐食品</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="描述统计的量"><a href="#描述统计的量" class="headerlink" title="描述统计的量"></a>描述统计的量</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述方面</th>
+<th>描述方式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数值:</strong></td>
+<td><strong>集中趋势</strong></td>
+<td>均值</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>中位数</td>
+<td>偶数个时取中间两值均数</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>众数</td>
+<td>存在没有或多个的可能</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>离散程度</strong></td>
+<td>极差</td>
+<td>max - min</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>四分位差（IQR）</td>
+<td>75%数 - 25%数</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>方差</td>
+<td>每个观察值与均值之差平方和的平均数</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>标准差</td>
+<td>方差的平方根</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>数据形状</strong></td>
+<td>左偏态</td>
+<td>均值小于中位数（普遍但不绝对，下同）</td>
+</tr>
+<tr>
+<td></td>
+<td>（需做直方图）</td>
+<td>右偏态</td>
+<td>均值大于中位数</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>对称分布（通常是正态分布）</td>
+<td>均值等于中位数</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>异常值</strong></td>
+<td>一般为上下超过1.5倍四分位差</td>
+<td>处理方式见下面【异常值的处理】</td>
+</tr>
+<tr>
+<td><strong>分类:</strong></td>
+<td>分类计量个数或比例</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>偏态分布示意图</p>
+<p><img src="https://tse4.mm.bing.net/th?id=OIP.eJMf4CCd_ylkXqyGPD0NbQHaE8&pid=Api" alt></p>
+</li>
+<li><p>其他概念：</p>
+<ul>
+<li><p>五数概括描述法：利用<strong>最小值、第一四分位数（25%处）、第二四分位数（中位数）、第三四分位数（75%处）和最大值</strong>五个数对<strong>数值型</strong>变量的<strong>离散程度</strong>进行描述的方法。</p>
+</li>
+<li><p>当我们的数据遵循<strong>正态</strong>分布时，我们可以使用<code>均值</code>和<code>标准差</code>完全理解我们的数据集。        </p>
+<p>但是，如果我们的数据集是<strong>偏态</strong>分布，<code>五数概括法</code>（和关联的集中趋势度量）更适用于概括数据。</p>
+</li>
+<li><p>除直方图外，你还可以使用<strong>箱线图</strong>进行统计描述，箱线图其实是五数概括法的可视化。</p>
+</li>
+</ul>
+</li>
+<li><p>异常值的处理：</p>
+<p><strong>1.</strong> 至少注意到它们的存在并确定对概括统计的影响。        </p>
+<p><strong>2.</strong> 如果是输入错误 — 删除或改正        </p>
+<p><strong>3.</strong> 理解它们为何存在，以及对我们想要回答的关于数据的问题的影响。        </p>
+<p><strong>4.</strong> 当有异常值时，报告五数概括法的值通常能比均值和标准差等度量更好地体现异常值的存在。        </p>
+<p><strong>5.</strong> 报告时要小心。知道如何提出正确的问题。</p>
+</li>
+</ul>
+<h3 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h3><p>随机变量集用大写字母，如X表示；</p>
+<p>而集里面的某个变量用对应的小写字母，如x1，x2等表示。</p>
+<h2 id="推论统计学基础"><a href="#推论统计学基础" class="headerlink" title="推论统计学基础"></a>推论统计学基础</h2><p>推论统计就是根据现有收集的部分数据对更大的总体数据进行推论的方法。他的几个关键要素为：</p>
+<ol>
+<li><strong>总体</strong> —— 我们想要研究的整个群体。        </li>
+<li><strong>参数</strong> —— 描述总体的数值摘要        </li>
+<li><strong>样本</strong> —— 总体的子集        </li>
+<li><strong>统计量</strong> —— 描述样本的数值摘要        </li>
+</ol>
+<h2 id="辛普森悖论"><a href="#辛普森悖论" class="headerlink" title="辛普森悖论"></a>辛普森悖论</h2><p>本节以录取案例分析为例，展示了辛普森悖论。这个例子不必深究，只是为了提醒大家要<strong>以多种方式去观察数据</strong>，避免出现案例分析中的反例。</p>
+<p>辛普森悖论是在某个条件下的两组数据，分别讨论时都会满足某种性质，可是一旦合并考虑，却可能导致相反的结论。那么如何避免辛普森悖论呢？那就要从产生它的源头——混杂因素上考虑，混杂因素就是一个与核心研究无关的变量，它会随着变量的改变而改变，就比如说在课程中的例子中，不同专业的总人数就有很大差异，它会随着专业的改变而改变。所以在之后处理类似问题时就要进行多变量分析，这样才能帮助我们认清事件的本质。</p>
+<h2 id="概率"><a href="#概率" class="headerlink" title="概率"></a>概率</h2><h3 id="概率与统计的关系"><a href="#概率与统计的关系" class="headerlink" title="概率与统计的关系"></a>概率与统计的关系</h3><p>从课程中给的这幅关系图就能很明显的看出来，概率是由模型（MODEL）去预测数据（DATA），而统计是由数据去建立模型（进而再去做预测，也就是‘’根据数据去预测数据’‘）。</p>
+<p><img src="https://s1.ax1x.com/2018/09/12/iAkgoj.png" alt="iAkgoj.png"></p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p><strong>概率</strong>，是一种几率、可能性，描述是事件发生的可能性度量量。<strong>随机事件</strong>，指一个被赋予机率的事件<br>集合，针对的是事件在样本空间的一个子集。事件A发生的概率，用符号P(A)表示 。</p>
+<ul>
+<li><p>任何事件的发生概率在 0 和 1 之间，其中包括 0 和 1。（0表示不可能发生，1表示必然发生）</p>
+</li>
+<li><p>独立事件：事件每次发生的结果与前后的发生结果无关。比如说，第一次掷骰子的结果与第二次的结果</p>
+</li>
+<li><p>互斥事件：不可能在同一次实验中出现的俩事件。比如说，掷骰子实验中的1和6</p>
+</li>
+<li><p>对立事件：是一种特殊的互斥事件，即试验中只有俩种可能A和B，那么事情的发生非A即B。可以表示为</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFI3Q.png" alt="iuFI3Q.png"></p>
+<p>如掷硬币的正面和反面。</p>
+</li>
+<li><p>加法原理：若两种方法均能完成此事，则此事发生的概率为P(A) + P(B)</p>
+</li>
+<li>乘法原理：若两个步骤分别不能完成此事，则此事发生的概率为P(A)·P(B)</li>
+</ul>
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>也叫伯努利分布，是指n个独立的事件A发生的概率分布。设每次试验中事件A发生的概率为p，则进行n次试验，A发生k次的概率为：</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFocj.png" alt="iuFocj.png"></p>
+<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><p>在现实中，我们处理的事情并不像骰子和硬币那样简单，有些时间的结果往往依赖于其他的事情，比如说晨练的概率跟这个人是不是夜猫子有关等等。那么，这就引出了条件概率，即在事件B发生的条件下，事件A发生的概率为：</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFTjs.png" alt="iuFTjs.png"></p>
+<p>其中，P(AB)表示AB同时发生的概率。</p>
+<p>在如下的文氏图中，AB同时发生的概率可以表示为两个圆的交集，那么B已经发生的条件下A发生的概率就是这个交集（橙色部分）占整个B圆的比例。</p>
+<p><img src="https://s1.ax1x.com/2018/09/13/iA5UMT.png" alt="iA5UMT.png"></p>
+<blockquote>
+<p>之前讲过独立事件，那么用公式的方式可以表达为：<code>P(A) = P(A|B)</code>。根据条件概率公式可以推导出，当<code>P(AB) = P(A)P(B)</code>时，则可说明A事件与B事件相互独立。</p>
+</blockquote>
+<p><strong>全概率公式</strong></p>
+<p>也就是A发生的概率为在互斥的多个事件（B1，B2…）已发生的条件下的条件概率之和。公式可以表示为：</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFHun.png" alt="iuFHun.png"></p>
+<h3 id="贝叶斯法则"><a href="#贝叶斯法则" class="headerlink" title="贝叶斯法则"></a>贝叶斯法则</h3><p>贝叶斯法则是概率推理的黄金法则，是利用先验概率计算后验概率的方法。</p>
+<blockquote>
+<p>课程中的癌症例子十分贴切，讲解的也十分详细，所以大家<strong>看到前20个小节</strong>，能理解贝叶斯法则就可以了，后面的是在无人驾驶中的应用例子，可以跳过不看。</p>
+</blockquote>
+<p>在课程示例中：</p>
+<p><a href="https://imgchr.com/i/iuFqH0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/09/22/iuFqH0.md.png" alt="iuFqH0.md.png"></a></p>
+<p>由条件概率能计算出患癌与检查结果为阳性同时发生的概率<code>P(C,Pos)</code>（红色区域占整个矩形的比例）和没患癌与检查结果同时发生的概率<code>P(~C,Pos)</code>（绿色区域占整个矩形的比例）。</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFbBq.png" alt="iuFbBq.png"></p>
+<p>二者相加，即为检查结果为阳性的概率（全概率公式）P(Pos)。</p>
+<p>则，检查结果为阳性的条件下患癌概率为：</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFOEV.png" alt="iuFOEV.png"></p>
+<p>这样我们就得到了更接近真实的检查结果为阳性的患癌概率。</p>
+<p><img src="https://s1.ax1x.com/2018/09/13/iAIrnS.png" alt="iAIrnS.png"></p>
+<p>在这个例子中：</p>
+<p>癌症发生的概率<code>P(C)</code>为先验概率，即在我们进行检查之前就对患癌概率的一个判断；</p>
+<p>阳性结果下为癌症的概率<code>P(C|Pos)</code>为后验概率（阳性下非癌症、阴性癌症、阴性非癌症都是），这些是在检查发生之后，我们对患癌概率这件事的重新评估；</p>
+<p><strong>这就是贝叶斯法则的含义。我们先预估一个”先验概率”，然后加入实验结果，由此得到更接近事实的”后验概率”。</strong></p>
+<blockquote>
+<p>如果感觉理解困难，可以看一下白话版的贝叶斯讲解：<a href="https://www.zhihu.com/question/19725590" target="_blank" rel="noopener">怎样用非数学语言讲解贝叶斯定理（Bayes’s theorem）</a></p>
+</blockquote>
+<h2 id="Python概率练习"><a href="#Python概率练习" class="headerlink" title="Python概率练习"></a>Python概率练习</h2><p>前面我们学习了概率的基本知识，有了理论基础，本节就是利用Python落地的教学。应用的第三方包为NumPy和Pandas。</p>
+<h3 id="均匀随机取整"><a href="#均匀随机取整" class="headerlink" title="均匀随机取整"></a>均匀随机取整</h3><p>使用的函数为<code>numpy.random.randint(low, high=None, size=None, dtype='l')</code>：</p>
+<ul>
+<li>low：当没有high参数输入时，作为取值范围的最大值+1；当有high参数输入时，则作为取值范围的最小值；</li>
+<li>high：取值范围的最大值+1，默认为无输入；</li>
+<li>size：输入数字则表示取值的数量，输入元组则表示取值矩阵的行和列；</li>
+<li>dtype：数据类型，默认为np.int；</li>
+<li>函数的输出为int或者是由int数据类型组成的ndarray。</li>
+</ul>
+<p>函数的具体用法如下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 未定义high参数，取值范围是是0到1（即low - 1）</span></span><br><span class="line"><span class="meta">>>> </span>np.random.randint(<span class="number">2</span>, size=<span class="number">10</span>)</span><br><span class="line">array([<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>])</span><br><span class="line"><span class="comment"># 定义了high参数，取值范围是2（即low）到4（即high - 1）</span></span><br><span class="line"><span class="meta">>>> </span>np.random.randint(<span class="number">2</span>,<span class="number">5</span>,size = <span class="number">10</span>)</span><br><span class="line">array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>])</span><br><span class="line"><span class="comment"># 定义一个2x4的矩阵，取值范围是0到4</span></span><br><span class="line"><span class="meta">>>> </span>np.random.randint(<span class="number">5</span>, size=(<span class="number">2</span>, <span class="number">4</span>))</span><br><span class="line">array([[<span class="number">4</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">0</span>]])</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="不均匀随机取数"><a href="#不均匀随机取数" class="headerlink" title="不均匀随机取数"></a>不均匀随机取数</h3><p>使用的函数为<strong>numpy.random.choice</strong>(<em>a</em>, <em>size=None</em>, <em>replace=True</em>, <em>p=None</em>):</p>
+<ul>
+<li>a：输入列表时，取数就从该列表中取；若输入为数字时，取值范围为0到该数字 - 1；</li>
+<li>size：输入数字则表示取值的数量，输入元组则表示取值矩阵的行和列；</li>
+<li>replace：布尔值，默认为True，若设置为False表示取数不会重复；（以从袋子中取球为例，True是取完放回再取，而False则是取了不放回，继续取）</li>
+<li>p：表示概率，与a的输入值一一对应。</li>
+<li>函数的输出为int或者是由int数据类型组成的ndarray。</li>
+</ul>
+<p>函数的具体用法如下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入数字时取数</span></span><br><span class="line"><span class="meta">>>> </span>np.random.choice(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">array([<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="comment">#设置replace参数</span></span><br><span class="line"><span class="meta">>>> </span>np.random.choice(<span class="number">5</span>, <span class="number">3</span>, replace=<span class="literal">False</span>)</span><br><span class="line">array([<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>])</span><br><span class="line"><span class="comment">#设置概率</span></span><br><span class="line"><span class="meta">>>> </span>np.random.choice(<span class="number">5</span>, <span class="number">3</span>, replace=<span class="literal">False</span>, p=[<span class="number">0.1</span>, <span class="number">0</span>, <span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">0</span>])</span><br><span class="line">array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>])</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="二项分布-1"><a href="#二项分布-1" class="headerlink" title="二项分布"></a>二项分布</h3><p>使用的函数为<strong>numpy.random.binomial</strong>(<em>n</em>, <em>p</em>, <em>size=None</em>)，参数也很好解释。</p>
+<p>参数中的n即为每次试验中取值的次数，p则为试验中的某一种事件成功的概率，size则是试验的次数。</p>
+<h3 id="条件概率与贝叶斯规则测试"><a href="#条件概率与贝叶斯规则测试" class="headerlink" title="条件概率与贝叶斯规则测试"></a>条件概率与贝叶斯规则测试</h3><p>这里主要是一些Pandas函数的应用，经过上一阶段的学习应该已经很熟练了。</p>
+<p>主要涉及的函数是分组和统计计数类的函数，比如说groupby，query，count等，如果忘记的话，自己查官方文档或者之前的笔记，这里不再赘述。</p>
+<h2 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h2><p>课程中以抛硬币模型引入了二项分布进而讲解了正态分布模型，那么到底什么是正态分布或者满足什么条件就可以算是正态分布了呢？</p>
+<blockquote>
+<p>在相同条件下，我们随机地对某一测试对象（抛硬币20次，其中正面的次数）进行多次测试（抛很多次20次）时，测得的数值在一定范围内波动（从0到20），其中接近平均值的数据（10左右）占多数，远离平均值的占少数。具有这种分布规律的随机变量的分布就称作正态分布。</p>
+</blockquote>
+<p>大概长这样儿：</p>
+<p><img src="https://s1.ax1x.com/2018/09/14/iEkWCR.png" alt="iEkWCR.png"></p>
+<p>它的概率密度函数可以表示为：</p>
+<p><img src="https://s1.ax1x.com/2018/09/22/iuFXNT.png" alt="iuFXNT.png"></p>
+<p>这里为什么要引入正态分布呢？</p>
+<ul>
+<li>假设检验是基于正态分布的</li>
+<li>许多社会和经济现象对应的随机变量分布，都可以用正态分布来描述</li>
+</ul>
+<h2 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h2><p>在此之前，先回顾下推论统计的几个概念：</p>
+<ol>
+<li><strong>总体</strong> —— 我们想要研究的整个群体。        </li>
+<li><strong>参数</strong> —— 描述总体的数值摘要        </li>
+<li><strong>样本</strong> —— 总体的子集        </li>
+<li><strong>统计量</strong> —— 描述样本的数值摘要        </li>
+</ol>
+<p>课程中举得例子是统计优达学生中喝咖啡的人所占比例，我们看下图：</p>
+<p><img src="https://s1.ax1x.com/2018/09/14/iEr4AK.png" alt="iEr4AK.png"></p>
+<p>图中所有的杯子（学生）就叫做<strong>总体</strong>；此外可以看到有四个深浅不一的蓝色底框，每个底框链接了5个学生，这5个学生就是<strong>样本</strong>，每组样本我们还计算了喝咖啡的比例，这就是<strong>统计量</strong>。</p>
+<blockquote>
+<p>一般的，样本数≥30即可称为大样本。 大样本条件下，抽样平均数的分布接近正态分布。</p>
+<p>但必要抽样数目的确定是有相关公式计算的，这里就不给出了，感兴趣的话可以去搜搜看。</p>
+</blockquote>
+<p>现在我们继续按照课程中的例子进行取样，样本容量为5，不断得取10000次，计算均值的分布情况如下：</p>
+<p><img src="https://s1.ax1x.com/2018/09/14/iEcyUx.png" alt="iEcyUx.png"></p>
+<p>（完全看不出这是个什么分布）</p>
+<p>将样本容量改为50，仍然取10000次，计算均值的分布情况如下：</p>
+<p><img src="https://s1.ax1x.com/2018/09/14/iEc656.png" alt="iEc656.png"></p>
+<p>已经可以看出正态分布的样子了，那如果继续增加样本容量，改为5000，同样取10000次，计算均值的分布情况如下：</p>
+<p><img src="C:\Users\Administrator\AppData\Local\Temp\1536915532459.png" alt="1536915532459"></p>
+<p>想比上一幅图，这幅可视化更接近正态分布，均值处于相同的位置，但方差（离散程度）明显小了很多。</p>
+<p>上面的这个过程就是<strong>中心极限定理</strong>的含义，随着样本容量的逐渐增大，平均数的抽样分布越接近正态分布（但也不一定必须要很大很大才能近似于正态分布），同样这也适用于求和，比例等，但<strong>不适用于所有的统计量</strong>，比如说最大值，方差等等。</p>
+<p><strong>中心极限定理的妙处就在于，我们可以从任意的乱七八糟的分布取任意数量的样本值（比如上面例子中的5,50），然后计算样本的均值（或者和），不断得取值求均，最终做他们频率的可视化，你会发现这是一个非常完美的正态分布。</strong></p>
+<p>现实生活中有很多的随机过程，有的分布就是乱七八糟，但是你可以通过中心极限定理，得到他们均值或者和的正态分布，这也是为什么正态分布在统计中如此常用的原因之一。</p>
+<blockquote>
+<p>如果感觉理解起来还是有点儿困难的话，你可以戳<a href="http://onlinestatbook.com/stat_sim/sampling_dist/" target="_blank" rel="noopener">在线抽样分布模拟器</a>，自己动手试一试。</p>
+</blockquote>
+<h2 id="大数定理"><a href="#大数定理" class="headerlink" title="大数定理"></a>大数定理</h2><p>大数定理表达的是<strong>随着样本容量增加，样本平均数越来越接近总体平均数</strong>，字面上的意思很好理解，但这里有一点要注意，我们举例来说明一下：</p>
+<p>比如说，我现在有100枚硬币，放在一个盒子里，随便摇一下盒子，打开，对正面朝上的硬币进行计数（当然，我们知道期望为100 x 0.5 = 50）：</p>
+<p>第一次实验的结果是55；第二次是60；第三次是70，三次实验的均值为（(55+60+70)/3 ≈62），那你觉得，下次实验的结果是更有可能小于50还是大于50呢？</p>
+<p>你有可能这样想，根据大数定理，随着我们试验次数的不断增加，均值肯定是不断趋向于50的，前三次的实验中每次都超过50，那么下次的实验会有更大的可能小于50，来纠正前三次实验的偏差。</p>
+<p>如果你真的这样想，你就陷入了<strong>赌徒悖论</strong>。大数定理不关心前面发生的有限次实验，因为后面还有无限次的实验，而这无限次实验的期望值是50。这个例子可能比较随意，但这就是大数定理的含义。</p>
+<h2 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h2><p>自助法，bootstrap，也就是重复抽样。还记得上一节导学中讲到的numpy.random.choice函数吗？里面有一个<em>replace</em>参数，默认为True表示重复取样，也就是自助法；若设置为False，则表示不重复取样。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本期导学主要对描述统计学和概率的基础知识进行了总结，这部分偏理论一些，如果觉得理解起来有点吃力，可以通过重复看视频，边看边用笔去算或者去网上搜集一些资料或者找一些教科书去查阅，要求是：不一定要完全掌握其原理，但求理解和会用。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.svg" alt="Allen Jia wechat" style="width: 200px; max-width: 100%;">
+  <div>扫一扫订阅我的公众号</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>听说你要请我喝杯咖啡？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/statistics/" rel="tag"># statistics</a>
+          
+            <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-9-9-第九周-P3阶段总结.html" rel="next" title="每周导学-第九周-P3阶段总结">
+                <i class="fa fa-chevron-left"></i> 每周导学-第九周-P3阶段总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-9-24-第十一周-统计学进阶.html" rel="prev" title="每周导学-第十一周-统计学进阶">
+                每周导学-第十一周-统计学进阶 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Jia">
+            
+              <p class="site-author-name" itemprop="name">Allen Jia</p>
+              <div class="site-description motion-element" itemprop="description">数据 算法 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本周目标"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习计划"><span class="nav-number">2.</span> <span class="nav-text">学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本周知识清单"><span class="nav-number">3.</span> <span class="nav-text">本周知识清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述统计学基础"><span class="nav-number">3.1.</span> <span class="nav-text">描述统计学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述统计的量"><span class="nav-number">3.1.2.</span> <span class="nav-text">描述统计的量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机变量"><span class="nav-number">3.1.3.</span> <span class="nav-text">随机变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推论统计学基础"><span class="nav-number">3.2.</span> <span class="nav-text">推论统计学基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辛普森悖论"><span class="nav-number">3.3.</span> <span class="nav-text">辛普森悖论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率"><span class="nav-number">3.4.</span> <span class="nav-text">概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率与统计的关系"><span class="nav-number">3.4.1.</span> <span class="nav-text">概率与统计的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">3.4.2.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项分布"><span class="nav-number">3.4.3.</span> <span class="nav-text">二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率"><span class="nav-number">3.4.4.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯法则"><span class="nav-number">3.4.5.</span> <span class="nav-text">贝叶斯法则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python概率练习"><span class="nav-number">3.5.</span> <span class="nav-text">Python概率练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#均匀随机取整"><span class="nav-number">3.5.1.</span> <span class="nav-text">均匀随机取整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不均匀随机取数"><span class="nav-number">3.5.2.</span> <span class="nav-text">不均匀随机取数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项分布-1"><span class="nav-number">3.5.3.</span> <span class="nav-text">二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率与贝叶斯规则测试"><span class="nav-number">3.5.4.</span> <span class="nav-text">条件概率与贝叶斯规则测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正态分布"><span class="nav-number">3.6.</span> <span class="nav-text">正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中心极限定理"><span class="nav-number">3.7.</span> <span class="nav-text">中心极限定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大数定理"><span class="nav-number">3.8.</span> <span class="nav-text">大数定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自助法"><span class="nav-number">3.9.</span> <span class="nav-text">自助法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">162k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:27</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz',
+    appKey: 'sAf2Iz8P4JMH7Ac7YKeoojii',
+    placeholder: '畅所欲言吧，朋友！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
