@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_series_as_row.png">
 <meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_combine_first.png">
 <meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/merging_update.png">
-<meta property="og:updated_time" content="2019-04-03T04:51:55.472Z">
+<meta property="og:updated_time" content="2019-06-06T02:32:23.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每周导学-第六周导学-Pandas数据融合">
 <meta name="twitter:description" content="It’s not about where your starting point is, but your end goal and the journey that will get you there.  在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下Pandas如何做数据合并之后，发现除了merge之外，还有con">
@@ -281,7 +281,7 @@
       
     
 
-    <a href="https://allenresume.github.io/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="https://allenresume.github.io/" rel="external nofollow noopener noreferrer" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -460,7 +460,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 12:51:55" itemprop="dateModified" datetime="2019-04-03T12:51:55+08:00">2019-04-03</time>
+                <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
               
             
           </span>
@@ -564,7 +564,7 @@
 <p>It’s not about where your starting point is, but your end goal and the journey that will get you there.</p>
 </blockquote>
 <p>在P2阶段的末尾，课程中涉及到了一个新的pandas函数——merge，有些同学对merge的用法存在疑惑，尤其是查了一下<strong>Pandas如何做数据合并</strong>之后，发现除了merge之外，还有concat、还有join，还有append，更是一脸懵了，那这期导学呢，我们就来一起梳理一下pandas数据合并的知识点，同学们不要慌，除了代码之外，还嵌入了DataFrame的图片方便大家理解。当然，看完之后还是要自己多练习才行！加油！</p>
-<h1 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html" target="_blank" rel="noopener">pandas.DataFrame.merge</a></p>
+<h1 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html" rel="external nofollow noopener noreferrer" target="_blank">pandas.DataFrame.merge</a></p>
 <h3 id="常用参数解读"><a href="#常用参数解读" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
 <li><p>right：合并的另一个DataFrame</p>
 </li>
@@ -638,7 +638,7 @@
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [14]: df1 = pd.DataFrame({'col1': [0, 1], 'col_left':['a', 'b']})</span><br><span class="line"></span><br><span class="line">In [15]: df2 = pd.DataFrame({'col1': [1, 2, 2],'col_right':[2, 2, 2]})</span><br><span class="line"></span><br><span class="line">In [16]: pd.merge(df1, df2, on='col1', how='outer', indicator=True)</span><br><span class="line">Out[16]: </span><br><span class="line">   col1 col_left  col_right      _merge</span><br><span class="line">0     0        a        NaN   left_only</span><br><span class="line">1     1        b        2.0        both</span><br><span class="line">2     2      NaN        2.0  right_only</span><br><span class="line">3     2      NaN        2.0  right_only</span><br></pre></td></tr></tbody></table></figure>
 <p>或者也可以输入一个字符串作为列名：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [17]: pd.merge(df1, df2, on='col1', how='outer', indicator='indicator_column')</span><br><span class="line">Out[17]: </span><br><span class="line">   col1 col_left  col_right indicator_column</span><br><span class="line">0     0        a        NaN        left_only</span><br><span class="line">1     1        b        2.0             both</span><br><span class="line">2     2      NaN        2.0       right_only</span><br><span class="line">3     2      NaN        2.0       right_only</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><h2 id="官方文档-1"><a href="#官方文档-1" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-1"><a href="#文档链接-1" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.join.html" target="_blank" rel="noopener">pandas.DataFrame.join</a></p>
+<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><h2 id="官方文档-1"><a href="#官方文档-1" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-1"><a href="#文档链接-1" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.join.html" rel="external nofollow noopener noreferrer" target="_blank">pandas.DataFrame.join</a></p>
 <h3 id="常用参数解读-1"><a href="#常用参数解读-1" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
 <li><strong>other</strong> : DataFrame , 或者是有列名的Series</li>
 <li><strong>on</strong> : 也就是merge的key，可以输入key或者keys，默认为<strong>index</strong></li>
@@ -695,7 +695,7 @@
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_overlapped_multi_suffix.png" alt="_images/merging_merge_overlapped_multi_suffix.png"> </p>
 <h3 id="多表的连接"><a href="#多表的连接" class="headerlink" title="多表的连接"></a>多表的连接</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [41]: right2 = pd.DataFrame({'v': [7, 8, 9]}, index=['K1', 'K1', 'K2'])</span><br><span class="line"></span><br><span class="line">In [42]: result = left.join([right, right2])</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_join_multi_df.png" alt="_images/merging_join_multi_df.png"> </p>
-<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><h2 id="官方文档-2"><a href="#官方文档-2" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-2"><a href="#文档链接-2" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat" target="_blank" rel="noopener">pandas.concat</a></p>
+<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><h2 id="官方文档-2"><a href="#官方文档-2" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="文档链接-2"><a href="#文档链接-2" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat" rel="external nofollow noopener noreferrer" target="_blank">pandas.concat</a></p>
 <h3 id="常用参数解读-2"><a href="#常用参数解读-2" class="headerlink" title="常用参数解读"></a>常用参数解读</h3><ul>
 <li>objs:：series或者dataframe  </li>
 <li>axis： 需要合并连接的轴，0表示行，1表示列   </li>
@@ -772,11 +772,11 @@
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [34]: s2 = pd.Series(['X0', 'X1', 'X2', 'X3'], index=['A', 'B', 'C', 'D'])</span><br><span class="line"></span><br><span class="line">In [35]: result = df1.append(s2, ignore_index=True)</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_append_series_as_row.png" alt="_images/merging_append_series_as_row.png"> </p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="合并两表中的值"><a href="#合并两表中的值" class="headerlink" title="合并两表中的值"></a>合并两表中的值</h2><p>你以后也许会在工作中遇到这种情况，你的团队中针对同一情况统计了两份数据，但是这两份数据都有一些缺失值，那么如何让他们相互“弥补”这些缺失值呢？</p>
-<p>试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.combine_first.html#pandas.DataFrame.combine_first" target="_blank" rel="noopener">pandas.DataFrame.combine_first</a></p>
+<p>试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.combine_first.html#pandas.DataFrame.combine_first" rel="external nofollow noopener noreferrer" target="_blank">pandas.DataFrame.combine_first</a></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [43]: df1 = pd.DataFrame([[np.nan, 3., 5.], [-4.6, np.nan, np.nan],</span><br><span class="line">   .....:                    [np.nan, 7., np.nan]])</span><br><span class="line">   .....: </span><br><span class="line"></span><br><span class="line">In [44]: df2 = pd.DataFrame([[-42.6, np.nan, -8.2], [-5., 1.6, 4]],</span><br><span class="line">   .....:                    index=[1, 2])</span><br><span class="line">   .....: </span><br><span class="line">In [45]: result = df1.combine_first(df2)</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_combine_first.png" alt="_images/merging_combine_first.png"> </p>
 <p>但是，此方法只是利用右表中的值替换了左表中的NaN。</p>
-<p>另外，你还可以试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.update.html#pandas.DataFrame.update" target="_blank" rel="noopener">pandas.DataFrame.update</a>，这次替换的不仅仅是NaN值，还有其他所有能在右表中找到的相同位置的值。</p>
+<p>另外，你还可以试试<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.update.html#pandas.DataFrame.update" rel="external nofollow noopener noreferrer" target="_blank">pandas.DataFrame.update</a>，这次替换的不仅仅是NaN值，还有其他所有能在右表中找到的相同位置的值。</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [46]: df1.update(df2)</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/merging_update.png" alt="_images/merging_update.png"> </p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
@@ -1081,7 +1081,7 @@
                   
                     
                   
-                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -1092,7 +1092,7 @@
                   
                     
                   
-                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
             </div>

@@ -100,7 +100,7 @@
 
 
   <meta name="description" content="概述最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是不平衡数据，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些处理不平衡数据的技巧。">
-<meta name="keywords" content="Python,Machine Learning,Data Preprocessing">
+<meta name="keywords" content="机器学习,数据预处理,不平衡数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习中不平衡数据的预处理">
 <meta property="og:url" content="https://www.capallen.top/2019/Deal-with-imbalanced-data-in-ML.html">
@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/19/EpOrss.png">
 <meta property="og:image" content="https://scikit-learn.org/stable/_static/ml_map.png">
 <meta property="og:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
-<meta property="og:updated_time" content="2019-04-19T07:15:25.206Z">
+<meta property="og:updated_time" content="2019-06-06T03:27:07.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中不平衡数据的预处理">
 <meta name="twitter:description" content="概述最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是不平衡数据，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些处理不平衡数据的技巧。">
@@ -256,7 +256,7 @@
       
     
 
-    <a href="https://allenresume.github.io/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="https://allenresume.github.io/" rel="external nofollow noopener noreferrer" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -418,12 +418,24 @@
                 
               
 
-              <time title="创建时间：2019-04-19 09:33:08 / 修改时间：15:15:25" itemprop="dateCreated datePublished" datetime="2019-04-19T09:33:08+08:00">2019-04-19</time>
+              <time title="创建时间：2019-04-19 09:33:08" itemprop="dateCreated datePublished" datetime="2019-04-19T09:33:08+08:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-06 11:27:07" itemprop="dateModified" datetime="2019-06-06T11:27:07+08:00">2019-06-06</time>
               
             
           </span>
@@ -548,9 +560,9 @@
 <p>更多更详细研究范畴的分类可以查看这篇论文<a href="#jump">A Survey of Predictive Modelling under Imbalanced Distributions</a></p>
 </blockquote>
 <p>那接下来，我们分别看一下各个方法在python中的具体实施。</p>
-<h2 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h2><p>采样就是通过减少多数类数量的<strong>下采样（Undersampling）</strong>或增加少数类数量的<strong>上采样（Oversampling）</strong>方式，实现各类别平衡。针对两种采样方式，依赖不同的方法，比如说 随机、模型融合等，就会生成很多解决方案，可以看这篇综述<a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="noopener">Learning from Imbalanced Data</a>的总结。</p>
+<h2 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h2><p>采样就是通过减少多数类数量的<strong>下采样（Undersampling）</strong>或增加少数类数量的<strong>上采样（Oversampling）</strong>方式，实现各类别平衡。针对两种采样方式，依赖不同的方法，比如说 随机、模型融合等，就会生成很多解决方案，可以看这篇综述<a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" rel="external nofollow noopener noreferrer" target="_blank">Learning from Imbalanced Data</a>的总结。</p>
 <p><img src="https://www.svds.com/wp-content/uploads/2016/08/ImbalancedClasses_fig5.jpg" alt></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>有一个叫做<code>imbalanced-learn</code>的库，是专门针对不平衡数据设计的，其中包含很多上采样和下采样的函数，<a href="https://imbalanced-learn.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">官方文档</a>在这里。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>有一个叫做<code>imbalanced-learn</code>的库，是专门针对不平衡数据设计的，其中包含很多上采样和下采样的函数，<a href="https://imbalanced-learn.readthedocs.io/en/stable/index.html" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a>在这里。</p>
 <p>示例：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> RandomUnderSampler </span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> RandomOverSampler</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成不平衡数据</span></span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line"> weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">3</span>, n_redundant=<span class="number">1</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">n_features=<span class="number">20</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">1000</span>, random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br></pre></td></tr></tbody></table></figure>
 <p><code>Original dataset shape Counter({1: 900, 0: 100})</code></p>
@@ -578,10 +590,10 @@
 <p><img src="https://s2.ax1x.com/2019/04/19/EpOrss.png" alt="EpOrss.png"></p>
 <h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#逻辑回归平衡权重</span></span><br><span class="line">clf_A = LogisticRegression(random_state=<span class="number">0</span>, class_weight=<span class="string">'balanced'</span>)</span><br><span class="line"><span class="comment">#随机森林平衡权重</span></span><br><span class="line">clf_B = RandomForestClassifier(random_state=<span class="number">0</span>, n_jobs=<span class="number">-1</span>, class_weight=<span class="string">"balanced"</span>)</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="一分类"><a href="#一分类" class="headerlink" title="一分类"></a>一分类</h2><p>这种方法比较适合极不平衡数据，或数据量比较小的数据集。</p>
-<p>主要方法为<code>OneClassSVM</code>，官方文档<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html" target="_blank" rel="noopener">在这里</a></p>
+<p>主要方法为<code>OneClassSVM</code>，官方文档<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html" rel="external nofollow noopener noreferrer" target="_blank">在这里</a></p>
 <h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line">clf = svm.OneClassSVM(nu=<span class="number">0.2</span>, kernel=<span class="string">"rbf"</span>, gamma=<span class="number">0.1</span>)</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<p>异常检测我没怎么用过，所以就不赘述了，感兴趣可以戳这个链接<a href="https://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" target="_blank" rel="noopener">Novelty and Outlier Detection</a></p>
+<p>异常检测我没怎么用过，所以就不赘述了，感兴趣可以戳这个链接<a href="https://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" rel="external nofollow noopener noreferrer" target="_blank">Novelty and Outlier Detection</a></p>
 </blockquote>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以依据数据量的大小和是否平衡将数据集分为四类，即平衡的大数据集，不平衡的大数据集，平衡的小数据集，不平衡的小数据集。最简单的就是平衡的大数据集，能达到非常高的准确率，最难的就是不平衡的小数据集，除了在平衡上下功夫之外，还需要很多诸如收集数据、特征工程之类的工作，但这并不是本篇文章的重点。</p>
 <p>下面根据个人经验谈下针对如上几种数据集，如何选择文中涉及的这些方法：</p>
@@ -593,10 +605,10 @@
 <p>具体数据量的大小可以参考下图：</p>
 <p><img src="https://scikit-learn.org/stable/_static/ml_map.png" alt></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://www.svds.com/learning-imbalanced-classes/" target="_blank" rel="noopener">Learning from Imbalanced Classes</a></li>
-<li><span id="jump"><a href="https://arxiv.org/pdf/1505.01658.pdf" target="_blank" rel="noopener">A Survey of Predictive Modelling under Imbalanced Distributions</a></span></li>
+<li><a href="https://www.svds.com/learning-imbalanced-classes/" rel="external nofollow noopener noreferrer" target="_blank">Learning from Imbalanced Classes</a></li>
+<li><span id="jump"><a href="https://arxiv.org/pdf/1505.01658.pdf" rel="external nofollow noopener noreferrer" target="_blank">A Survey of Predictive Modelling under Imbalanced Distributions</a></span></li>
 </ol>
-<p><a rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a><br>本作品采用<a rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。</p>
+<p><a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a><br>本作品采用<a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -894,7 +906,7 @@
                   
                     
                   
-                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/CapAllen" title="GitHub &rarr; https://github.com/CapAllen" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -905,7 +917,7 @@
                   
                     
                   
-                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:allenjsj@163.com" title="E-Mail &rarr; mailto:allenjsj@163.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
             </div>
