@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/SQL-basic.html</loc>
+    <loc>https://www.capallen.top/2018/Pandas%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88.html</loc>
     
     <lastmod>2019-06-06T02:32:23.367Z</lastmod>
     
@@ -65,35 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E5%9B%9B.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.capallen.top/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.capallen.top/2018/Python%20code%20for%20mini%20batch%20gradient%20descent.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.capallen.top/2018/%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AF%BC%E5%AD%A6.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.capallen.top/2018/TMDB%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html</loc>
+    <loc>https://www.capallen.top/2018/SQL-basic.html</loc>
     
     <lastmod>2019-06-06T02:32:23.367Z</lastmod>
     
@@ -107,21 +79,14 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html</loc>
+    <loc>https://www.capallen.top/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html</loc>
     
     <lastmod>2019-06-06T02:32:23.367Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/Numpy%E5%92%8CPandas%E5%9F%BA%E7%A1%80.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.capallen.top/2018/Pandas%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88.html</loc>
+    <loc>https://www.capallen.top/2018/%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AF%BC%E5%AD%A6.html</loc>
     
     <lastmod>2019-06-06T02:32:23.367Z</lastmod>
     
@@ -135,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/python%E5%85%A5%E9%97%A8.html</loc>
-    
-    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.capallen.top/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html</loc>
     
     <lastmod>2019-06-06T02:32:23.367Z</lastmod>
@@ -149,9 +107,44 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html</loc>
+    <loc>https://www.capallen.top/2018/Numpy%E5%92%8CPandas%E5%9F%BA%E7%A1%80.html</loc>
     
-    <lastmod>2019-06-06T02:32:23.351Z</lastmod>
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2018/Python%20code%20for%20mini%20batch%20gradient%20descent.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2018/TMDB%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2018/python%E5%85%A5%E9%97%A8.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E5%9B%9B.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.367Z</lastmod>
     
   </url>
   
@@ -163,14 +156,21 @@
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2019/selenium%E7%88%AC%E5%8F%96%E6%96%B0%E6%A6%9C%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BF%A1%E6%81%AF.html</loc>
+    <loc>https://www.capallen.top/2018/Anaconda%E9%85%8D%E7%BD%AE.html</loc>
     
     <lastmod>2019-06-06T02:32:23.351Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.capallen.top/2018/Anaconda%E9%85%8D%E7%BD%AE.html</loc>
+    <loc>https://www.capallen.top/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html</loc>
+    
+    <lastmod>2019-06-06T02:32:23.351Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.capallen.top/2019/selenium%E7%88%AC%E5%8F%96%E6%96%B0%E6%A6%9C%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BF%A1%E6%81%AF.html</loc>
     
     <lastmod>2019-06-06T02:32:23.351Z</lastmod>
     
