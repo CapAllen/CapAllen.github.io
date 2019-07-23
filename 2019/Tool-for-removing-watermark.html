@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/30/VMne1A.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/30/VMJkrQ.gif">
 <meta property="og:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
-<meta property="og:updated_time" content="2019-06-06T03:28:53.008Z">
+<meta property="og:updated_time" content="2019-06-06T05:32:13.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个简单的去水印小工具">
 <meta name="twitter:description" content="概述今年阳光高考公示的自主招生名单变成了图片格式，还加了水印，（洪主编说“今年阳光高考变坏了”😂），确实是变坏了，无形中给我增添了不少工作😠，那么要转为Excel，就要进行文字识别，就需要先把烦人的水印去除掉。 本文分为两部分：  基于OpenCV的图片水印去除 将python脚本封装为可执行exe程序">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-06 11:28:53" itemprop="dateModified" datetime="2019-06-06T11:28:53+08:00">2019-06-06</time>
+                <time title="修改时间：2019-06-06 13:32:13" itemprop="dateModified" datetime="2019-06-06T13:32:13+08:00">2019-06-06</time>
               
             
           </span>
@@ -535,14 +535,14 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>今年阳光高考公示的自主招生名单变成了图片格式，还加了水印，（洪主编说“今年阳光高考变坏了”<span class="github-emoji" style="color: transparent;background:no-repeat url(https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8) center/contain" data-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8">😂</span>），确实是变坏了，无形中给我增添了不少工作<span class="github-emoji" style="color: transparent;background:no-repeat url(https://assets-cdn.github.com/images/icons/emoji/unicode/1f620.png?v8) center/contain" data-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f620.png?v8">😠</span>，那么要转为Excel，就要进行文字识别，就需要先把烦人的水印去除掉。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>今年阳光高考公示的自主招生名单变成了图片格式，还加了水印，（洪主编说“今年阳光高考变坏了”<span class="github-emoji" style="color: transparent;background:no-repeat url(https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8) center/contain" data-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8">😂</span>），确实是变坏了，无形中给我增添了不少工作<span class="github-emoji" style="color: transparent;background:no-repeat url(https://assets-cdn.github.com/images/icons/emoji/unicode/1f620.png?v8) center/contain" data-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f620.png?v8">😠</span>，那么要转为Excel，就要进行文字识别，就需要先把烦人的水印去除掉。</p>
 <p>本文分为两部分：</p>
 <ul>
 <li>基于OpenCV的图片水印去除</li>
 <li>将python脚本封装为可执行exe程序</li>
 </ul>
 <a id="more"></a>
-<h1 id="去除水印"><a href="#去除水印" class="headerlink" title="去除水印"></a>去除水印</h1><p>先放原图：</p>
+<h2 id="去除水印"><a href="#去除水印" class="headerlink" title="去除水印"></a>去除水印</h2><p>先放原图：</p>
 <p><img src="https://s2.ax1x.com/2019/05/30/VMVnde.png" alt="VMVnde.png"></p>
 <p>观察上图，可以得到如下结论：</p>
 <ul>
@@ -555,17 +555,17 @@
 <li><del>让我做PS是不可能的，因为还有上百张这样的图片</del>。</li>
 </ul>
 <p>所以，我们可以从颜色上入手，直接用OpenCV中的<a href="https://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html" rel="external nofollow noopener noreferrer" target="_blank"><em>Image Thresholding</em></a>函数，选择介于文字与水印灰度中间的某一值作为<strong>阈值</strong>，然后将大于该阈值的值替换为255(白色)，小于该阈值的值替换为0(黑色)，这样便可以把图片中所有水印（包括表头的阴影）都去除掉了。</p>
-<h2 id="颜色拾取"><a href="#颜色拾取" class="headerlink" title="颜色拾取"></a>颜色拾取</h2><p>为了选择阈值，我们得先看一下文字和水印的RGB，我是用的<a href="http://www.pc0359.cn/downinfo/20589.html" rel="external nofollow noopener noreferrer" target="_blank">Colors Pro</a>（随便下一个颜色识别器或者用Office/PS等都可以）。</p>
+<h3 id="颜色拾取"><a href="#颜色拾取" class="headerlink" title="颜色拾取"></a>颜色拾取</h3><p>为了选择阈值，我们得先看一下文字和水印的RGB，我是用的<a href="http://www.pc0359.cn/downinfo/20589.html" rel="external nofollow noopener noreferrer" target="_blank">Colors Pro</a>（随便下一个颜色识别器或者用Office/PS等都可以）。</p>
 <p><img src="https://s2.ax1x.com/2019/05/30/VMevsP.png" alt="VMevsP.png"></p>
 <p><img src="https://s2.ax1x.com/2019/05/30/VMmGsx.png" alt="VMmGsx.png"></p>
 <p>识别结果如上：</p>
 <p>文字的灰度介于50~140之间；水印及阴影的灰度介于220-240之间，所以我们可以选择200作为阈值。</p>
-<h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.threshold(img, <span class="number">200</span>, <span class="number">255</span>, cv2.THRESH_BINARY)[<span class="number">1</span>]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.threshold(img, <span class="number">200</span>, <span class="number">255</span>, cv2.THRESH_BINARY)[<span class="number">1</span>]</span><br></pre></td></tr></tbody></table></figure>
 <p>去除水印后的效果：</p>
 <p><img src="https://s2.ax1x.com/2019/05/30/VMne1A.png" alt="VMne1A.png"></p>
 <p>去水印的速度非常快（不到一秒一张图），效果也很不错，不仅去除了水印，还把原来偏灰色的文字变成了黑色，更方便下一步的文字识别工作。</p>
 <p>但，同事也有这种需求，就索性封装一个可执行文件exe给他备用，本来以为很简单的事儿，折腾了我一整个晚上<span class="github-emoji" style="color: transparent;background:no-repeat url(https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8) center/contain" data-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png?v8">😂</span>，下面分享下我封装python脚本时踩的坑。</p>
-<h1 id="程序封装"><a href="#程序封装" class="headerlink" title="程序封装"></a>程序封装</h1><p>参考stack<strong>overflow</strong>上<a href="https://stackoverflow.com/questions/14165398/a-good-python-to-exe-compiler" rel="external nofollow noopener noreferrer" target="_blank">a-good-python-to-exe-compiler</a>的答案，大家都在推荐<a href="http://www.pyinstaller.org/" rel="external nofollow noopener noreferrer" target="_blank">Pyinstaller</a>，所以就是它了。</p>
+<h2 id="程序封装"><a href="#程序封装" class="headerlink" title="程序封装"></a>程序封装</h2><p>参考stack<strong>overflow</strong>上<a href="https://stackoverflow.com/questions/14165398/a-good-python-to-exe-compiler" rel="external nofollow noopener noreferrer" target="_blank">a-good-python-to-exe-compiler</a>的答案，大家都在推荐<a href="http://www.pyinstaller.org/" rel="external nofollow noopener noreferrer" target="_blank">Pyinstaller</a>，所以就是它了。</p>
 <p>Pyinstaller的使用方法非常简单，只需</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line">pip install pyinstaller</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在命令行中进入到目标脚本的文件夹下，输入</p>
@@ -576,7 +576,7 @@
 <li>重新安装pywin32，参考：<a href="https://blog.csdn.net/qq_34369025/article/details/53687900" rel="external nofollow noopener noreferrer" target="_blank">如何下载和安装pywin32(亲测有效)</a></li>
 <li>下载安装了vc++2018运行库的合集（因为以前大学打游戏，常被这个问题困扰，这次死马当活马医，居然医活了。。。）</li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个去水印小工具，只能针对类似文中的这种灰度图进行水印处理，如果你想去除彩色图片的水印，请打开PS，然后用Shift+F5盘它！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个去水印小工具，只能针对类似文中的这种灰度图进行水印处理，如果你想去除彩色图片的水印，请打开PS，然后用Shift+F5盘它！</p>
 <p>最后附上这个去水印小工具：<a href="https://share.weiyun.com/5zFHjUF" rel="external nofollow noopener noreferrer" target="_blank">链接</a>， 密码：r38ev8</p>
 <p>使用方法：</p>
 <ul>
@@ -589,7 +589,7 @@
 </ul>
 <p>运行效果：</p>
 <p><img src="https://s2.ax1x.com/2019/05/30/VMJkrQ.gif" alt="VMJkrQ.gif"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html" rel="external nofollow noopener noreferrer" target="_blank"><em>Image Thresholding</em></a></li>
 <li><a href="https://stackoverflow.com/questions/14165398/a-good-python-to-exe-compiler" rel="external nofollow noopener noreferrer" target="_blank">a-good-python-to-exe-compiler</a></li>
 <li><a href="http://www.pyinstaller.org/" rel="external nofollow noopener noreferrer" target="_blank">Pyinstaller</a></li>
@@ -933,7 +933,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去除水印"><span class="nav-number">2.</span> <span class="nav-text">去除水印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色拾取"><span class="nav-number">2.1.</span> <span class="nav-text">颜色拾取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键代码"><span class="nav-number">2.2.</span> <span class="nav-text">关键代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序封装"><span class="nav-number">3.</span> <span class="nav-text">程序封装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除水印"><span class="nav-number">2.</span> <span class="nav-text">去除水印</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色拾取"><span class="nav-number">2.1.</span> <span class="nav-text">颜色拾取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键代码"><span class="nav-number">2.2.</span> <span class="nav-text">关键代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序封装"><span class="nav-number">3.</span> <span class="nav-text">程序封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

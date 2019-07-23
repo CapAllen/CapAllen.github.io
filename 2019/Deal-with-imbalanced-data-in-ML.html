@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/19/EpOrss.png">
 <meta property="og:image" content="https://scikit-learn.org/stable/_static/ml_map.png">
 <meta property="og:image" content="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
-<meta property="og:updated_time" content="2019-06-06T03:27:07.788Z">
+<meta property="og:updated_time" content="2019-06-06T05:29:19.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中不平衡数据的预处理">
 <meta name="twitter:description" content="概述最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是不平衡数据，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些处理不平衡数据的技巧。">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-06 11:27:07" itemprop="dateModified" datetime="2019-06-06T11:27:07+08:00">2019-06-06</time>
+                <time title="修改时间：2019-06-06 13:29:19" itemprop="dateModified" datetime="2019-06-06T13:29:19+08:00">2019-06-06</time>
               
             
           </span>
@@ -535,9 +535,9 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是<strong>不平衡数据</strong>，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些<strong>处理不平衡数据的技巧</strong>。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在处理自主招生的数据，对于某一个确定的高校来说，录取的人数远远小于未录取的人数，换言之，就是录取类的数据量远小于未录取类的数据量，这就是<strong>不平衡数据</strong>，虽然在机器学习中不平衡数据的处理不是难点，但这也是我们不得不去考虑的问题，那在本篇文章中，我们便来一起探讨下有哪些<strong>处理不平衡数据的技巧</strong>。</p>
 <a id="more"></a>
-<h1 id="什么是不平衡数据"><a href="#什么是不平衡数据" class="headerlink" title="什么是不平衡数据"></a>什么是不平衡数据</h1><p>不平衡数据，顾名思义，就是指在收集到的数据中各个分类之比并非为<code>1:1</code>，在对不平衡数据的研究中，普遍认为不平衡意味着少数类所占比例在10%到20%之间，但实际上，这种现象可能会更严重，比如说：</p>
+<h2 id="什么是不平衡数据"><a href="#什么是不平衡数据" class="headerlink" title="什么是不平衡数据"></a>什么是不平衡数据</h2><p>不平衡数据，顾名思义，就是指在收集到的数据中各个分类之比并非为<code>1:1</code>，在对不平衡数据的研究中，普遍认为不平衡意味着少数类所占比例在10%到20%之间，但实际上，这种现象可能会更严重，比如说：</p>
 <ol>
 <li>每年有大约2%的信用卡用户存在欺诈；</li>
 <li>某种情况的医学筛查，比如说美国的艾滋病得病率约为0.4%；</li>
@@ -550,7 +550,7 @@
 <p><img src="https://www.svds.com/wp-content/uploads/2016/08/clean.png" alt></p>
 <p>不平衡数据大概像是这样：</p>
 <p><img src="https://www.svds.com/wp-content/uploads/2016/08/messy.png" alt></p>
-<h1 id="处理不平衡数据"><a href="#处理不平衡数据" class="headerlink" title="处理不平衡数据"></a>处理不平衡数据</h1><p>处理不平衡数据的思路比较简单，那就是想办法让数据平衡，我们可以简单得分为以下几类：</p>
+<h2 id="处理不平衡数据"><a href="#处理不平衡数据" class="headerlink" title="处理不平衡数据"></a>处理不平衡数据</h2><p>处理不平衡数据的思路比较简单，那就是想办法让数据平衡，我们可以简单得分为以下几类：</p>
 <ul>
 <li>更改数据集中各分类数据的量，使他们比例匹配——常用方法有采样、数据合成；</li>
 <li>更改数据集中各分类数据的权重，使他们的量与权重之积匹配——常用方法为加权；</li>
@@ -560,9 +560,9 @@
 <p>更多更详细研究范畴的分类可以查看这篇论文<a href="#jump">A Survey of Predictive Modelling under Imbalanced Distributions</a></p>
 </blockquote>
 <p>那接下来，我们分别看一下各个方法在python中的具体实施。</p>
-<h2 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h2><p>采样就是通过减少多数类数量的<strong>下采样（Undersampling）</strong>或增加少数类数量的<strong>上采样（Oversampling）</strong>方式，实现各类别平衡。针对两种采样方式，依赖不同的方法，比如说 随机、模型融合等，就会生成很多解决方案，可以看这篇综述<a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" rel="external nofollow noopener noreferrer" target="_blank">Learning from Imbalanced Data</a>的总结。</p>
+<h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><p>采样就是通过减少多数类数量的<strong>下采样（Undersampling）</strong>或增加少数类数量的<strong>上采样（Oversampling）</strong>方式，实现各类别平衡。针对两种采样方式，依赖不同的方法，比如说 随机、模型融合等，就会生成很多解决方案，可以看这篇综述<a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" rel="external nofollow noopener noreferrer" target="_blank">Learning from Imbalanced Data</a>的总结。</p>
 <p><img src="https://www.svds.com/wp-content/uploads/2016/08/ImbalancedClasses_fig5.jpg" alt></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>有一个叫做<code>imbalanced-learn</code>的库，是专门针对不平衡数据设计的，其中包含很多上采样和下采样的函数，<a href="https://imbalanced-learn.readthedocs.io/en/stable/index.html" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a>在这里。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>有一个叫做<code>imbalanced-learn</code>的库，是专门针对不平衡数据设计的，其中包含很多上采样和下采样的函数，<a href="https://imbalanced-learn.readthedocs.io/en/stable/index.html" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a>在这里。</p>
 <p>示例：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> RandomUnderSampler </span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> RandomOverSampler</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成不平衡数据</span></span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line"> weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">3</span>, n_redundant=<span class="number">1</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">n_features=<span class="number">20</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">1000</span>, random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br></pre></td></tr></tbody></table></figure>
 <p><code>Original dataset shape Counter({1: 900, 0: 100})</code></p>
@@ -570,7 +570,7 @@
 <p><code>Resampled dataset shape Counter({0: 100, 1: 100})</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#随机上采样</span></span><br><span class="line">ros = RandomOverSampler(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = ros.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></tbody></table></figure>
 <p><code>Resampled dataset shape Counter({0: 900, 1: 900})</code></p>
-<h2 id="数据合成"><a href="#数据合成" class="headerlink" title="数据合成"></a>数据合成</h2><p>随机上采样会反复出现一些样本，而导致过拟合；随机下采样则会造成一定程度的特征丢失，虽然这种方式比较简单，但现在计算机的计算能力越来越高，可接受的算法复杂度也越来越高，所以我们应该主要考虑模型训练的效果。</p>
+<h3 id="数据合成"><a href="#数据合成" class="headerlink" title="数据合成"></a>数据合成</h3><p>随机上采样会反复出现一些样本，而导致过拟合；随机下采样则会造成一定程度的特征丢失，虽然这种方式比较简单，但现在计算机的计算能力越来越高，可接受的算法复杂度也越来越高，所以我们应该主要考虑模型训练的效果。</p>
 <p>数据合成则是利用已有样本生成更多样本，其中常用的包括：</p>
 <ul>
 <li><p><code>SMOTE</code>，利用KNN生成新数据；</p>
@@ -583,19 +583,19 @@
 <li><p><code>BorderlineSMOTE</code>，与SMOTE的区别是，只为那些周围大部分是大众样本的小众样本生成新样本（因为这些样本往往是边界样本）；</p>
 </li>
 </ul>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"></span><br><span class="line"><span class="comment">#SMOTE合成</span></span><br><span class="line">sm = SMOTE(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = sm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"></span><br><span class="line"><span class="comment">#SMOTE合成</span></span><br><span class="line">sm = SMOTE(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = sm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></tbody></table></figure>
 <p><code>Resampled dataset shape Counter({0: 900, 1: 900})</code></p>
-<h2 id="更改权重"><a href="#更改权重" class="headerlink" title="更改权重"></a>更改权重</h2><p>更改权重就是针对不同类别的数据设置不同的分错代价，即提高少数类分错的代价或降低多数类分错的代价，最终使各类别平衡。</p>
+<h3 id="更改权重"><a href="#更改权重" class="headerlink" title="更改权重"></a>更改权重</h3><p>更改权重就是针对不同类别的数据设置不同的分错代价，即提高少数类分错的代价或降低多数类分错的代价，最终使各类别平衡。</p>
 <p>常用的机器学习训练方法中，很多都提供了权重设置参数<code>class_weight</code>，可以手动设置该参数，但一般情况下只需要将其设置为<code>balanced</code>即可，模型会自动按照如下公式更新权重：</p>
 <p><img src="https://s2.ax1x.com/2019/04/19/EpOrss.png" alt="EpOrss.png"></p>
-<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#逻辑回归平衡权重</span></span><br><span class="line">clf_A = LogisticRegression(random_state=<span class="number">0</span>, class_weight=<span class="string">'balanced'</span>)</span><br><span class="line"><span class="comment">#随机森林平衡权重</span></span><br><span class="line">clf_B = RandomForestClassifier(random_state=<span class="number">0</span>, n_jobs=<span class="number">-1</span>, class_weight=<span class="string">"balanced"</span>)</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="一分类"><a href="#一分类" class="headerlink" title="一分类"></a>一分类</h2><p>这种方法比较适合极不平衡数据，或数据量比较小的数据集。</p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#逻辑回归平衡权重</span></span><br><span class="line">clf_A = LogisticRegression(random_state=<span class="number">0</span>, class_weight=<span class="string">'balanced'</span>)</span><br><span class="line"><span class="comment">#随机森林平衡权重</span></span><br><span class="line">clf_B = RandomForestClassifier(random_state=<span class="number">0</span>, n_jobs=<span class="number">-1</span>, class_weight=<span class="string">"balanced"</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="一分类"><a href="#一分类" class="headerlink" title="一分类"></a>一分类</h3><p>这种方法比较适合极不平衡数据，或数据量比较小的数据集。</p>
 <p>主要方法为<code>OneClassSVM</code>，官方文档<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html" rel="external nofollow noopener noreferrer" target="_blank">在这里</a></p>
-<h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line">clf = svm.OneClassSVM(nu=<span class="number">0.2</span>, kernel=<span class="string">"rbf"</span>, gamma=<span class="number">0.1</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line">clf = svm.OneClassSVM(nu=<span class="number">0.2</span>, kernel=<span class="string">"rbf"</span>, gamma=<span class="number">0.1</span>)</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>异常检测我没怎么用过，所以就不赘述了，感兴趣可以戳这个链接<a href="https://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" rel="external nofollow noopener noreferrer" target="_blank">Novelty and Outlier Detection</a></p>
 </blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以依据数据量的大小和是否平衡将数据集分为四类，即平衡的大数据集，不平衡的大数据集，平衡的小数据集，不平衡的小数据集。最简单的就是平衡的大数据集，能达到非常高的准确率，最难的就是不平衡的小数据集，除了在平衡上下功夫之外，还需要很多诸如收集数据、特征工程之类的工作，但这并不是本篇文章的重点。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们可以依据数据量的大小和是否平衡将数据集分为四类，即平衡的大数据集，不平衡的大数据集，平衡的小数据集，不平衡的小数据集。最简单的就是平衡的大数据集，能达到非常高的准确率，最难的就是不平衡的小数据集，除了在平衡上下功夫之外，还需要很多诸如收集数据、特征工程之类的工作，但这并不是本篇文章的重点。</p>
 <p>下面根据个人经验谈下针对如上几种数据集，如何选择文中涉及的这些方法：</p>
 <ul>
 <li>数据量较小的情况考虑用数据合成的方法，依据特征的类型（分类&连续数值）选择合适的方法。</li>
@@ -604,7 +604,7 @@
 </ul>
 <p>具体数据量的大小可以参考下图：</p>
 <p><img src="https://scikit-learn.org/stable/_static/ml_map.png" alt></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.svds.com/learning-imbalanced-classes/" rel="external nofollow noopener noreferrer" target="_blank">Learning from Imbalanced Classes</a></li>
 <li><span id="jump"><a href="https://arxiv.org/pdf/1505.01658.pdf" rel="external nofollow noopener noreferrer" target="_blank">A Survey of Predictive Modelling under Imbalanced Distributions</a></span></li>
 </ol>
@@ -947,7 +947,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是不平衡数据"><span class="nav-number">2.</span> <span class="nav-text">什么是不平衡数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理不平衡数据"><span class="nav-number">3.</span> <span class="nav-text">处理不平衡数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#采样"><span class="nav-number">3.1.</span> <span class="nav-text">采样</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.1.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据合成"><span class="nav-number">3.2.</span> <span class="nav-text">数据合成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改权重"><span class="nav-number">3.3.</span> <span class="nav-text">更改权重</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一分类"><span class="nav-number">3.4.</span> <span class="nav-text">一分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是不平衡数据"><span class="nav-number">2.</span> <span class="nav-text">什么是不平衡数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理不平衡数据"><span class="nav-number">3.</span> <span class="nav-text">处理不平衡数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#采样"><span class="nav-number">3.1.</span> <span class="nav-text">采样</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">3.1.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据合成"><span class="nav-number">3.2.</span> <span class="nav-text">数据合成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改权重"><span class="nav-number">3.3.</span> <span class="nav-text">更改权重</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一分类"><span class="nav-number">3.4.</span> <span class="nav-text">一分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
