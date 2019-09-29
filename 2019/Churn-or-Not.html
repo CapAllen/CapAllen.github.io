@@ -108,6 +108,7 @@
 <meta property="og:description" content="Sparkify is a digital music service similar to Netease Cloud Music or QQ Music. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertis">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uugh8K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8knKJ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uK91RP.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uKCsfI.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1569563678578.png">
@@ -115,7 +116,12 @@
 <meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1569563899779.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1569563908156.png">
 <meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1569563916783.png">
-<meta property="og:updated_time" content="2019-09-27T06:09:53.810Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8Af6e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8mwZQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8ev80.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8mrin.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1569742397403.png">
+<meta property="og:updated_time" content="2019-09-29T08:34:01.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Churn or Not">
 <meta name="twitter:description" content="Sparkify is a digital music service similar to Netease Cloud Music or QQ Music. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertis">
@@ -420,12 +426,24 @@
                 
               
 
-              <time title="创建时间：2019-09-27 01:12:49 / 修改时间：14:09:53" itemprop="dateCreated datePublished" datetime="2019-09-27T01:12:49+08:00">2019-09-27</time>
+              <time title="创建时间：2019-09-27 01:12:49" itemprop="dateCreated datePublished" datetime="2019-09-27T01:12:49+08:00">2019-09-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-29 16:34:01" itemprop="dateModified" datetime="2019-09-29T16:34:01+08:00">2019-09-29</time>
               
             
           </span>
@@ -491,7 +509,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">7.6k</span>
               
 
               
@@ -505,7 +523,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -527,11 +545,25 @@
       
         <p><img src="https://s2.ax1x.com/2019/09/27/uugh8K.png" alt="uugh8K.png"></p>
 <p><strong>Sparkify</strong> is a digital music service similar to <a href="https://music.163.com/" rel="external nofollow noopener noreferrer" target="_blank"><strong>Netease</strong> <strong>Cloud</strong> <strong>Music</strong></a> or <a href="https://y.qq.com" rel="external nofollow noopener noreferrer" target="_blank"><strong>QQ Music</strong></a>. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertisements in between the songs, or using the premium subscription model where they stream music as free, but pay a monthly flat rate. User can upgrade, downgrade or cancel their service at anytime.  </p>
-<p>So, our job is deep mining the customers’ data and implement appropriate model to predict customer churn.  In this project, we mainly use Python and PySpark to solve problems.</p>
+<p>This is a <code>Customer Churn Prediction Problem</code> , there are so many similar projects, such as <a href="https://www.kaggle.com/c/kkbox-churn-prediction-challenge" rel="external nofollow noopener noreferrer" target="_blank">WSDM - KKBox’s Churn Prediction Challenge</a> competition from <a href="https://www.kaggle.com" rel="external nofollow noopener noreferrer" target="_blank">Kaggle</a>, and a few helpful links are follows:</p>
+<ul>
+<li><a href="https://addepto.com/machine-learning-predict-reduce-customer-churn/" rel="external nofollow noopener noreferrer" target="_blank">Customer Churn Prediction using Machine Learning (How To)</a></li>
+<li><a href="https://www.datasciencecentral.com/profiles/blogs/prediction-of-customer-churn-with-machine-learning" rel="external nofollow noopener noreferrer" target="_blank">Prediction of Customer Churn with Machine Learning</a></li>
+<li><a href="https://www.optimove.com/resources/learning-center/customer-churn-prediction-and-prevention" rel="external nofollow noopener noreferrer" target="_blank">Customer Churn Prediction and Prevention</a></li>
+<li><a href="https://towardsdatascience.com/hands-on-predict-customer-churn-5c2a42806266" rel="external nofollow noopener noreferrer" target="_blank">Hands-on: Predict Customer Churn</a></li>
+</ul>
+<p>So, our job is deep mining the customers’ data and implement appropriate model to predict customer churn as follow steps:</p>
+<ul>
+<li>Clean data: fill the nan values , correct the data types, drop the outliers.</li>
+<li>EDA: exploratory data to look features’ distributions and correlation with key label (churn).</li>
+<li>Feature engineering: extract and found customer-features and customer-behavior-features; Implement standscaler on numerical features.</li>
+<li>Train and measure models:  I choose logistic regression, linear svm classifier, decision tree and random forest classifier to train a baseline model and tuning a better model from best of them. It is worth mentioning that this data is unbalanced because of less churn customers, so we choose <code>f1 score</code>  as a metrics to measure models’ performance.</li>
+</ul>
 <a id="more"></a>
 <h2 id="Quick-Facts"><a href="#Quick-Facts" class="headerlink" title="Quick Facts"></a>Quick Facts</h2><p>A mini subset of size 125 MB of the original 12 GB customer log json data file will be used for creating the prediction model. The small dataset has 286’500 log entries with 18 unique columns. </p>
 <p>The schema and info of dataset is given below:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line"> |-- artist: string (nullable = true)</span><br><span class="line"> |-- auth: string (nullable = true)</span><br><span class="line"> |-- firstName: string (nullable = true)</span><br><span class="line"> |-- gender: string (nullable = true)</span><br><span class="line"> |-- itemInSession: long (nullable = true)</span><br><span class="line"> |-- lastName: string (nullable = true)</span><br><span class="line"> |-- length: double (nullable = true)</span><br><span class="line"> |-- level: string (nullable = true)</span><br><span class="line"> |-- location: string (nullable = true)</span><br><span class="line"> |-- method: string (nullable = true)</span><br><span class="line"> |-- page: string (nullable = true)</span><br><span class="line"> |-- registration: long (nullable = true)</span><br><span class="line"> |-- sessionId: long (nullable = true)</span><br><span class="line"> |-- song: string (nullable = true)</span><br><span class="line"> |-- status: long (nullable = true)</span><br><span class="line"> |-- ts: long (nullable = true)</span><br><span class="line"> |-- userAgent: string (nullable = true)</span><br><span class="line"> |-- userId: string (nullable = true)</span><br></pre></td></tr></tbody></table></figure>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -610,7 +642,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="Exploratory-Data-Analysis"><a href="#Exploratory-Data-Analysis" class="headerlink" title="Exploratory Data Analysis"></a>Exploratory Data Analysis</h2><p>We use the <code>Cancellation Confirmation</code> events of <code>page</code> column to define the customer churn, and perform some exploratory data analysis to observe the behavior for users who stayed vs users who churned. </p>
+<ul>
+<li>churn</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8knKJ.png" alt="u8knKJ.png"></p>
+<p>So, there are 52 users have churned events in the dataset, it’s about 23.1% churned rate. The rate of churn and not churn is roughly 1:3, so this is an unbalanced dataset.</p>
 <ul>
 <li>gender</li>
 </ul>
@@ -657,34 +695,29 @@
 </li>
 </ul>
 <p>We implement label encoding on categorical features and standard scaler on numerical features.</p>
-<h2 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h2><p>We split the full dataset into train and test sets. Test out of three machine learning methods: Logistic Regression, Decision Tree Classifier and Random Forest Classifier . Tuning parameters, and evaluate the F1 score of these models.</p>
-<p>The result is as follow:</p>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th>Accuracy</th>
-<th>F1-score</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Logistic Regression</td>
-<td>1.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Decision Tree Classifier</td>
-<td>1.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Random Forest Classifier</td>
-<td>1.0</td>
-<td>1.0</td>
-</tr>
-</tbody>
-</table>
+<h2 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h2><p>We split the full dataset into train and test sets. Test out the baseline of four machine learning methods: Logistic Regression, Linear SVC, Decision Tree Classifier and Random Forest Classifier. </p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8Af6e.png" alt="u8Af6e.png"></p>
+<p>Though the <code>LinearSVC</code> spent more training time, but it can get the highest f1 score 0.702. And the <code>LogisticRegression</code> has a medium training time and f1 score, maybe I can tuning it to get a higher<br>score. So I’ll choose <code>LinearSVC</code> and <code>LogisticRegression</code> to tuning in next section, the result is as follows:</p>
+<ul>
+<li>Linear SVC</li>
+</ul>
+<p>Training time:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8mwZQ.png" alt="u8mwZQ.png"></p>
+<p>F-1 Score:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8ev80.png" alt="u8ev80.png"></p>
+<ul>
+<li>LogisticRegression</li>
+</ul>
+<p>Training time:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8mrin.png" alt="u8mrin.png"></p>
+<p>F-1 Score:</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1569742397403.png" alt="1569742397403"></p>
+<p>As we can see in above, the logistic regression (0.7020) can get a nearly f1 score as the linear svm classifier(0.7045). But the logistic regression saves 83.3% time spending than the latter, considering this is only a quit mini dataset and our purpose is scaling this up to the total 12G  dataset, so, the logistic regression is the best model from now on in this project.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h3 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h3><p>In  this project I set out to predict customers’ churn problem with the dataset of  a music streaming service named Sparkify. This is a binary classification problem , so I choose four supervised learning algorithm to found a model. After evaluated and tuning, I find out the logistic regression is the suitable model for this project because of its balanced and high f1-score (0.7021) and time spending.</p>
+<p>By the way, I once fell into the trap of data leakage ,so that all of the models can achieve a performance that seems too good (1 for f1-score) to be true. I had to go back to check my feature engineering, and found I put the <code>cancellation confirmation</code>  which is the flag of churn in the features, what a awkward thing! And that teach us you must be careful and patient when you are working.</p>
+<h3 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a>Improvement</h3><p>There are only about 76 samples in the mini dataset above, so the model could be improved by being trained on a bigger dataset and tuning hyper parameters based on it.  </p>
+<p>Another improvement could be to try out more features or deep learning models. </p>
+<h2 id="Github-Repo"><a href="#Github-Repo" class="headerlink" title="Github Repo"></a>Github Repo</h2><p>Hope you find this interesting and for further details on this analysis like code and process followed would be available <a href="https://github.com/CapAllen/Sparkify" rel="external nofollow noopener noreferrer" target="_blank">here</a>.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -767,9 +800,9 @@
           
             <a href="/tags/Python/" rel="tag"># Python</a>
           
-            <a href="/tags/Spark/" rel="tag"># Spark</a>
-          
             <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
           
         </div>
       
@@ -1025,7 +1058,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Facts"><span class="nav-number">1.</span> <span class="nav-text">Quick Facts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploratory-Data-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Exploratory Data Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Engineering"><span class="nav-number">3.</span> <span class="nav-text">Feature Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modeling"><span class="nav-number">4.</span> <span class="nav-text">Modeling</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Facts"><span class="nav-number">1.</span> <span class="nav-text">Quick Facts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploratory-Data-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Exploratory Data Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Engineering"><span class="nav-number">3.</span> <span class="nav-text">Feature Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modeling"><span class="nav-number">4.</span> <span class="nav-text">Modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflection"><span class="nav-number">5.1.</span> <span class="nav-text">Reflection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Improvement"><span class="nav-number">5.2.</span> <span class="nav-text">Improvement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Repo"><span class="nav-number">6.</span> <span class="nav-text">Github Repo</span></a></li></ol></div>
             
 
           </div>
@@ -1058,7 +1091,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">172k</span>
   
 
   
@@ -1067,7 +1100,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:33</span>
+    <span title="站点阅读时长">2:36</span>
   
 </div>
 

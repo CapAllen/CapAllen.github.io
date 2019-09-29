@@ -412,12 +412,24 @@
                 
               
 
-              <time title="创建时间：2019-09-27 01:12:49 / 修改时间：14:09:53" itemprop="dateCreated datePublished" datetime="2019-09-27T01:12:49+08:00">2019-09-27</time>
+              <time title="创建时间：2019-09-27 01:12:49" itemprop="dateCreated datePublished" datetime="2019-09-27T01:12:49+08:00">2019-09-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-29 16:34:01" itemprop="dateModified" datetime="2019-09-29T16:34:01+08:00">2019-09-29</time>
               
             
           </span>
@@ -476,7 +488,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">7.6k</span>
               
 
               
@@ -490,7 +502,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -513,7 +525,20 @@
         
           <p><img src="https://s2.ax1x.com/2019/09/27/uugh8K.png" alt="uugh8K.png"></p>
 <p><strong>Sparkify</strong> is a digital music service similar to <a href="https://music.163.com/" rel="external nofollow noopener noreferrer" target="_blank"><strong>Netease</strong> <strong>Cloud</strong> <strong>Music</strong></a> or <a href="https://y.qq.com" rel="external nofollow noopener noreferrer" target="_blank"><strong>QQ Music</strong></a>. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertisements in between the songs, or using the premium subscription model where they stream music as free, but pay a monthly flat rate. User can upgrade, downgrade or cancel their service at anytime.  </p>
-<p>So, our job is deep mining the customers’ data and implement appropriate model to predict customer churn.  In this project, we mainly use Python and PySpark to solve problems.</p>
+<p>This is a <code>Customer Churn Prediction Problem</code> , there are so many similar projects, such as <a href="https://www.kaggle.com/c/kkbox-churn-prediction-challenge" rel="external nofollow noopener noreferrer" target="_blank">WSDM - KKBox’s Churn Prediction Challenge</a> competition from <a href="https://www.kaggle.com" rel="external nofollow noopener noreferrer" target="_blank">Kaggle</a>, and a few helpful links are follows:</p>
+<ul>
+<li><a href="https://addepto.com/machine-learning-predict-reduce-customer-churn/" rel="external nofollow noopener noreferrer" target="_blank">Customer Churn Prediction using Machine Learning (How To)</a></li>
+<li><a href="https://www.datasciencecentral.com/profiles/blogs/prediction-of-customer-churn-with-machine-learning" rel="external nofollow noopener noreferrer" target="_blank">Prediction of Customer Churn with Machine Learning</a></li>
+<li><a href="https://www.optimove.com/resources/learning-center/customer-churn-prediction-and-prevention" rel="external nofollow noopener noreferrer" target="_blank">Customer Churn Prediction and Prevention</a></li>
+<li><a href="https://towardsdatascience.com/hands-on-predict-customer-churn-5c2a42806266" rel="external nofollow noopener noreferrer" target="_blank">Hands-on: Predict Customer Churn</a></li>
+</ul>
+<p>So, our job is deep mining the customers’ data and implement appropriate model to predict customer churn as follow steps:</p>
+<ul>
+<li>Clean data: fill the nan values , correct the data types, drop the outliers.</li>
+<li>EDA: exploratory data to look features’ distributions and correlation with key label (churn).</li>
+<li>Feature engineering: extract and found customer-features and customer-behavior-features; Implement standscaler on numerical features.</li>
+<li>Train and measure models:  I choose logistic regression, linear svm classifier, decision tree and random forest classifier to train a baseline model and tuning a better model from best of them. It is worth mentioning that this data is unbalanced because of less churn customers, so we choose <code>f1 score</code>  as a metrics to measure models’ performance.</li>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2778,7 +2803,7 @@ littlecodersh的ItChat
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">172k</span>
   
 
   
@@ -2787,7 +2812,7 @@ littlecodersh的ItChat
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:33</span>
+    <span title="站点阅读时长">2:36</span>
   
 </div>
 
