@@ -116,6 +116,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml">
+
 
 
   
@@ -609,7 +611,8 @@
 <li>在过滤条件中的value是区分大小写的。</li>
 </ul>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 运算符 <span class="keyword">value</span>;</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><table>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -667,6 +670,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>注意：</p>
 <ul>
@@ -675,6 +679,7 @@
 </ul>
 </blockquote>
 <h3 id="用通配符进行过滤（LIKE）"><a href="#用通配符进行过滤（LIKE）" class="headerlink" title="用通配符进行过滤（LIKE）"></a>用通配符进行过滤（LIKE）</h3><p>通配符是用来匹配值的一部分的特殊字符，跟在LIKE关键字后面进行数据过滤</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -701,6 +706,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>示例：</p>
 <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1</span><br><span class="line"><span class="keyword">WHERE</span> col_1 <span class="keyword">LIKE</span> <span class="string">'_[^JM]%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col_1;</span><br></pre></td></tr></tbody></table></figure>
 <p>如上筛选出的是，第二个字符为非J或M的数据。</p>
@@ -730,7 +736,8 @@
 <p>以及</p>
 <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 + col2 total, col3</span><br></pre></td></tr></tbody></table></figure>
 <p>将col1+col2的结果设置名为total的列。</p>
-<h2 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h2><table>
+<h2 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th><strong>语句</strong></th>
@@ -796,6 +803,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h1 id="SQL进阶"><a href="#SQL进阶" class="headerlink" title="SQL进阶"></a>SQL进阶</h1><h2 id="链接表"><a href="#链接表" class="headerlink" title="链接表"></a>链接表</h2><h3 id="基本链接（JOIN）"><a href="#基本链接（JOIN）" class="headerlink" title="基本链接（JOIN）"></a>基本链接（JOIN）</h3><p>SQL最强大的功能之一就是能在数据查询的执行中进行表的链接（JOIN）。</p>
 <p>在关系数据库中，将数据分解为多个表能更有效地存储，更方便地处理，但这些数据储存在多个表中，怎样用一条SELECT语句就检索出数据呢？那就要使用链接。</p>
 <p>创建链接的方式很简单，如下便是使用WHERE创建链接：</p>
@@ -848,6 +856,7 @@
 </ul>
 <h2 id="SQL聚合"><a href="#SQL聚合" class="headerlink" title="SQL聚合"></a>SQL聚合</h2><p>有时候我们只是需要获取数据的汇总信息，比如说行数啊、平均值啊这种，并不需要吧所有数据都检索出来，为此，SQL提供了专门的函数，这也是SQL最强大功能之一。</p>
 <h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p>SQL的聚合函数如下所示：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -878,6 +887,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>使用示例：</p>
 <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(col_1) <span class="keyword">AS</span> avg_col_1</span><br><span class="line"><span class="keyword">FROM</span> table_1;</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
@@ -937,6 +947,7 @@
 <p>想了解更多DATE函数，可以戳<a href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/Date_functions_header.html" rel="external nofollow noopener noreferrer" target="_blank">SQL日期和时间函数参考</a></p>
 </blockquote>
 <h3 id="datepart总结"><a href="#datepart总结" class="headerlink" title="datepart总结"></a>datepart总结</h3><p>如下给了很多的缩写，只记住最简单的即可。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -999,6 +1010,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="CASE语句"><a href="#CASE语句" class="headerlink" title="CASE语句"></a>CASE语句</h2><p>CASE语句其实就相当于python中的if语句，是用来做条件的。</p>
 <p>需要注意的几点：</p>
 <ul>
@@ -1064,6 +1076,7 @@
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好啦，至此课程中的所有SQL知识点已经总结完了，并且也给大家做了适当的补充，希望大家能够用得上。未来的数据分析师之路，还要继续加油呀！</p>
 <p><img src="http://wx4.sinaimg.cn/bmiddle/006Cmetyly1fmtcyy5h20j30dw0dwaiw.jpg" alt></p>
 <h1 id="附：SELECT子句顺序"><a href="#附：SELECT子句顺序" class="headerlink" title="附：SELECT子句顺序"></a>附：SELECT子句顺序</h1><p>下表中列出了全文中涉及到的子句，在进行使用时，应严格遵循下表中从上至下的顺序。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1115,6 +1128,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1399,6 +1413,13 @@
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
