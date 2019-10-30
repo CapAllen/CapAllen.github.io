@@ -565,7 +565,6 @@
 <h2 id="Quick-Facts"><a href="#Quick-Facts" class="headerlink" title="Quick Facts"></a>Quick Facts</h2><p>A mini subset of size 125 MB of the original 12 GB customer log json data file will be used for creating the prediction model. The small dataset has 286’500 log entries with 18 unique columns. </p>
 <p>The schema and info of dataset is given below:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line"> |-- artist: string (nullable = true)</span><br><span class="line"> |-- auth: string (nullable = true)</span><br><span class="line"> |-- firstName: string (nullable = true)</span><br><span class="line"> |-- gender: string (nullable = true)</span><br><span class="line"> |-- itemInSession: long (nullable = true)</span><br><span class="line"> |-- lastName: string (nullable = true)</span><br><span class="line"> |-- length: double (nullable = true)</span><br><span class="line"> |-- level: string (nullable = true)</span><br><span class="line"> |-- location: string (nullable = true)</span><br><span class="line"> |-- method: string (nullable = true)</span><br><span class="line"> |-- page: string (nullable = true)</span><br><span class="line"> |-- registration: long (nullable = true)</span><br><span class="line"> |-- sessionId: long (nullable = true)</span><br><span class="line"> |-- song: string (nullable = true)</span><br><span class="line"> |-- status: long (nullable = true)</span><br><span class="line"> |-- ts: long (nullable = true)</span><br><span class="line"> |-- userAgent: string (nullable = true)</span><br><span class="line"> |-- userId: string (nullable = true)</span><br></pre></td></tr></tbody></table></figure>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -644,7 +643,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="Exploratory-Data-Analysis"><a href="#Exploratory-Data-Analysis" class="headerlink" title="Exploratory Data Analysis"></a>Exploratory Data Analysis</h2><p>We use the <code>Cancellation Confirmation</code> events of <code>page</code> column to define the customer churn, and perform some exploratory data analysis to observe the behavior for users who stayed vs users who churned. </p>
 <ul>
 <li>churn</li>

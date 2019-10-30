@@ -544,7 +544,6 @@
 <p>Hi，同学们，上周我们学习了统计学基础知识，包括概率基础、描述统计学和推论统计学的基础知识，本周我们将会进一步学习推论统计学——<strong>置信区间&假设检验</strong>以及它们的应用之一<strong>A/B-test</strong>，在这之后，我们还会讲解一部分机器学习入门——<strong>线性回归&逻辑回归</strong>，与上周相比，这周我们会接触较深的理论知识，更多的代码，你可能会觉得学起来有些吃力，但请一定保持信心，你可以多次暂停观看课程中的讲解视频，跟着一起多动手，或者你也可以按照下面我给出的<strong>额外资料</strong>去查漏补缺，相信你们一定可以的！</p>
 <p><strong>项目四(P4)阶段</strong>总共包含<strong>三周</strong>，在这三周内，我们要对<strong>统计学</strong>进行学习，掌握基础的<strong>描述统计学理论、基本的概率知识、二项分布和贝叶斯公式</strong>，并学会<strong>使用 Python 来实践</strong>；学习<strong>正态分布、抽样分布、置信区间以及假设检验的概念和计算方式</strong>；学习<strong>线性回归以及逻辑回归</strong>，在真实场景中应用，比如<strong>分析 A/B 测试</strong>结果，搭建简单的监督机器学习模型。可谓是时间紧任务重，但是也别怕，统计学的基础知识还是非常简单的，跟着课程内容一步步来，自己多做笔记多查资料，一定没问题的！</p>
 <p>那么我们的课程安排：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -571,7 +570,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
 <ul>
 <li>先自行查找问题答案（注意提取关键词），参考：谷歌/必应搜索、<a href="https://www.csdn.net/" rel="external nofollow noopener noreferrer" target="_blank">CSDN</a>、<a href="https://stackoverflow.com/" rel="external nofollow noopener noreferrer" target="_blank">stack<strong>overflow</strong></a></li>
@@ -589,8 +587,7 @@
 <p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
 </blockquote>
 <h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><p>学习课程中的<strong>置信区间 - 逻辑回归</strong>课程，掌握统计学进阶知识。</p>
-<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><div class="table-container">
-<table>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
 <thead>
 <tr>
 <th>时间</th>
@@ -631,7 +628,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h1 id="知识清单"><a href="#知识清单" class="headerlink" title="知识清单"></a>知识清单</h1><h2 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h2><p>学习之前可以先回顾一下正态分布、抽样分布和中心极限定理的相关知识。</p>
 <h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>还记得上周用到的优达学生喝咖啡的数据吗？我们同样以此为例来探讨下置信区间是什么。</p>
 <p>假设，优达的学生有数十万个（<strong>总体</strong>），而我们能获得的学生数据只有几百个（<strong>样本</strong>），我们通过做样本均值进行抽样分布，得到了一个近似正态分布的图形，但这也仅仅是样本的均值分布，也就是<strong>样本统计量</strong>。我们利用样本统计量的分布去构造总体均值（<strong>总体参数</strong>）的估计区间，就叫做<strong>置信区间</strong>。</p>
@@ -723,9 +719,9 @@
 <h3 id="怎么用-1"><a href="#怎么用-1" class="headerlink" title="怎么用"></a>怎么用</h3><ul>
 <li>建立假设： 一般的都是均值或和与某数值之间的关系。示例如下：</li>
 </ul>
-<script type="math/tex; mode=display">
-H_0:\mu  \leqslant 7</script><script type="math/tex; mode=display">
-H_1:\mu  >  7</script><ul>
+<p>$$<br>H_0:\mu  \leqslant 7<br>$$</p>
+<p>$$<br>H_1:\mu  >  7<br>$$</p>
+<ul>
 <li>进行多次重复取样（自助法）</li>
 </ul>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从原数据集中取样，样本容量要大于30</span></span><br><span class="line">sample_df = df.sample(<span class="number">100</span>)</span><br><span class="line"><span class="comment">#新建列表</span></span><br><span class="line">means = []</span><br><span class="line"><span class="comment">#循环取样，并计算均值，存贮在列表中</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10000</span>):</span><br><span class="line">    bootsample = sample_df.sample(<span class="number">100</span>,replace = <span class="literal">True</span>)<span class="comment">#设置重复取样</span></span><br><span class="line">    means.append(bootsample.height.mean())<span class="comment">#计算数据集中height变量的均值</span></span><br></pre></td></tr></tbody></table></figure>
@@ -802,7 +798,6 @@ H_1:\mu  >  7</script><ul>
 <li>结果解释</li>
 </ul>
 <p>还是以ABC三个分类变量来假设，我们以C作为<strong>基准变量</strong>（也就是删除的那列），那么在显示的结果中：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -825,7 +820,6 @@ H_1:\mu  >  7</script><ul>
 </tr>
 </tbody>
 </table>
-</div>
 <p>1.Intercept的coef表示：如果分类为C的话，因变量即为i；</p>
 <p>2.A的coef表示：如果分类为A的话，因变量为i+a;</p>
 <p>3.B的coef表示：如果分类为B的话，因变量为i+b。</p>
