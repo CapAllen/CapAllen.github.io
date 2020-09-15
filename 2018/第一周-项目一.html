@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="If you change nothing, nothing will change.  Hi，各位同学们，大家好，欢迎踏上数据分析的不归路列车~在发车之前，有几点需要给大家强调一下： 课程和项目：  课程以项目为导向，学习曲线十分平缓，我也是从一个小白一步步走过来的，所以请大家一定要对自己有信心 从Teambition中，大家也能看到，我们把整体的一个大任务（入门毕业）拆分成了四个子任务（项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周导学-第一周-项目一">
+<meta property="og:url" content="https://www.capallen.top/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="If you change nothing, nothing will change.  Hi，各位同学们，大家好，欢迎踏上数据分析的不归路列车~在发车之前，有几点需要给大家强调一下： 课程和项目：  课程以项目为导向，学习曲线十分平缓，我也是从一个小白一步步走过来的，所以请大家一定要对自己有信心 从Teambition中，大家也能看到，我们把整体的一个大任务（入门毕业）拆分成了四个子任务（项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/16/PQaRtH.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/16/PQaWhd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/16/PQa2Ae.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/16/PQac7D.png">
+<meta property="article:published_time" content="2018-07-16T14:30:09.000Z">
+<meta property="article:modified_time" content="2019-06-06T02:32:23.367Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="lesson guide">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/16/PQaRtH.md.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每周导学-第一周-项目一 | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E7%9F%A5%E8%AF%86%E6%B8%85%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">本周知识清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E6%8E%8C%E6%8F%A1"><span class="nav-number">3.1.</span> <span class="nav-text">课程内掌握</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.1.</span> <span class="nav-text">SQL - 格式化查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E5%8F%8A%E7%94%A8%E6%B3%95%E5%8F%82%E8%80%83"><span class="nav-number">3.1.2.</span> <span class="nav-text">SQL - 基础命令及用法参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-%E8%BF%90%E7%AE%97%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.1.3.</span> <span class="nav-text">SQL - 运算顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%A4%96%E4%BA%86%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">课程外了解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3"><span class="nav-number">4.</span> <span class="nav-text">项目相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%A7%88"><span class="nav-number">4.1.</span> <span class="nav-text">项目概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.2.</span> <span class="nav-text">模块化任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="nav-number">4.2.1.</span> <span class="nav-text">数据提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86"><span class="nav-number">4.2.2.</span> <span class="nav-text">数据整理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8F%8A%E5%88%86%E6%9E%90"><span class="nav-number">4.2.3.</span> <span class="nav-text">数据可视化及分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">4.2.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4"><span class="nav-number">4.3.</span> <span class="nav-text">项目提交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.3.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E9%80%9A%E5%85%B3%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">提前通关了怎么办？</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每周导学-第一周-项目一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-07-16 22:30:09" itemprop="dateCreated datePublished" datetime="2018-07-16T22:30:09+08:00">2018-07-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html" class="post-meta-item leancloud_visitors" data-flag-title="每周导学-第一周-项目一" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>If you change nothing, nothing will change.</p>
+</blockquote>
+<p>Hi，各位同学们，大家好，欢迎踏上数据分析的<del>不归路</del>列车~在发车之前，有几点需要给大家强调一下：</p>
+<p><strong>课程和项目</strong>：</p>
+<ul>
+<li>课程以项目为导向，学习曲线十分平缓，我也是从一个小白一步步走过来的，所以请大家一定要对自己有<strong>信心</strong></li>
+<li>从Teambition中，大家也能看到，我们把整体的一个大任务（入门毕业）拆分成了四个子任务（项目），在每个子任务中又拆分成了<strong>知识学习、项目提交和修改、总结沉淀</strong>三个部分，在这三个部分之中，大家还可以自行再进行切分，如此将一个大难题拆分成若干个小问题，逐个击破，十分轻松</li>
+<li>对于项目，大家一定要重视！切不可抄袭，一定要<strong>对自己负责任</strong></li>
+</ul>
+<p><strong>如何提问</strong>：</p>
+<p>在课程学习中难免会遇到问题，请按照以下流程进行问题提问：</p>
+<ul>
+<li><p><strong>课程知识问题</strong>：</p>
+<ul>
+<li>先自行查找问题答案，参考：谷歌/百度搜索、<a target="_blank" rel="noopener" href="http://www.runoob.com/sql/sql-tutorial.html">菜鸟教程</a>、<a target="_blank" rel="noopener" href="https://www.csdn.net/">CSDN</a>、<a target="_blank" rel="noopener" href="https://stackoverflow.com/">stack<strong>overflow</strong></a>、<a target="_blank" rel="noopener" href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/SQL.Cookbook(%E4%B8%AD%E6%96%87%E7%89%88).pdf">SQLCookbook</a></li>
+<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
+</ul>
+</li>
+<li><p><strong>非课程知识问题</strong>：</p>
+<p>比如账号登录、课程加载等问题，请详细描述问题，反馈给班主任即可</p>
+</li>
+</ul>
+<p>该说的也说了个差不多，那么，请大家<del>系好安全带</del>做好<strong>觉悟</strong>：</p>
+<ul>
+<li>工作可能会很忙，但是每天至少要抽出一个小时来坚持学习，否则一日废，日日废</li>
+<li>准备好一个笔记本或者有道云笔记、EverNote这种电子笔记本，用来记录学习笔记/问题</li>
+<li>自律，自律，自律！自律才能让你更自由！</li>
+</ul>
+<p>准备发车！</p>
+<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><p>学习课程<strong>SQL初探</strong>，并完成（通过）项目一。</p>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
+<thead>
+<tr>
+<th align="center">时间</th>
+<th align="center">学习资源</th>
+<th align="center">学习内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">周二</td>
+<td align="center">微信群 - 每周导学</td>
+<td align="center">预览每周导学</td>
+</tr>
+<tr>
+<td align="center">周三、周四</td>
+<td align="center">Udacity - Classroom</td>
+<td align="center">SQL初探、项目一</td>
+</tr>
+<tr>
+<td align="center">周五</td>
+<td align="center">微信/Classin - 1V1</td>
+<td align="center">课程难点</td>
+</tr>
+<tr>
+<td align="center">周六</td>
+<td align="center">Classin - 优达日</td>
+<td align="center">项目串讲</td>
+</tr>
+<tr>
+<td align="center">周日</td>
+<td align="center">笔记本</td>
+<td align="center">总结沉淀</td>
+</tr>
+<tr>
+<td align="center">周一</td>
+<td align="center">自主学习</td>
+<td align="center">查漏补缺</td>
+</tr>
+</tbody></table>
+<h1 id="本周知识清单"><a href="#本周知识清单" class="headerlink" title="本周知识清单"></a>本周知识清单</h1><h2 id="课程内掌握"><a href="#课程内掌握" class="headerlink" title="课程内掌握"></a>课程内掌握</h2><h3 id="SQL-格式化查询语句"><a href="#SQL-格式化查询语句" class="headerlink" title="SQL - 格式化查询语句"></a>SQL - 格式化查询语句</h3><ul>
+<li><p>命令需要大写，其他内容如变量等则需要小写</p>
+</li>
+<li><p>表和变量名中不要出现空格，可使用下划线<code>_</code>替代</p>
+</li>
+<li><p>查询语句中，使用单一空格隔开命令和变量</p>
+</li>
+<li><p>为提高代码的可移植性，请在查询语句结尾添加一个分号<code>；</code></p>
+<p> 正确示范</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> account_id</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQL-基础命令及用法参考"><a href="#SQL-基础命令及用法参考" class="headerlink" title="SQL - 基础命令及用法参考"></a>SQL - 基础命令及用法参考</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>语句</strong></th>
+<th align="left"><strong>使用方法</strong></th>
+<th align="left"><strong>其他详细信息</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SELECT</td>
+<td align="left">SELECT <strong>Col1</strong>, <strong>Col2</strong>, …</td>
+<td align="left">提供你需要的列</td>
+</tr>
+<tr>
+<td align="center">FROM</td>
+<td align="left">FROM <strong>Table</strong></td>
+<td align="left">提供列所在的表格</td>
+</tr>
+<tr>
+<td align="center">LIMIT</td>
+<td align="left">LIMIT <strong>10</strong></td>
+<td align="left">限制返回的行数</td>
+</tr>
+<tr>
+<td align="center">ORDER BY</td>
+<td align="left">ORDER BY <strong>Col</strong></td>
+<td align="left">根据列命令表格。与 <strong>DESC</strong> 一起使用。</td>
+</tr>
+<tr>
+<td align="center">WHERE</td>
+<td align="left">WHERE <strong>Col &gt; 5</strong></td>
+<td align="left">用于过滤结果的一个条件语句</td>
+</tr>
+<tr>
+<td align="center">LIKE</td>
+<td align="left">WHERE <strong>Col LIKE ‘%me%’</strong></td>
+<td align="left">仅提取出列文本中具有 ‘me’ 的行</td>
+</tr>
+<tr>
+<td align="center">IN</td>
+<td align="left">WHERE <strong>Col IN (‘Y’, ‘N’)</strong></td>
+<td align="left">仅过滤行对应的列为 ‘Y’ 或 ‘N’</td>
+</tr>
+<tr>
+<td align="center">NOT</td>
+<td align="left">WHERE <strong>Col NOT IN (‘Y’, “N’)</strong></td>
+<td align="left"><strong>NOT</strong> 经常与 <strong>LIKE</strong> 和 <strong>IN</strong> 一起使用。</td>
+</tr>
+<tr>
+<td align="center">AND</td>
+<td align="left">WHERE <strong>Col1 &gt; 5 AND Col2 &lt; 3</strong></td>
+<td align="left">过滤两个或多个条件必须为真的行</td>
+</tr>
+<tr>
+<td align="center">OR</td>
+<td align="left">WHERE <strong>Col1 &gt; 5 OR Col2 &lt; 3</strong></td>
+<td align="left">过滤一个条件必须为真的行</td>
+</tr>
+<tr>
+<td align="center">BETWEEN</td>
+<td align="left">WHERE <strong>Col BETWEEN 3 AND 5</strong></td>
+<td align="left">一般情况下，语法比使用 <strong>AND</strong> 简单一些</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1, col2</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> col3  &gt; <span class="number">5</span> <span class="keyword">AND</span> col4 <span class="keyword">LIKE</span> <span class="string">&#x27;%os%&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col5</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQL-运算顺序"><a href="#SQL-运算顺序" class="headerlink" title="SQL - 运算顺序"></a>SQL - 运算顺序</h3><ul>
+<li><p>在 SQL 中使用<strong>算术运算符</strong>时，采用与数学中相同的运算顺序。</p>
+</li>
+<li><p>在 SQL中使用<strong>逻辑运算符</strong>时，要参考如下优先级顺序（操作符优先级由低到高，排列在同一行的操作符具有相同的优先级）</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>操作符列表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>:=</td>
+</tr>
+<tr>
+<td>2</td>
+<td>||，OR，XOR</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&amp;&amp;，AND</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NOT</td>
+</tr>
+<tr>
+<td>5</td>
+<td>BETWEEN，CASE，WHEN，THEN，ELSE</td>
+</tr>
+<tr>
+<td>6</td>
+<td>=，&lt;=&gt;，&gt;=，&gt;，&lt;=，&lt;，&lt;&gt;，!=，IS，LIKE，REGEXP，IN</td>
+</tr>
+<tr>
+<td>7</td>
+<td>|</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&lt;&lt;，&gt;&gt;</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-，+</td>
+</tr>
+<tr>
+<td>11</td>
+<td>*，/，DIV，%，MOD</td>
+</tr>
+<tr>
+<td>12</td>
+<td>^</td>
+</tr>
+<tr>
+<td>13</td>
+<td>- (一元减号)，~ (一元比特反转)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>!</td>
+</tr>
+<tr>
+<td>15</td>
+<td>BINARY，COLLATE</td>
+</tr>
+</tbody></table>
+<p><strong>HINT</strong>：看到如上这么复杂难记的优先级表，想必你也会头大，所以，为了避免因优先级导致的逻辑错误，请一定要将逻辑语句加上小括号，这样既清晰又不易出错！</p>
+</li>
+</ul>
+<h2 id="课程外了解"><a href="#课程外了解" class="headerlink" title="课程外了解"></a>课程外了解</h2><ul>
+<li><p>实体关系图（Entity Relationship Diagram，ERD），是一种用于数据库设计的结构图。一幅 ERD 包含不同的符号和连接符，用于显示两个重要的信息： 系统范围内的<strong>主要实体</strong>，以及这些<strong>实体之间的相互关系</strong>。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/PQaRtH"><img src="https://s1.ax1x.com/2018/07/16/PQaRtH.md.png" alt="PQaRtH.md.png"></a></p>
+<ul>
+<li><p><strong>实体</strong>：是一个系统内<strong>可定义的事物或概念</strong>（术语“实体”通常用来代替“表”，但它们是一样的 ），如上图中的<code>accounts</code>、<code>orders</code>等，即为实体。</p>
+</li>
+<li><p><strong>主键</strong>(Primary Key,PK)：是一种特殊的实体属性，用于<strong>界定数据库表中的记录的独特性</strong>。一个表不能有两笔（或更多）拥有相同的主键属性值的记录。在上图中，各个实体内的<code>id</code>即为PK。</p>
+</li>
+<li><p><strong>外键</strong>(Foreign Key,FK):是<strong>对主键的引用</strong>，用于识别实体之间的关系。请注意，有别于主键，外键不必是唯一的，多个记录可以共享相同的值。 在上图中，<code>orders</code>表中的<code>account_id</code>即为链接表<code>accounts</code>的外键。</p>
+</li>
+<li><p><strong>基数</strong>：基数定义了<strong>一个实与另一个实体的关系里面，某方可能出现次数</strong>。 三种常见的主要关系是一对一，一对多和多对多。  </p>
+<ul>
+<li><p>一对一：</p>
+<p><img src="https://s1.ax1x.com/2018/07/16/PQaWhd.png" alt="PQaWhd.png"></p>
+</li>
+<li><p>一对多：在课程中的例子即为一对多。</p>
+<p><img src="https://s1.ax1x.com/2018/07/16/PQa2Ae.png" alt="PQa2Ae.png"></p>
+</li>
+<li><p>多对多：</p>
+<p><img src="https://s1.ax1x.com/2018/07/16/PQac7D.png" alt="PQac7D.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h1><p>请先自行尝试完成项目，如果感觉吃力，再参考哈~</p>
+<h2 id="项目概览"><a href="#项目概览" class="headerlink" title="项目概览"></a>项目概览</h2><p>在这个项目中，我们利用Udacity的数据库，分别提取本地和全球的气温数据，并进行可视化对比分析，观察可视化结果，给出本地及全球平均气温的走势结论。 </p>
+<h2 id="模块化任务"><a href="#模块化任务" class="headerlink" title="模块化任务"></a>模块化任务</h2><h3 id="数据提取"><a href="#数据提取" class="headerlink" title="数据提取"></a>数据提取</h3><p>利用SQL，在项目工作区中，提取出全球气温数据和感兴趣城市的数据。</p>
+<p><strong>HINT</strong>：</p>
+<ul>
+<li><p>在提取感兴趣的城市之前，可以先通过如下代码查看数据库中，是否存在该城市数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> city_list</span><br><span class="line"><span class="keyword">WHERE</span> city = xxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提取出数据之后，可以先在工作区简单预览下，查看有连续记录数据的年份区间，并以这个区间作为筛选条件，重新提取数据并保存</p>
+</li>
+<li><p>你提取出来的两个数据文件，在时间筛选上应该是一致的</p>
+</li>
+</ul>
+<h3 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h3><p>利用Excel或Google Sheet对两组数据进行预处理，计算出平均气温的移动平均值</p>
+<p><strong>HINT</strong>：</p>
+<ul>
+<li>计算移动平均值采用的函数为<code>AVERAGE</code></li>
+<li>两组数据的移动平均值要单独成列，并且有一个不与其他列重复且易于辨认的列名，如<code>global_temp</code></li>
+<li>为方便分析，你需要将两列数据合并到同一个文件中，注意在复制粘贴时，选择<code>粘贴选项</code> -&gt; <code>值和数据格式</code>，这样才会粘贴得到公式计算后的数据。</li>
+</ul>
+<h3 id="数据可视化及分析"><a href="#数据可视化及分析" class="headerlink" title="数据可视化及分析"></a>数据可视化及分析</h3><p>利用Excel或Google Sheet将两组移动平均值进行线条图可视化，并对结果进行<strong>描述</strong>。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对可视化的分析结果进行总结，并发表结论性看法。</p>
+<h2 id="项目提交"><a href="#项目提交" class="headerlink" title="项目提交"></a>项目提交</h2><p>提交前，请将 PDF 格式的文档压缩成zip格式的压缩包，文件名不要出现汉字或者空格，示例<code>Allen_project_01.zip</code></p>
+<p><strong>项目提交、收到审阅结果之后请及时告知班主任或助教，让我们一起分享你的喜悦，提前祝项目顺利通过，等你好消息！</strong></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.visual-paradigm.com/cn/guide/data-modeling/what-is-entity-relationship-diagram/">什么是实体关系图（ERD）？</a></li>
+</ul>
+<h1 id="提前通关了怎么办？"><a href="#提前通关了怎么办？" class="headerlink" title="提前通关了怎么办？"></a>提前通关了怎么办？</h1><ul>
+<li>整理学习笔记</li>
+<li>开始下一阶段的学习：找助教要下一周的导学呀~</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html" rel="prev" title="课堂规模悖论">
+                  <i class="fa fa-chevron-left"></i> 课堂规模悖论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/python%E5%85%A5%E9%97%A8.html" rel="next" title="每周导学-第二周-python基础">
+                  每周导学-第二周-python基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

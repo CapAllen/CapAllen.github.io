@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="很多同学对Anaconda和Jupyter Notebook的安装与配置有疑惑，这里对课程中的选修：配置Anaconda和Jupyter Notebook作为一个补充。 Anaconda安装点击下载链接，先选择你的操作系统，然后选择Python 3.7 version版本下载。  安装过程中，记得这里的两个框，都勾选上。   常用软件安装完Anaconda之后，Windows用户可以通过开始-所有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anaconda&amp;Jupyter Notebook配置">
+<meta property="og:url" content="https://www.capallen.top/2018/Anaconda%E9%85%8D%E7%BD%AE.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="很多同学对Anaconda和Jupyter Notebook的安装与配置有疑惑，这里对课程中的选修：配置Anaconda和Jupyter Notebook作为一个补充。 Anaconda安装点击下载链接，先选择你的操作系统，然后选择Python 3.7 version版本下载。  安装过程中，记得这里的两个框，都勾选上。   常用软件安装完Anaconda之后，Windows用户可以通过开始-所有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu1fsg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu1Ids.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu3BlT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu3LtI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu3j9P.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu89BQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu8rCt.png">
+<meta property="article:published_time" content="2018-12-01T23:30:09.000Z">
+<meta property="article:modified_time" content="2019-06-06T02:32:23.351Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="环境配置">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/02/Fu1fsg.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2018/Anaconda%E9%85%8D%E7%BD%AE.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Anaconda&Jupyter Notebook配置 | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda"><span class="nav-number">1.</span> <span class="nav-text">Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">常用软件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jupter-Notebook"><span class="nav-number">2.</span> <span class="nav-text">Jupter Notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%BF%9B%E5%85%A5%E5%88%B0%E5%B7%A5%E4%BD%9C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 进入到工作文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%89%E4%BD%8FShift%E9%94%AE%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8F%B3%E5%87%BB%EF%BC%8C%E9%80%89%E6%8B%A9%E2%80%9C%E5%9C%A8%E6%AD%A4%E5%A4%84%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E2%80%9D"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.按住Shift键，然后右击，选择“在此处打开命令窗口”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BE%93%E5%85%A5jupyter-notebook%EF%BC%8C%E5%9B%9E%E8%BD%A6"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.输入jupyter notebook，回车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-notebook%E5%8D%B3%E4%BC%9A%E5%9C%A8%E4%BD%A0%E7%9A%84%E9%BB%98%E8%AE%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%BC%B9%E5%87%BA%EF%BC%8C%E7%9B%AE%E5%BD%95%E5%8D%B3%E4%B8%BA%E8%AF%A5%E8%B7%AF%E5%BE%84%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.notebook即会在你的默认浏览器中弹出，目录即为该路径下的文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spyder"><span class="nav-number">3.</span> <span class="nav-text">Spyder</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80"><span class="nav-number">3.1.</span> <span class="nav-text">打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2"><span class="nav-number">3.2.</span> <span class="nav-text">界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">使用流程</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/Anaconda%E9%85%8D%E7%BD%AE.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Anaconda&Jupyter Notebook配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-02 07:30:09" itemprop="dateCreated datePublished" datetime="2018-12-02T07:30:09+08:00">2018-12-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DAND/" itemprop="url" rel="index"><span itemprop="name">DAND</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/Anaconda%E9%85%8D%E7%BD%AE.html" class="post-meta-item leancloud_visitors" data-flag-title="Anaconda&Jupyter Notebook配置" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/Anaconda%E9%85%8D%E7%BD%AE.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/Anaconda%E9%85%8D%E7%BD%AE.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>很多同学对Anaconda和Jupyter Notebook的安装与配置有疑惑，这里对课程中的<a target="_blank" rel="noopener" href="https://classroom.udacity.com/nanodegrees/nd002-cn-basic-vip/parts/e566ad37-6119-4448-a6bc-7ade73ef3992">选修：配置Anaconda和Jupyter Notebook</a>作为一个补充。</p>
+<h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>点击<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/">下载链接</a>，先选择你的操作系统，然后选择<code>Python 3.7 version</code>版本下载。</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/Fu1fsg.png" alt="Fu1fsg.png"></p>
+<p>安装过程中，记得这里的两个框，都勾选上。</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/Fu1Ids.png" alt="Fu1Ids.png"></p>
+<hr>
+<h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><p>安装完Anaconda之后，Windows用户可以通过<code>开始</code>-<code>所有程序</code>找到<code>Anaconda</code>的文件夹，在文件夹下有三个程序是你经常会用到的，分别是：</p>
+<p><strong>Anaconda Prompt</strong>：这里就是Anaconda的控制台，你进行<a target="_blank" rel="noopener" href="https://classroom.udacity.com/nanodegrees/nd002-cn-basic-vip/parts/e566ad37-6119-4448-a6bc-7ade73ef3992/modules/2424424b-f71a-4c80-a34c-9a1f47e35cd5/lessons/c6a12f2e-63f2-4007-a2c3-dd3e5f06f3cb/concepts/9310a67f-9b23-449e-8949-4312dc718ef9">第三方包的管理</a>和<a target="_blank" rel="noopener" href="https://classroom.udacity.com/nanodegrees/nd002-cn-basic-vip/parts/e566ad37-6119-4448-a6bc-7ade73ef3992/modules/2424424b-f71a-4c80-a34c-9a1f47e35cd5/lessons/c6a12f2e-63f2-4007-a2c3-dd3e5f06f3cb/concepts/14783a82-d656-436b-bc3f-12f7abe03529">编程环境的管理</a>都是在这里进行。但是现阶段用不到。</p>
+<p><strong>Jupyter Notebook</strong>：使用非常非常频繁的web文档，在项目三和项目四中都会用到。</p>
+<p><strong>Spyder</strong>：python的IDE(集成开发环境)，在项目二中会用到。</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/Fu3BlT.png" alt="Fu3BlT.png"></p>
+<h1 id="Jupter-Notebook"><a href="#Jupter-Notebook" class="headerlink" title="Jupter Notebook"></a>Jupter Notebook</h1><p>notebook的使用技巧在教室内说得很详细了，这里只补充一点，那就是如何在你工作的文件夹下使用notebook。</p>
+<h3 id="1-进入到工作文件夹"><a href="#1-进入到工作文件夹" class="headerlink" title="1. 进入到工作文件夹"></a>1. 进入到工作文件夹</h3><h3 id="2-按住Shift键，然后右击，选择“在此处打开命令窗口”"><a href="#2-按住Shift键，然后右击，选择“在此处打开命令窗口”" class="headerlink" title="2.按住Shift键，然后右击，选择“在此处打开命令窗口”"></a>2.按住<code>Shift</code>键，然后右击，选择“在此处打开命令窗口”</h3><p><img src="https://s1.ax1x.com/2018/12/02/Fu3LtI.png" alt="Fu3LtI.png"></p>
+<h3 id="3-输入jupyter-notebook，回车"><a href="#3-输入jupyter-notebook，回车" class="headerlink" title="3.输入jupyter notebook，回车"></a>3.输入jupyter notebook，回车</h3><p><img src="https://s1.ax1x.com/2018/12/02/Fu3j9P.png" alt="Fu3j9P.png"></p>
+<h3 id="4-notebook即会在你的默认浏览器中弹出，目录即为该路径下的文件"><a href="#4-notebook即会在你的默认浏览器中弹出，目录即为该路径下的文件" class="headerlink" title="4.notebook即会在你的默认浏览器中弹出，目录即为该路径下的文件"></a>4.notebook即会在你的默认浏览器中弹出，目录即为该路径下的文件</h3><p><strong>注意：</strong>不要关掉弹出notebook的命令窗口，这是将notebook与你电脑内的python链接的纽带。</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/Fu89BQ.png" alt="Fu89BQ.png"></p>
+<h1 id="Spyder"><a href="#Spyder" class="headerlink" title="Spyder"></a>Spyder</h1><p>我们将会在项目二中用到Spyder这个软件，这个软件也没什么操作难度，所以课程内没有讲解。</p>
+<p>我在这里给大家具体讲一下吧。</p>
+<h2 id="打开"><a href="#打开" class="headerlink" title="打开"></a>打开</h2><p>Windows用户依次点击<code>开始</code>-<code>所有程序</code>-<code>Anaconda</code>-<code>Spyder</code>即可。</p>
+<h2 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h2><p><img src="https://s1.ax1x.com/2018/12/02/Fu8rCt.png" alt="Fu8rCt.png"></p>
+<p>如上，我们可以把Spyder的界面划分为5个部分，分别为：</p>
+<p><strong>菜单栏</strong>：就是一些新建、打开、运行、终止等等操作，自行摸索</p>
+<p><strong>选择工作区</strong>：这里可以选择工作区路径</p>
+<p><strong>代码编辑区</strong>：这里就是你写代码的地方</p>
+<p><strong>程序变量/文件路径查看区</strong>：通过选择箭头标注的选项卡，可以显示代码中的变量，或者是当前路径下的文件</p>
+<p><strong>控制台</strong>：这里就是显示你代码运行结果的地方，如果代码运行卡住了，可以通过点该区域右上角的<code>■</code>终止运行。</p>
+<h2 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h2><p>先确定工作路径，然后新建脚本，开始编写代码、运行（快捷键F5）、调试。</p>
+<p>做完项目二，大家就能熟练操作啦，不要担心~</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/Python%20code%20for%20mini%20batch%20gradient%20descent.html" rel="prev" title="Python Code of Mini-Batch Gradient Descent">
+                  <i class="fa fa-chevron-left"></i> Python Code of Mini-Batch Gradient Descent
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/Numpy%E5%92%8CPandas%E5%9F%BA%E7%A1%80.html" rel="next" title="第三周-Numpy和Pandas基础">
+                  第三周-Numpy和Pandas基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2018/Anaconda%E9%85%8D%E7%BD%AE.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Sparkify is a digital music service similar to Netease Cloud Music or QQ Music. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Churn or Not">
+<meta property="og:url" content="https://www.capallen.top/2019/Churn-or-Not.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="Sparkify is a digital music service similar to Netease Cloud Music or QQ Music. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertis">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uugh8K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8knKJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uK91RP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/27/uKCsfI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8DaOU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8DsYR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8Dgl6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8rYAH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8DROO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8Af6e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8mwZQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8ev80.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8mrin.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8Db1P.png">
+<meta property="article:published_time" content="2019-09-26T17:12:49.000Z">
+<meta property="article:modified_time" content="2019-09-29T09:00:52.834Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Spark">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/27/uugh8K.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2019/Churn-or-Not.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Churn or Not | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Facts"><span class="nav-number">1.</span> <span class="nav-text">Quick Facts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploratory-Data-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Exploratory Data Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Engineering"><span class="nav-number">3.</span> <span class="nav-text">Feature Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modeling"><span class="nav-number">4.</span> <span class="nav-text">Modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflection"><span class="nav-number">5.1.</span> <span class="nav-text">Reflection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Improvement"><span class="nav-number">5.2.</span> <span class="nav-text">Improvement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Repo"><span class="nav-number">6.</span> <span class="nav-text">Github Repo</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2019/Churn-or-Not.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Churn or Not
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-27 01:12:49" itemprop="dateCreated datePublished" datetime="2019-09-27T01:12:49+08:00">2019-09-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-09-29 17:00:52" itemprop="dateModified" datetime="2019-09-29T17:00:52+08:00">2019-09-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Udacity/" itemprop="url" rel="index"><span itemprop="name">Udacity</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/Churn-or-Not.html" class="post-meta-item leancloud_visitors" data-flag-title="Churn or Not" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/Churn-or-Not.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/Churn-or-Not.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.ax1x.com/2019/09/27/uugh8K.png" alt="uugh8K.png"></p>
+<p><strong>Sparkify</strong> is a digital music service similar to <a target="_blank" rel="noopener" href="https://music.163.com/"><strong>Netease</strong> <strong>Cloud</strong> <strong>Music</strong></a> or <a target="_blank" rel="noopener" href="https://y.qq.com/"><strong>QQ Music</strong></a>. Many of the users stream their favorite songs in Sparkify service everyday, either using free tier that places advertisements in between the songs, or using the premium subscription model where they stream music as free, but pay a monthly flat rate. User can upgrade, downgrade or cancel their service at anytime.  </p>
+<p>This is a <code>Customer Churn Prediction Problem</code> , there are so many similar projects, such as <a target="_blank" rel="noopener" href="https://www.kaggle.com/c/kkbox-churn-prediction-challenge">WSDM - KKBox’s Churn Prediction Challenge</a> competition from <a target="_blank" rel="noopener" href="https://www.kaggle.com/">Kaggle</a>, and a few helpful links are follows:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://addepto.com/machine-learning-predict-reduce-customer-churn/">Customer Churn Prediction using Machine Learning (How To)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.datasciencecentral.com/profiles/blogs/prediction-of-customer-churn-with-machine-learning">Prediction of Customer Churn with Machine Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.optimove.com/resources/learning-center/customer-churn-prediction-and-prevention">Customer Churn Prediction and Prevention</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/hands-on-predict-customer-churn-5c2a42806266">Hands-on: Predict Customer Churn</a></li>
+</ul>
+<p>So, our job is deep mining the customers’ data and implement appropriate model to predict customer churn as follow steps:</p>
+<ul>
+<li>Clean data: fill the nan values , correct the data types, drop the outliers.</li>
+<li>EDA: exploratory data to look features’ distributions and correlation with key label (churn).</li>
+<li>Feature engineering: extract and found customer-features and customer-behavior-features; Implement standscaler on numerical features.</li>
+<li>Train and measure models:  I choose logistic regression, linear svm classifier, decision tree and random forest classifier to train a baseline model and tuning a better model from best of them. It is worth mentioning that this data is unbalanced because of less churn customers, so we choose <code>f1 score</code>  as a metrics to measure models’ performance.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Quick-Facts"><a href="#Quick-Facts" class="headerlink" title="Quick Facts"></a>Quick Facts</h2><p>A mini subset of size 125 MB of the original 12 GB customer log json data file will be used for creating the prediction model. The small dataset has 286’500 log entries with 18 unique columns. </p>
+<p>The schema and info of dataset is given below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line"> |-- artist: string (nullable &#x3D; true)</span><br><span class="line"> |-- auth: string (nullable &#x3D; true)</span><br><span class="line"> |-- firstName: string (nullable &#x3D; true)</span><br><span class="line"> |-- gender: string (nullable &#x3D; true)</span><br><span class="line"> |-- itemInSession: long (nullable &#x3D; true)</span><br><span class="line"> |-- lastName: string (nullable &#x3D; true)</span><br><span class="line"> |-- length: double (nullable &#x3D; true)</span><br><span class="line"> |-- level: string (nullable &#x3D; true)</span><br><span class="line"> |-- location: string (nullable &#x3D; true)</span><br><span class="line"> |-- method: string (nullable &#x3D; true)</span><br><span class="line"> |-- page: string (nullable &#x3D; true)</span><br><span class="line"> |-- registration: long (nullable &#x3D; true)</span><br><span class="line"> |-- sessionId: long (nullable &#x3D; true)</span><br><span class="line"> |-- song: string (nullable &#x3D; true)</span><br><span class="line"> |-- status: long (nullable &#x3D; true)</span><br><span class="line"> |-- ts: long (nullable &#x3D; true)</span><br><span class="line"> |-- userAgent: string (nullable &#x3D; true)</span><br><span class="line"> |-- userId: string (nullable &#x3D; true)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Column’s Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>artist</td>
+<td>The artist being listened to</td>
+</tr>
+<tr>
+<td>auth</td>
+<td>Whether or not the user is logged in</td>
+</tr>
+<tr>
+<td>firstName/lastName</td>
+<td>Name of the user</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Gender of the user</td>
+</tr>
+<tr>
+<td>itemInSession</td>
+<td>Item number in session</td>
+</tr>
+<tr>
+<td>length</td>
+<td>Length of time for current row of specific log</td>
+</tr>
+<tr>
+<td>level</td>
+<td>Free or Paid user</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Physical location of user, including City and State</td>
+</tr>
+<tr>
+<td>method</td>
+<td>Get or Put requests</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Which page are user on in current row</td>
+</tr>
+<tr>
+<td>registration</td>
+<td>Users registration number</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>Session ID</td>
+</tr>
+<tr>
+<td>song</td>
+<td>Song currently being played</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Web status</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>Timestamp of current row</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>Useragent of post or get in browser of users</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>User ID</td>
+</tr>
+</tbody></table>
+<h2 id="Exploratory-Data-Analysis"><a href="#Exploratory-Data-Analysis" class="headerlink" title="Exploratory Data Analysis"></a>Exploratory Data Analysis</h2><p>We use the <code>Cancellation Confirmation</code> events of <code>page</code> column to define the customer churn, and perform some exploratory data analysis to observe the behavior for users who stayed vs users who churned. </p>
+<ul>
+<li>churn</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8knKJ.png" alt="u8knKJ.png"></p>
+<p>So, there are 52 users have churned events in the dataset, it’s about 23.1% churned rate. The rate of churn and not churn is roughly 1:3, so this is an unbalanced dataset.</p>
+<ul>
+<li>gender</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/09/27/uK91RP.png" alt="uK91RP.png"></p>
+<p>Can we say the gender has effect on Churn or not ? We calculate the p-value and result is 0.20 over 0.05, so, we can’t say like that.</p>
+<ul>
+<li>page</li>
+</ul>
+<p>We count each item in <code>page</code> column of different group and normalized data.</p>
+<p><img src="https://s2.ax1x.com/2019/09/27/uKCsfI.png" alt="uKCsfI.png"></p>
+<p>Obviously, <code>NextSong</code> has accounted for most of customers’ events. <code>Thumbs Up</code> ,<code>Thumbs Down</code> , <code>Home</code> and <code>Add to Playlist</code> have effect on churn too.</p>
+<ul>
+<li>userAgent</li>
+</ul>
+<p>We extract the browser and platform of customers from <code>userAgent</code> column.</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8DaOU.png" alt="u8DaOU.png"></p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8DsYR.png" alt="u8DsYR.png"></p>
+<p>Customers using safari and iPad have more proportion in churn.</p>
+<ul>
+<li>time</li>
+</ul>
+<p>We extract day-of-month, day-of-week and hour from <code>ts</code> column.</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8Dgl6.png" alt="u8Dgl6.png"></p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8rYAH.png" alt="u8rYAH.png"></p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8DROO.png" alt="u8DROO.png"></p>
+<p>Customers from churn group have more events after 15th in one month, and have less events in weekend.</p>
+<h2 id="Feature-Engineering"><a href="#Feature-Engineering" class="headerlink" title="Feature Engineering"></a>Feature Engineering</h2><p>On the basis of the above EDA, we can create features as follows:</p>
+<ul>
+<li>Categorical Features <ul>
+<li>gender</li>
+<li>level</li>
+<li>browser</li>
+<li>platform</li>
+</ul>
+</li>
+<li>Numerical Features<ul>
+<li>mean,max,min,std of length of users</li>
+<li>numbers of each item in page (ThumbsUp …</li>
+<li>number of unique songs and total songs of users</li>
+<li>number of unique artists of users</li>
+<li>percentage of operations after 15th in a month</li>
+<li>percentage of operations in workday</li>
+</ul>
+</li>
+</ul>
+<p>We implement label encoding on categorical features and standard scaler on numerical features.</p>
+<h2 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h2><p>We split the full dataset into train and test sets. Test out the baseline of four machine learning methods: Logistic Regression, Linear SVC, Decision Tree Classifier and Random Forest Classifier. </p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8Af6e.png" alt="u8Af6e.png"></p>
+<p>Though the <code>LinearSVC</code> spent more training time, but it can get the highest f1 score 0.702. And the <code>LogisticRegression</code> has a medium training time and f1 score, maybe I can tuning it to get a higher<br>score. So I’ll choose <code>LinearSVC</code> and <code>LogisticRegression</code> to tuning in next section, the result is as follows:</p>
+<ul>
+<li>Linear SVC</li>
+</ul>
+<p>Training time:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8mwZQ.png" alt="u8mwZQ.png"></p>
+<p>F-1 Score:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8ev80.png" alt="u8ev80.png"></p>
+<ul>
+<li>LogisticRegression</li>
+</ul>
+<p>Training time:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8mrin.png" alt="u8mrin.png"></p>
+<p>F-1 Score:</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u8Db1P.png" alt="u8Db1P.png"></p>
+<p>As we can see in above, the logistic regression (0.7021) can get a nearly f1 score as the linear svm classifier(0.7045). But the logistic regression saves 83.3% time spending than the latter, considering this is only a quit mini dataset and our purpose is scaling this up to the total 12G  dataset, so, the logistic regression is the best model from now on in this project.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h3 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h3><p>In  this project I set out to predict customers’ churn problem with the dataset of  a music streaming service named Sparkify. This is a binary classification problem , so I choose four supervised learning algorithm to found a model. After evaluated and tuning, I find out the logistic regression is the suitable model for this project because of its balanced and high f1-score (0.7021) and time spending.</p>
+<p>By the way, I once fell into the trap of data leakage ,so that all of the models can achieve a performance that seems too good (1 for f1-score) to be true. I had to go back to check my feature engineering, and found I put the <code>cancellation confirmation</code>  which is the flag of churn in the features, what a awkward thing! And that teach us you must be careful and patient when you are working.</p>
+<h3 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a>Improvement</h3><p>There are only about 76 samples in the mini dataset above, so the model could be improved by being trained on a bigger dataset and tuning hyper parameters based on it.  </p>
+<p>Another improvement could be to try out more features or deep learning models. </p>
+<h2 id="Github-Repo"><a href="#Github-Repo" class="headerlink" title="Github Repo"></a>Github Repo</h2><p>Hope you find this interesting and for further details on this analysis like code and process followed would be available <a target="_blank" rel="noopener" href="https://github.com/CapAllen/Sparkify">here</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Spark/" rel="tag"># Spark</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/%E5%88%A9%E7%94%A8Flask%E4%B8%8Epyecharts%E6%90%AD%E5%BB%BADashboard.html" rel="prev" title="利用Flask与pyecharts搭建Dashboard">
+                  <i class="fa fa-chevron-left"></i> 利用Flask与pyecharts搭建Dashboard
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2019/Churn-or-Not.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

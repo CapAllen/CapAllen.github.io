@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：  在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：  学生通常每学期修4到5门课，但是教授经常只教1门或2门； 上小课的学生很少，但上大课的学生人数非常之多。  一旦我们知道了第一个原因，其效应就是显而易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课堂规模悖论">
+<meta property="og:url" content="https://www.capallen.top/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：  在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：  学生通常每学期修4到5门课，但是教授经常只教1门或2门； 上小课的学生很少，但上大课的学生人数非常之多。  一旦我们知道了第一个原因，其效应就是显而易">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/10/03/i30ncq.png">
+<meta property="article:published_time" content="2018-02-28T04:30:09.000Z">
+<meta property="article:modified_time" content="2019-06-06T02:32:23.367Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="statistics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/10/03/i30ncq.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>课堂规模悖论 | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          课堂规模悖论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-28 12:30:09" itemprop="dateCreated datePublished" datetime="2018-02-28T12:30:09+08:00">2018-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html" class="post-meta-item leancloud_visitors" data-flag-title="课堂规模悖论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在《Think Stats 2nd》书中的第三章提到了一个有趣的统计学悖论——课堂规模悖论。书中表述如下：</p>
+<hr>
+<p>在很多美国大学和学院里，学生与教师的比例约为10：1，但是学生们经常会惊讶地发现自己课上的平均学生数大于10，造成这一现象的原因有两个：</p>
+<ul>
+<li>学生通常每学期修4到5门课，但是教授经常只教1门或2门；</li>
+<li>上小课的学生很少，但上大课的学生人数非常之多。</li>
+</ul>
+<p>一旦我们知道了第一个原因，其效应就是显而易见的，第二个就不那么明显了。让我们来看一个例子，假设一所学院某学期开了65门课，选课的人数分布如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">size</th>
+<th align="center">count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">5-9</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">10-14</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">15-19</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">20-24</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">25-29</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">30-34</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">35-39</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">40-44</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">45-49</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+<p>如果你问院长，每门课平均的选课人数是多少，他会构建一个PMF( probability mass function，概率质量函数），计算出均值。</p>
+<blockquote>
+<p>PMF是将数据中的每个值映射到其概率上，是除直方图外的另一种表示数据分布的方法。</p>
+</blockquote>
+<hr>
+<p>书中的代码使用的是作者自建的一个python库thinkstats2，这里不再赘述，只是借书中的例子，用python还原如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义选课人数分布字典</span></span><br><span class="line">d = &#123;<span class="number">7</span>:<span class="number">8</span>,<span class="number">12</span>:<span class="number">8</span>,<span class="number">17</span>:<span class="number">14</span>,<span class="number">22</span>:<span class="number">4</span>,<span class="number">27</span>:<span class="number">6</span>,<span class="number">32</span>:<span class="number">12</span>,<span class="number">37</span>:<span class="number">8</span>,<span class="number">42</span>:<span class="number">3</span>,<span class="number">47</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="comment">#获取人数分布的array</span></span><br><span class="line">data = numpy.array(list(d.keys())).repeat(list(d.values()))</span><br><span class="line"><span class="comment">#计算均值</span></span><br><span class="line">act_mean = data.mean()</span><br></pre></td></tr></table></figure>
+
+<p>计算得到实际选课人数均值约为23.7。</p>
+<p>这是我们获取全部数据之后，站在类似于上帝视角去看的结果，那么如果我们对一组学生进行调查，询问他们的课堂上有多少学生，然后再次计算均值，会发现什么呢？</p>
+<p>首先，计算出学生观察到的分布，其中每个课堂规模值的概率受到选课学生人数的“影响”。</p>
+<blockquote>
+<p>具体实现：假设每门课的选课人数为x，而该规模人数的课程出现的概率为p，那么通过询问，获得的该规模课程总数应该为x*p。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们先构建课程规模与课程出现概率的字典</span></span><br><span class="line">pmf = &#123;size:(count/<span class="number">65</span>) <span class="keyword">for</span> size,count <span class="keyword">in</span> d.items()&#125;<span class="comment">#65为课程总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建课程规模与询问后得到的课程计数字典，我们把它叫做偏倚分布</span></span><br><span class="line">obs_data = &#123;size:size*count <span class="keyword">for</span> size,count <span class="keyword">in</span> pmf.items()&#125;</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数总数</span></span><br><span class="line">sum_students = sum(list(map(<span class="keyword">lambda</span> x:x[<span class="number">0</span>]*x[<span class="number">1</span>],zip(obs_data.keys(),obs_data.values()))))</span><br><span class="line"><span class="comment">#计算偏倚分布的总课程数</span></span><br><span class="line">sum_count = sum(list(obs_data.values()))</span><br><span class="line"><span class="comment">#计算偏倚分布的选课人数均值</span></span><br><span class="line">obs_mean = sum_students/sum_count</span><br></pre></td></tr></table></figure>
+
+<p>计算得到的结果为：29.1，比实际的均值高了约25%。</p>
+<p>接下来，我们构建这两组数据的PMF图，能更直观一些。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#构建偏倚分布课程规模与该课程出现概率的字典</span></span><br><span class="line">obs_pmf = &#123;size:count/sum_count <span class="keyword">for</span> size,count <span class="keyword">in</span> obs_data.items()&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化，并列柱状图</span></span><br><span class="line">sns.set(style=<span class="string">&quot;white&quot;</span>, context=<span class="string">&quot;talk&quot;</span>)<span class="comment">#设置样式</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">5</span>))<span class="comment">#设置图像大小</span></span><br><span class="line">ind = np.array(list(pmf.keys()))</span><br><span class="line">width = <span class="number">0.4</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind - width,pmf.values(),label = <span class="string">&#x27;actual&#x27;</span>)<span class="comment">#实际值</span></span><br><span class="line"></span><br><span class="line">plt.bar(ind + width,ano_pmf.values(),label = <span class="string">&#x27;observed&#x27;</span>)<span class="comment">#观察值</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;class size&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;PMF&#x27;</span>)</span><br><span class="line">plt.xticks(list(pmf.keys()))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2018/10/03/i30ncq.png" alt="i30ncq.png"></p>
+<p>从图中可以明显看出，在偏倚分布中，小课更少，大课更多。</p>
+<p>同样，你也可以反向进行如上的操作。假设你希望得到一所学院的课堂规模分布，但却无法从院长处得到可靠数据，你可以采用另一个办法：选择学生的一个随机样本，进行调查，询问他们的课堂上有多少学生，然后再进行“去偏倚”的操作，这里就需要用统计得来的同等规模课程计数除以它出现的概率。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/statistics/" rel="tag"># statistics</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/windows%E5%88%9B%E5%BB%BA%E5%8F%AA%E6%9C%89%E6%8B%93%E5%B1%95%E5%90%8D%E7%9A%84%E6%96%87%E4%BB%B6.html" rel="prev" title="Windows下创建只有拓展名的文件">
+                  <i class="fa fa-chevron-left"></i> Windows下创建只有拓展名的文件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/%E7%AC%AC%E4%B8%80%E5%91%A8-%E9%A1%B9%E7%9B%AE%E4%B8%80.html" rel="next" title="每周导学-第一周-项目一">
+                  每周导学-第一周-项目一 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2018/%E8%AF%BE%E5%A0%82%E8%A7%84%E6%A8%A1%E6%82%96%E8%AE%BA-.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

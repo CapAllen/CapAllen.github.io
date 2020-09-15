@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Shortly after moving to San Francisco in October 2007, roommates and former schoolmates Brian Chesky and Joe Gebbia could not afford the rent for their loft apartment. Chesky and Gebbia came up with">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airbnb in Beijing isn&#39;t as Cool Enough as it&#39;s Advertised">
+<meta property="og:url" content="https://www.capallen.top/2019/Airbnb-in-Beijing.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="Shortly after moving to San Francisco in October 2007, roommates and former schoolmates Brian Chesky and Joe Gebbia could not afford the rent for their loft apartment. Chesky and Gebbia came up with">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://w1nnersclub.com/wp-content/uploads/2018/08/the-great-wall-of-china.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/28/VesI3t.png">
+<meta property="article:published_time" content="2019-05-27T01:33:08.000Z">
+<meta property="article:modified_time" content="2019-06-06T05:28:35.345Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="Project">
+<meta property="article:tag" content="Data Analysis Report">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w1nnersclub.com/wp-content/uploads/2018/08/the-great-wall-of-china.jpg">
+
+
+<link rel="canonical" href="https://www.capallen.top/2019/Airbnb-in-Beijing.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Airbnb in Beijing isn't as Cool Enough as it's Advertised | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Listings-in-Beijing"><span class="nav-number">1.</span> <span class="nav-text">Listings in Beijing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-does-the-price-of-Airbnb-change-over-time"><span class="nav-number">1.1.</span> <span class="nav-text">How does the price of Airbnb change over time?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What%E2%80%99s-the-difference-in-listings-prices-in-all-districts-of-Beijing"><span class="nav-number">1.2.</span> <span class="nav-text">What’s the difference in listings prices in all districts of Beijing?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-does-the-number-of-Airbnb-change-over-time-and-districts"><span class="nav-number">1.3.</span> <span class="nav-text">How does the number of Airbnb change over time and districts?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hosts-in-Beijing"><span class="nav-number">2.</span> <span class="nav-text">Hosts in Beijing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What%E2%80%99s-the-favorite-word-of-hosts-to-describe-themselves"><span class="nav-number">2.1.</span> <span class="nav-text">What’s the favorite word of hosts to describe themselves ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Are-they-all-personal-hosts"><span class="nav-number">2.2.</span> <span class="nav-text">Are they all personal hosts?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How%E2%80%99s-the-hosts%E2%80%99-service"><span class="nav-number">2.3.</span> <span class="nav-text">How’s the hosts’ service?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Can-We-Predict-the-Price"><span class="nav-number">3.</span> <span class="nav-text">Can We Predict the Price?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2019/Airbnb-in-Beijing.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Airbnb in Beijing isn't as Cool Enough as it's Advertised
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-27 09:33:08" itemprop="dateCreated datePublished" datetime="2019-05-27T09:33:08+08:00">2019-05-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 13:28:35" itemprop="dateModified" datetime="2019-06-06T13:28:35+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Udacity/" itemprop="url" rel="index"><span itemprop="name">Udacity</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/Airbnb-in-Beijing.html" class="post-meta-item leancloud_visitors" data-flag-title="Airbnb in Beijing isn't as Cool Enough as it's Advertised" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/Airbnb-in-Beijing.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/Airbnb-in-Beijing.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://w1nnersclub.com/wp-content/uploads/2018/08/the-great-wall-of-china.jpg"></p>
+<blockquote>
+<p>Shortly after moving to San Francisco in October 2007, roommates and former schoolmates <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Brian_Chesky">Brian Chesky</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Joe_Gebbia">Joe Gebbia</a> could not afford the rent for their loft apartment. Chesky and Gebbia came up with the idea of putting an <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Air_mattress">air mattress</a> in their living room and turning it into a bed and breakfast. The goal at first was just “to make a few bucks”.</p>
+<p>​                                                                                                                                                         —— Airbnb Wiki</p>
+</blockquote>
+<p><strong>A‌i‌r‌b‌n‌b‌,‌ ‌I‌n‌c‌.‌</strong>, is an  <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Online_marketplace">online marketplace</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hospitality_service">hospitality service</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Brokerage">brokerage</a> company, It has a cool brand story, with hosts sharing their extra living space, guests living for a fee, and allowing guests to experience real local life instead of booking a hotel.  It sounds really cool, but  what is the real situation in Beijing? Let’s check it out from two parts:</p>
+<ul>
+<li>Listings in Beijing</li>
+<li>Hosts in Beijing</li>
+</ul>
+<a id="more"></a>
+
+<blockquote>
+<p>In this blog, the data is provided by <a target="_blank" rel="noopener" href="http://insideairbnb.com/">Inside Airbnb</a>, and it contains all informations of 25921 listings in Beijing.</p>
+</blockquote>
+<h2 id="Listings-in-Beijing"><a href="#Listings-in-Beijing" class="headerlink" title="Listings in Beijing"></a>Listings in Beijing</h2><p>In this part ,we will focus on <strong>prices</strong> and <strong>numbers</strong> of listings in different times and different locations to learn about Airbnb’s development in Beijing.</p>
+<h3 id="How-does-the-price-of-Airbnb-change-over-time"><a href="#How-does-the-price-of-Airbnb-change-over-time" class="headerlink" title="How does the price of Airbnb change over time?"></a>How does the price of Airbnb change over time?</h3><iframe src="Meanprice.html" width="1200px" height= "550px" name="meanprice" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>
+
+<ul>
+<li>Overall, prices of listings in Beijing are gradually stabilizing.</li>
+<li>In general, prices will rise in May and October each year which corresponds to Labor Day and National Day vocation.</li>
+</ul>
+<h3 id="What’s-the-difference-in-listings-prices-in-all-districts-of-Beijing"><a href="#What’s-the-difference-in-listings-prices-in-all-districts-of-Beijing" class="headerlink" title="What’s the difference in listings prices in all districts of Beijing?"></a>What’s the difference in listings prices in all districts of Beijing?</h3><iframe src="priceindistrict.html" width="1200px" height= "550px" name="priceindistrict" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>      
+
+<ul>
+<li>Huairou District has the most expensive middle price and the maximum variance. It’s really surprising that the first chair of price is not Dongcheng District where Tiananmen Square located.</li>
+<li>Fangshan District has the most cheap middle price and Tongzhou District has the minimum variance.</li>
+</ul>
+<h3 id="How-does-the-number-of-Airbnb-change-over-time-and-districts"><a href="#How-does-the-number-of-Airbnb-change-over-time-and-districts" class="headerlink" title="How does the number of Airbnb change over time and districts?"></a>How does the number of Airbnb change over time and districts?</h3><iframe src="numberofbj.html" width="1200px" height= "550px" name="numberofbj" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>      
+
+<ul>
+<li>As we can see in the figure above, the number of listings in Beijing has been keeping increase from 2010, and the increasing speed is getting more and more fast. So, Airbnb business in Beijing is seems good.</li>
+<li>The increasing speed will be slow down in the first half of the year, and will speed up in the second half of the year.</li>
+</ul>
+<iframe src="number of districts in beijing.html" width="1200px" height= "550px" name="numberofdistricts" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>      
+
+<ul>
+<li>Chaoyang District(朝阳区) is far ahead in total number and growth rate. As of January 2019, the total number of listings in Chaoyang District accounted for 40% of the total number in Beijing.</li>
+</ul>
+<h2 id="Hosts-in-Beijing"><a href="#Hosts-in-Beijing" class="headerlink" title="Hosts in Beijing"></a>Hosts in Beijing</h2><p>In this part , we will focus on <strong>host introduction</strong> ,<strong>type</strong> and <strong>service</strong> to look deep inside the hosts of Airbnb in Beijing.</p>
+<h3 id="What’s-the-favorite-word-of-hosts-to-describe-themselves"><a href="#What’s-the-favorite-word-of-hosts-to-describe-themselves" class="headerlink" title="What’s the favorite word of hosts to describe themselves ?"></a>What’s the favorite word of hosts to describe themselves ?</h3><p><img src="https://s2.ax1x.com/2019/05/28/VesI3t.png" alt="VesI3t.png"></p>
+<p>I made a word cloud with <code>host_about</code>. As we can see, most hosts like to put a label “like to make friends” ,” welcome friends all over the word” or “like to travel” on themselves. It seems to be a good match for Airbnb’s slogan.</p>
+<p>Now that the hosts are describing themselves so enthusiastic, what are they actually like?</p>
+<h3 id="Are-they-all-personal-hosts"><a href="#Are-they-all-personal-hosts" class="headerlink" title="Are they all personal hosts?"></a>Are they all personal hosts?</h3><iframe src="hostlistingscount.html" width="1200px" height= "550px" name="hostlistingscount" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>   
+
+<blockquote>
+<p>In the box plot, I set outliers when it’s over 1.5 times of IQR.</p>
+</blockquote>
+<p>Almost a half of hosts have more than 2 listings,  some of them are apartment companies, some of them are sublessors , so we can see that there are some people investing or starting a business in Airbnb with listings. </p>
+<iframe src="hoststype.html" width="1200px" height= "550px" name="hoststype" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>     
+
+<blockquote>
+<p>Maybe we should call hosts with 2-5 listings sublessors, and more than 5 listings should be called professional hosts, and the others are called personal host.</p>
+</blockquote>
+<p>There are 56% of hosts are personal hosts, but they only account for 19.5% of listings. Conversely,  14.5% of hosts are professional hosts, but they account for nearly 55% of listings. I have no idea what is the difference between this kind of listings and hotels, except for not safe maybe.</p>
+<h3 id="How’s-the-hosts’-service"><a href="#How’s-the-hosts’-service" class="headerlink" title="How’s the hosts’ service?"></a>How’s the hosts’ service?</h3><iframe src="serviceofhosts.html" width="1200px" height= "550px" name="serviceofhosts" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>     
+
+<blockquote>
+<p>We chose <code>Proportion of within an hour</code>,<code>Host Response Rate</code> and <code>Average Score</code> to judge the pros and cons of service.     </p>
+</blockquote>
+<p>As shown in the plot above, the personal host has the lowest <code>Proportion of within an hour</code> and <code>Host Response Rate</code>, but has the highest <code>Average Score</code>. Meanwhile, the professional hosts has the exact opposite characteristics.</p>
+<p>Maybe a personal host need to work or do something else which makes he doesn’t have enough time to response guests timely, but he can help guests experience a real local life which makes he get a high review score. </p>
+<h2 id="Can-We-Predict-the-Price"><a href="#Can-We-Predict-the-Price" class="headerlink" title="Can We Predict the Price?"></a>Can We Predict the Price?</h2><p>I made some attempts, but the results were not satisfactory. Although the following characteristics have the greatest impact on the price.</p>
+<iframe src="Importances.html" width="1200px" height= "550px" name="Importances" 
+scrolling="No"  noresize="noresize" frameborder="0" id="topFrame" allowtransparency=”yes”></iframe>    
+
+<p>Top five importances of features are shown in the plot above, and we can say the more guests a listing can accommodate, the higher price it can be.<del>(It’s like crap.)</del></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>If you have any plans to travel to Beijing recently and you want to book a listing through Airbnb, please note these suggestions:</p>
+<ul>
+<li>Please avoid the May and October;</li>
+<li>Maybe you can choose the listing in Chaoyang District, which has the most number of listings and relatively fair prices;</li>
+<li>If you want to experience a real local life in Beijing ,please choose the personal host.</li>
+</ul>
+<p>Finally, I hope you’ll be <strong>welcomed home</strong> by Airbnb :). </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Project/" rel="tag"># Project</a>
+              <a href="/tags/Data-Analysis-Report/" rel="tag"># Data Analysis Report</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/Deal-with-imbalanced-data-in-ML.html" rel="prev" title="机器学习中不平衡数据的预处理">
+                  <i class="fa fa-chevron-left"></i> 机器学习中不平衡数据的预处理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/Tool-for-removing-watermark.html" rel="next" title="一个简单的去水印小工具">
+                  一个简单的去水印小工具 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2019/Airbnb-in-Beijing.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

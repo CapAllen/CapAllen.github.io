@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Nothing is particularly hard if you divide it into small jobs.  Hi，同学们，本周是我们P3阶段的最后一周，前三周我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用，使用matplotlib&amp;Pandas进行可视化的技巧，并且在项目三中得到了巩固和锻炼。我也陆续收到了大家的项目展示，都十分厉害，尤其是问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周导学-第九周-P3阶段总结">
+<meta property="og:url" content="https://www.capallen.top/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="Nothing is particularly hard if you divide it into small jobs.  Hi，同学们，本周是我们P3阶段的最后一周，前三周我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用，使用matplotlib&amp;Pandas进行可视化的技巧，并且在项目三中得到了巩固和锻炼。我也陆续收到了大家的项目展示，都十分厉害，尤其是问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_pivot.png">
+<meta property="article:published_time" content="2018-09-09T04:30:09.000Z">
+<meta property="article:modified_time" content="2019-06-06T02:32:23.351Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="lesson guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_pivot.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每周导学-第九周-P3阶段总结 | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B8%85%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">知识点清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E5%91%A8-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">第六周-数据分析过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%91%A8-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">3.2.</span> <span class="nav-text">第七周-可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E5%91%A8-TMDb%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">第八周-TMDb数据分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E5%91%A8-FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">3.4.</span> <span class="nav-text">第八周-FBI枪支数据分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每周导学-第九周-P3阶段总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-09-09 12:30:09" itemprop="dateCreated datePublished" datetime="2018-09-09T12:30:09+08:00">2018-09-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html" class="post-meta-item leancloud_visitors" data-flag-title="每周导学-第九周-P3阶段总结" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>Nothing is particularly hard if you divide it into small jobs.</p>
+</blockquote>
+<p>Hi，同学们，本周是我们P3阶段的最后一周，前三周我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用，使用matplotlib&amp;Pandas进行可视化的技巧，并且在项目三中得到了巩固和锻炼。我也陆续收到了大家的项目展示，都十分厉害，尤其是问题的提出以及可视化，非常能吸引人，只是数据整理阶段的代码还需再慢慢磨练，得以精简。本周导学呢，我们就是对之前所学做一个总结，希望大家也能自己做一份总结（这份总结才是最贴切你自己需求的），优达日的时候我们会一起交流一下自己的项目心得以及踩过的坑，等你们哦~</p>
+<p><strong>项目三(P3)阶段</strong>总共包含<strong>四周</strong>，在这一个月内，我们要对<strong>数据分析入门</strong>进行学习，学习数据分析思维，掌握Python数据分析及可视化方法，并使用所学知识完成<strong>项目三：探索数据集</strong>，尝试着自己完成整个数据分析的流程，得到一些饶有兴趣的结论，你一定会非常有成就感哒！那么以下便是这四周的学习安排：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习重点</th>
+<th>对应课程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1周</td>
+<td>数据分析过程-1</td>
+<td>数据分析过程&amp;案例研究-1</td>
+</tr>
+<tr>
+<td>第2周</td>
+<td>数据分析过程-2</td>
+<td>案例研究-1&amp;案例研究-2</td>
+</tr>
+<tr>
+<td>第3周</td>
+<td>完成项目</td>
+<td>项目：探索数据集</td>
+</tr>
+<tr>
+<td><strong>第4周</strong></td>
+<td><strong>项目修改与通过</strong></td>
+<td><strong>修改项目、查缺补漏、休息调整</strong></td>
+</tr>
+</tbody></table>
+<p><font size = '3' color = 'red'>！！看这里！！：在P3课程里面安排了SQL的高阶课程，但是因为在项目三中并不会涉及到SQL知识，所以为了保证大家学习的连贯性，在完成前两周的课程之后，就开始项目。至于！！SQL的高阶知识，大家可以放在课程通关后进行选修！！； </font></p>
+<p>本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
+<ul>
+<li>先自行查找问题答案（注意提取关键词），参考：谷歌/百度搜索、<a target="_blank" rel="noopener" href="http://www.runoob.com/python3/python3-tutorial.html">菜鸟教程</a>、<a target="_blank" rel="noopener" href="https://www.csdn.net/">CSDN</a>、<a target="_blank" rel="noopener" href="https://stackoverflow.com/">stack<strong>overflow</strong></a>、<a target="_blank" rel="noopener" href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/Python%20for%20Data%20Analysis%2C%202nd%20Edition.pdf"><strong>Python for Data Analysis, 2nd Edition</strong> </a>、<a target="_blank" rel="noopener" href="http://python3-cookbook.readthedocs.io/zh_CN/latest/">Python Cookbook</a></li>
+<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
+</ul>
+<p>饭要一口一口吃，路要一步一步走，大家不要被任务吓到，跟着导学一步一步来，肯定没问题哒！那我们开始吧！</p>
+<blockquote>
+<p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
+</blockquote>
+<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><ul>
+<li>完成你的项目，并且对P3阶段做一个自我总结，最好能以博客或者朋友圈文章的形式进行输出。</li>
+</ul>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习资源</th>
+<th>学习内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>周二</td>
+<td>微信群 - 每周导学</td>
+<td>预览每周导学</td>
+</tr>
+<tr>
+<td>周三、周四</td>
+<td>Udacity - Classroom</td>
+<td>项目三</td>
+</tr>
+<tr>
+<td>周五</td>
+<td>微信/Classin - 1V1</td>
+<td>课程难点</td>
+</tr>
+<tr>
+<td>周六</td>
+<td>Classin - 优达日</td>
+<td>本周学习总结、答疑</td>
+</tr>
+<tr>
+<td>周日</td>
+<td>笔记本</td>
+<td>总结沉淀</td>
+</tr>
+<tr>
+<td>周一</td>
+<td>自主学习</td>
+<td>查漏补缺</td>
+</tr>
+</tbody></table>
+<h1 id="知识点清单"><a href="#知识点清单" class="headerlink" title="知识点清单"></a>知识点清单</h1><h2 id="第六周-数据分析过程"><a href="#第六周-数据分析过程" class="headerlink" title="第六周-数据分析过程"></a><a href="http://www.capallen.top/dand-vip/2018/08/19/%E7%AC%AC%E5%85%AD%E5%91%A8-1-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B/">第六周-数据分析过程</a></h2><ul>
+<li><p>数据分析的基本流程</p>
+<ul>
+<li>提出问题</li>
+<li>整理数据（收集、评估、清理）</li>
+<li>探索性数据分析</li>
+<li>得出结论，传达结果</li>
+</ul>
+</li>
+<li><p>Pandas在数据分析中的应用</p>
+<ul>
+<li>导入文件（read_csv/excel/sep/encoding）</li>
+<li>数据评估（shape / info / describe / columns/ isnull/ duplicated/ value_counts/ sort_values/ ascending/ unique/ nunique）</li>
+<li>数据筛选（df[‘col_name’]/loc/iloc/np.r_/isin/query/groupby/<code>&amp;</code>/<code>|</code>）</li>
+<li>数据清理（drop/inplace/fillna/dropna/drop_duplicates/rename/replace）</li>
+<li>数据融合（merge/concat/append/join）</li>
+<li>可视化（plot）</li>
+<li>导出数据（to_csv/index/encoding = ‘utf-8-sig’）</li>
+</ul>
+</li>
+</ul>
+<h2 id="第七周-可视化"><a href="#第七周-可视化" class="headerlink" title="第七周-可视化"></a><a href="http://www.capallen.top/dand-vip/2018/08/28/%E7%AC%AC%E4%B8%83%E5%91%A8-%E5%8F%AF%E8%A7%86%E5%8C%96/">第七周-可视化</a></h2><ul>
+<li><p>基本概念（fig/ax）</p>
+</li>
+<li><p>开始绘图（plt.subplots/plt.add_subplot/plt.figure）</p>
+</li>
+<li><p>坐标轴设置</p>
+<ul>
+<li><p>调整范围（ax.axis/xlim/ylim）</p>
+</li>
+<li><p>调整刻度</p>
+<ul>
+<li>设置间隔（locator_params）</li>
+<li>设置顺序，角度（xticks(order_list,tick_names,rotation)</li>
+</ul>
+</li>
+<li><p>双轴（twinx）</p>
+</li>
+</ul>
+</li>
+<li><p>标题与轴标题（title,xlabel,ylabel）</p>
+</li>
+<li><p>图例（legend）</p>
+</li>
+<li><p>颜色与样式（plot(x,y,’<code>color``marker``line</code>‘）</p>
+</li>
+<li><p>网格（grid）</p>
+</li>
+<li><p>图像注释（annote）</p>
+</li>
+<li><p>平行于坐标轴的线（vline/hline）</p>
+</li>
+<li><p>常用可视化图形</p>
+<ul>
+<li>散点图（scatter）</li>
+<li>条形图（bar/barh）</li>
+<li>直方图（hist）</li>
+<li>饼状图（pie）</li>
+<li>箱线图（box）</li>
+</ul>
+</li>
+</ul>
+<h2 id="第八周-TMDb数据分析"><a href="#第八周-TMDb数据分析" class="headerlink" title="第八周-TMDb数据分析"></a><a href="http://www.capallen.top/dand-vip/2018/09/05/%E7%AC%AC%E5%85%AB%E5%91%A8-TMDB%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">第八周-TMDb数据分析</a></h2><ul>
+<li>如何提出问题？ 找出关键变量，提与之相关的问题</li>
+<li>数据备份（copy）</li>
+<li>如何将一列处理为多列？（<a href="http://www.capallen.top/dand-vip/2018/09/05/%E7%AC%AC%E5%85%AB%E5%91%A8-TMDB%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/#%E6%B8%85%E7%90%86%E6%95%B0%E6%8D%AE">genres列的处理</a>）<ul>
+<li>拓展：pivot函数</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_pivot.png"></p>
+<ul>
+<li><p>如何着手探索性数据分析？</p>
+<ul>
+<li>单变量 - 双变量 - 多变量</li>
+<li>关键变量 - 其他变量与关键变量</li>
+</ul>
+</li>
+<li><p>可视化</p>
+<ul>
+<li>热度图（heatmap）</li>
+<li>pairplot</li>
+</ul>
+</li>
+<li><p>一些函数：</p>
+<ul>
+<li>获取某一位置的数值 quantile</li>
+<li>按列表筛选 isin</li>
+</ul>
+</li>
+</ul>
+<h2 id="第八周-FBI枪支数据分析"><a href="#第八周-FBI枪支数据分析" class="headerlink" title="第八周-FBI枪支数据分析"></a><a href="http://www.capallen.top/dand-vip/2018/09/08/%E7%AC%AC%E5%85%AB%E5%91%A8-FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">第八周-FBI枪支数据分析</a></h2><ul>
+<li>DataFrame行列变换：transpose</li>
+<li>按字符串内容筛选：contains</li>
+<li>按索引进行数据融合：join</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这四周的学习，你又掌握了：</p>
+<ul>
+<li>数据分析的基本流程</li>
+<li>Pandas在数据分析各个流程中的基本应用</li>
+<li>Pandas常用函数的用法</li>
+<li>Matplotlib在可视化中的应用</li>
+</ul>
+<p>此外，你还增长了这些软技能：</p>
+<ul>
+<li>数据分析思维（化繁为简、化难为易、关键信息的提取）</li>
+<li>耐心（EDA的过程，做过的都知道）</li>
+<li>细心（有没有调试半天最终才发现是自己马虎导致的问题？）</li>
+</ul>
+<p>如果你学习时间充裕，你还有可能掌握了：</p>
+<ul>
+<li>Seaborn在可视化中的应用</li>
+<li>如何快速有效地使用搜索引擎</li>
+<li>在Stackoverflow注册账户，提出问题，成为一名铜牌用户</li>
+<li>有了自己的技术博客，并发表了第一篇总结性文章</li>
+<li>… …</li>
+</ul>
+<p>哈！这么总结下来，发现不知不觉间，又掌握了很多！又进步了很多！我导师之前教育我说：“<strong>你之所以现在这么焦虑，都是因为你自己的能力满足不了你的欲望。</strong>”那么，同样因为对未来感到焦虑来到这里学习的你们，经过这段时间的学习，焦虑是不是缓解了许多呢？哈哈，所以，请不要放松脚步，KEEP GOING！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html" rel="prev" title="每周导学-第八周-FBI枪支数据分析">
+                  <i class="fa fa-chevron-left"></i> 每周导学-第八周-FBI枪支数据分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/Basic-statistic-in-Data-Analysis.html" rel="next" title="每周导学-第十周-统计学基础">
+                  每周导学-第十周-统计学基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2018/P3%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

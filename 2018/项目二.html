@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Don’t let yesterday take up too much of today.  Hi，同学们，本周已经是P2阶段的第三周了，前两周我们学习了数据类型、控制流以及脚本编写等Python基础内容，还学习了Python做数据分析两个关键的第三方包——NumPy和Pandas，那么，接下来就到了检验学习、提高实战能力的时候了！ 这周我们要挑战项目二：探索美国共享单车数据，争取能在本周完成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周导学-第四周-项目二">
+<meta property="og:url" content="https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="Don’t let yesterday take up too much of today.  Hi，同学们，本周已经是P2阶段的第三周了，前两周我们学习了数据类型、控制流以及脚本编写等Python基础内容，还学习了Python做数据分析两个关键的第三方包——NumPy和Pandas，那么，接下来就到了检验学习、提高实战能力的时候了！ 这周我们要挑战项目二：探索美国共享单车数据，争取能在本周完成">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/06/PrrMp8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/06/PrrX38.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/06/PrsA3T.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/06/PrsmDJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/06/Prs38K.png">
+<meta property="article:published_time" content="2018-08-06T12:30:09.000Z">
+<meta property="article:modified_time" content="2019-06-06T02:32:23.367Z">
+<meta property="article:author" content="Allen Jia">
+<meta property="article:tag" content="lesson guide">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/06/PrrMp8.png">
+
+
+<link rel="canonical" href="https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每周导学-第四周-项目二 | Allen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Allen's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">体制山下的泼猴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">本周目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">项目准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%87%86%E5%A4%87"><span class="nav-number">3.2.</span> <span class="nav-text">文件准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%87%86%E5%A4%87"><span class="nav-number">3.3.</span> <span class="nav-text">方法准备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">项目流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">项目概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">数据集说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%A6%81%E6%B1%82"><span class="nav-number">4.3.</span> <span class="nav-text">项目要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-filters-%E5%87%BD%E6%95%B0"><span class="nav-number">4.4.</span> <span class="nav-text">get_filters()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%9A"><span class="nav-number">4.4.1.</span> <span class="nav-text">代码详解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="nav-number">4.4.2.</span> <span class="nav-text">关键代码提示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">4.4.3.</span> <span class="nav-text">输出示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#load-data-%E5%87%BD%E6%95%B0"><span class="nav-number">4.5.</span> <span class="nav-text">load_data()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%9A-1"><span class="nav-number">4.5.1.</span> <span class="nav-text">代码详解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%EF%BC%9A-1"><span class="nav-number">4.5.2.</span> <span class="nav-text">关键代码提示：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#time-stats-%E5%87%BD%E6%95%B0"><span class="nav-number">4.6.</span> <span class="nav-text">time_stats()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%9A-2"><span class="nav-number">4.6.1.</span> <span class="nav-text">代码详解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%EF%BC%9A-2"><span class="nav-number">4.6.2.</span> <span class="nav-text">关键代码提示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">4.6.3.</span> <span class="nav-text">输出示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#station-stats-%E5%87%BD%E6%95%B0"><span class="nav-number">4.7.</span> <span class="nav-text">station_stats()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.7.1.</span> <span class="nav-text">代码详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%EF%BC%9A-3"><span class="nav-number">4.7.2.</span> <span class="nav-text">关键代码提示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.7.3.</span> <span class="nav-text">输出示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trip-duration-stats-%E5%87%BD%E6%95%B0"><span class="nav-number">4.8.</span> <span class="nav-text">trip_duration_stats()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-1"><span class="nav-number">4.8.1.</span> <span class="nav-text">代码详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA"><span class="nav-number">4.8.2.</span> <span class="nav-text">关键代码提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">4.8.3.</span> <span class="nav-text">输出示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-stats-%E5%87%BD%E6%95%B0"><span class="nav-number">4.9.</span> <span class="nav-text">user_stats()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-2"><span class="nav-number">4.9.1.</span> <span class="nav-text">代码详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA-1"><span class="nav-number">4.9.2.</span> <span class="nav-text">关键代码提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">4.9.3.</span> <span class="nav-text">输出示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-%E5%87%BD%E6%95%B0"><span class="nav-number">4.10.</span> <span class="nav-text">main()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4"><span class="nav-number">4.11.</span> <span class="nav-text">项目提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.12.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%B2%B9%EF%BC%81%EF%BC%81%EF%BC%81%E7%AD%89%E4%BD%A0%E4%BB%AC%E7%9A%84%E5%A5%BD%E6%B6%88%E6%81%AF%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">4.13.</span> <span class="nav-text">加油！！！等你们的好消息！！！</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Jia</p>
+  <div class="site-description" itemprop="description">数据 算法 分享</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CapAllen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CapAllen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:allenjsj@163.com" title="E-Mail → mailto:allenjsj@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Jia">
+      <meta itemprop="description" content="数据 算法 分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每周导学-第四周-项目二
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-08-06 20:30:09" itemprop="dateCreated datePublished" datetime="2018-08-06T20:30:09+08:00">2018-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-06 10:32:23" itemprop="dateModified" datetime="2019-06-06T10:32:23+08:00">2019-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DAND-VIP/" itemprop="url" rel="index"><span itemprop="name">DAND-VIP</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html" class="post-meta-item leancloud_visitors" data-flag-title="每周导学-第四周-项目二" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>Don’t let yesterday take up too much of today.</p>
+</blockquote>
+<p>Hi，同学们，本周已经是P2阶段的第三周了，前两周我们学习了数据类型、控制流以及脚本编写等Python基础内容，还学习了Python做数据分析两个关键的第三方包——NumPy和Pandas，那么，接下来就到了检验学习、提高实战能力的时候了！</p>
+<p>这周我们要挑战<strong>项目二：探索美国共享单车数据</strong>，争取能在本周完成项目并提交，加油！</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习重点</th>
+<th>对应课程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1周</td>
+<td>Python基础内容</td>
+<td>数据类型和运算符、控制流、函数、脚本编写</td>
+</tr>
+<tr>
+<td>第2周</td>
+<td>Python数据处理内容</td>
+<td>Numpy &amp; Pandas - 第一、二部分</td>
+</tr>
+<tr>
+<td><strong>第3周</strong></td>
+<td><strong>完成项目</strong></td>
+<td><strong>项目：探索美国共享单车数据</strong></td>
+</tr>
+<tr>
+<td>第4周</td>
+<td>项目修改与通过</td>
+<td>修改项目、查缺补漏、休息调整</td>
+</tr>
+</tbody></table>
+<p>对于非小白同学来说 ，本阶段内容不是很难，希望你们能在三周内完成并通过项目；  </p>
+<p>对于小白来说，本阶段可能是个挑战，请一定要<strong>保持自信</strong>，请一定要坚持<strong>学习和总结</strong>，如果遇到任何<strong>课程问题</strong>请参照如下顺序进行解决：</p>
+<ul>
+<li>先自行查找问题答案（注意提取关键词），参考：谷歌/百度搜索、<a target="_blank" rel="noopener" href="http://www.runoob.com/python3/python3-tutorial.html">菜鸟教程</a>、<a target="_blank" rel="noopener" href="https://www.csdn.net/">CSDN</a>、<a target="_blank" rel="noopener" href="https://stackoverflow.com/">stack<strong>overflow</strong></a>、<a target="_blank" rel="noopener" href="https://github.com/CapAllen/DAND_VIP_Class/blob/master/%E6%8B%93%E5%B1%95%E5%8F%82%E8%80%83/Python%20for%20Data%20Analysis%2C%202nd%20Edition.pdf"><strong>Python for Data Analysis, 2nd Edition</strong> </a>、<a target="_blank" rel="noopener" href="http://python3-cookbook.readthedocs.io/zh_CN/latest/">Python Cookbook</a></li>
+<li>若问题未解决，请将<strong>问题</strong>及其<strong>所在课程章节</strong>发送至微信群，并@助教即可</li>
+</ul>
+<p>饭要一口一口吃，路要一步一步走，大家不要被任务吓到，跟着导学一步一步来，肯定没问题哒！那我们开始吧！</p>
+<blockquote>
+<p><strong>注：</strong>本着<strong>按需知情</strong>原则，所涉及的知识点都是在数据分析过程中必须的、常用的，而不是最全面的，想要更丰富，那就需要你们课下再进一步的学习和探索！</p>
+</blockquote>
+<h1 id="本周目标"><a href="#本周目标" class="headerlink" title="本周目标"></a>本周目标</h1><ul>
+<li>完成并提交项目二。</li>
+</ul>
+<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学习资源</th>
+<th>学习内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>周二</td>
+<td>微信群 - 每周导学</td>
+<td>预览每周导学</td>
+</tr>
+<tr>
+<td>周三、周四</td>
+<td>Udacity - Classroom</td>
+<td>数据类型 - 脚本编写</td>
+</tr>
+<tr>
+<td>周五</td>
+<td>微信/Classin - 1V1</td>
+<td>课程难点</td>
+</tr>
+<tr>
+<td>周六</td>
+<td>Classin - 优达日</td>
+<td>本周学习总结、答疑</td>
+</tr>
+<tr>
+<td>周日</td>
+<td>笔记本</td>
+<td>总结沉淀</td>
+</tr>
+<tr>
+<td>周一</td>
+<td>自主学习</td>
+<td>查漏补缺</td>
+</tr>
+</tbody></table>
+<h1 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>强烈建议大家完成本地环境的搭建，在本地完成此项目。搭建本地环境的方法请参考<a target="_blank" rel="noopener" href="https://classroom.udacity.com/nanodegrees/nd002-cn-basic-vip/parts/e566ad37-6119-4448-a6bc-7ade73ef3992">Anaconda的安装与配置</a>一节，完成后你将获得本项目中会用到的关键软件：<strong>Spyder</strong>和<strong>Jupyter Notebook</strong>。</p>
+<h2 id="文件准备"><a href="#文件准备" class="headerlink" title="文件准备"></a>文件准备</h2><p>在此项目中，你将比较以下三座城市的共享单车使用情况：芝加哥、纽约市和华盛顿特区。这些数据由 <a target="_blank" rel="noopener" href="https://www.motivateco.com/">Motivate</a> 提供。</p>
+<p>数据和项目文件下载，请参考如下步骤：</p>
+<p><img src="https://s1.ax1x.com/2018/08/06/PrrMp8.png" alt="PrrMp8.png"></p>
+<p><strong>若下载失败，请微信联系我索取。</strong></p>
+<blockquote>
+<p><strong>注意</strong>：因为项目文件中使用的是python2，所以在本地环境进行编写时，请按照你的版本对个别代码进行修改，以契合你的版本。完成就可以直接提交，不必再转回python2的语法。</p>
+</blockquote>
+<h2 id="方法准备"><a href="#方法准备" class="headerlink" title="方法准备"></a>方法准备</h2><p>在本项目中，你需要完成多个函数的编写，可以按照如下方法提高工作效率：</p>
+<ol>
+<li><strong>确定</strong>第一个函数的<strong>功能需求</strong>，并构思代码；</li>
+<li>利用<strong>Jupyter Notebook</strong>对你构思的<strong>代码进行测试</strong>；</li>
+<li>若代码测试功能符合要求，则复制代码至<strong>Spyder</strong>，完成第一个函数的编写；</li>
+<li>保存为.py格式的文件，在<strong>本地</strong>进行功能<strong>测试</strong>，看是否复合项目要求；</li>
+<li>若满足要求，则按照步骤1-4对第二个函数进行编写，如此往复，完成整个项目。</li>
+</ol>
+<p>大家刚打开项目文件时，先不要被代码量吓到，沉下心来，一步步做，逐一击破，一定没问题哒！</p>
+<h1 id="项目流程"><a href="#项目流程" class="headerlink" title="项目流程"></a>项目流程</h1><h2 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h2><p>在此项目中，你将利用 Python  探索与以下三大美国城市的自行车共享系统相关的数据：芝加哥、纽约和华盛顿特区。你将编写代码<strong>导入数据</strong>，并通过<strong>计算描述性统计数据回答有趣的问题</strong>。你还将<strong>写一个脚本</strong>，该脚本会接受原始输入并<strong>在终端中创建交互式体验</strong>，以展现这些统计信息。 </p>
+<blockquote>
+<p>读完项目概述，大概也能了解到项目的要求有哪些了，也就是需要你去完成的任务：</p>
+<ul>
+<li>需要你编写一个脚本</li>
+<li>在脚本中，能够读取数据文件</li>
+<li>能够根据用户输入，完成相关统计计算，并进行回答展示结果</li>
+</ul>
+</blockquote>
+<h2 id="数据集说明"><a href="#数据集说明" class="headerlink" title="数据集说明"></a>数据集说明</h2><p>我们提供了三座城市 2017 年上半年的数据。三个数据文件都包含相同的核心列：</p>
+<ul>
+<li>起始时间 Start Time（例如 2017-01-01 00:07:57）</li>
+<li>结束时间 End Time（例如 2017-01-01 00:20:53）</li>
+<li>骑行时长 Trip Duration（例如 776 秒）</li>
+<li>起始车站 Start Station（例如百老汇街和巴里大道）</li>
+<li>结束车站 End Station（例如塞奇威克街和北大道）</li>
+<li>用户类型 User Type（订阅者 Subscriber/Registered 或客户Customer/Casual）</li>
+</ul>
+<p>芝加哥和纽约市文件还包含以下两列：</p>
+<ul>
+<li>性别 Gender</li>
+<li>出生年份 Birth Year</li>
+</ul>
+<blockquote>
+<p>上述数据集说明中，我们能知道三个数据集中包含有哪些列，列名是什么，这在之后进行函数编写的时候，是一个非常重要的参考。</p>
+</blockquote>
+<h2 id="项目要求"><a href="#项目要求" class="headerlink" title="项目要求"></a>项目要求</h2><ul>
+<li>请一定要规范注释：<ul>
+<li>关键代码注释，进行解释；</li>
+<li>函数功能解释文档</li>
+</ul>
+</li>
+<li>请保存你初次完成项目的文件作为project_0，之后先备份再修改，这样直到项目审阅成功，你能很明显的对比出自己最开始出现的问题及思考问题的短板。</li>
+</ul>
+<h2 id="get-filters-函数"><a href="#get-filters-函数" class="headerlink" title="get_filters()函数"></a>get_filters()函数</h2><h3 id="代码详解："><a href="#代码详解：" class="headerlink" title="代码详解："></a>代码详解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_filters</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    函数需要询问用户三个问题来获取筛选数据的三个条件：城市、月份和周几。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">	函数返回的是一个元组，三个元素的数据类型都为str。    </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&#x27;Hello! Let\&#x27;s explore some US bikeshare data!&#x27;</span>)</span><br><span class="line">    <span class="comment"># TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: get user input for month (all, january, february, ... , june)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: get user input for day of week (all, monday, tuesday, ... sunday)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;-&#x27;</span>*<span class="number">40</span>)</span><br><span class="line">    <span class="keyword">return</span> city, month, day</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示："><a href="#关键代码提示：" class="headerlink" title="关键代码提示："></a>关键代码提示：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取键盘输入</span></span><br><span class="line">input()</span><br><span class="line"><span class="comment">#循环</span></span><br><span class="line"><span class="keyword">while</span> ... :</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出示例："><a href="#输出示例：" class="headerlink" title="输出示例："></a>输出示例：</h3><p><img src="https://s1.ax1x.com/2018/08/06/PrrX38.png" alt="PrrX38.png"></p>
+<h2 id="load-data-函数"><a href="#load-data-函数" class="headerlink" title="load_data()函数"></a>load_data()函数</h2><h3 id="代码详解：-1"><a href="#代码详解：-1" class="headerlink" title="代码详解："></a>代码详解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data</span>(<span class="params">city, month, day</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">   该函数是对get_filters函数的一个承接，get_filters函数获取筛选条件，本函数就针对筛选条件进行数据读取。</span></span><br><span class="line"><span class="string">   所以本函数需要三个关键数据作为参数输入，即：城市、月份和周几。</span></span><br><span class="line"><span class="string">   函数的输出为筛选后的数据。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        (str) city - name of the city to analyze</span></span><br><span class="line"><span class="string">        (str) month - name of the month to filter by, or &quot;all&quot; to apply no month filter</span></span><br><span class="line"><span class="string">        (str) day - name of the day of week to filter by, or &quot;all&quot; to apply no day filter</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        df - Pandas DataFrame containing city data filtered by month and day</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示：-1"><a href="#关键代码提示：-1" class="headerlink" title="关键代码提示："></a>关键代码提示：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pandas读取文档</span></span><br><span class="line">pd.read_csv</span><br><span class="line"><span class="comment">#datetime格式转换</span></span><br><span class="line">pd.to_datetime</span><br><span class="line"><span class="comment">#获取datetime的月份？周几？</span></span><br><span class="line">datetime.dt.month</span><br><span class="line">datetime.dt.weekday</span><br><span class="line"><span class="comment">#判断语句</span></span><br><span class="line"><span class="keyword">if</span> ... :</span><br><span class="line">    ...    </span><br></pre></td></tr></table></figure>
+
+<h2 id="time-stats-函数"><a href="#time-stats-函数" class="headerlink" title="time_stats()函数"></a>time_stats()函数</h2><h3 id="代码详解：-2"><a href="#代码详解：-2" class="headerlink" title="代码详解："></a>代码详解：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_stats</span>(<span class="params">df</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;时间计算函数</span></span><br><span class="line"><span class="string">    针对筛选出的数据(df)，对出现频次最高的月份、周几和小时进行统计，并输出结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&#x27;\nCalculating The Most Frequent Times of Travel...\n&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display the most common month</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display the most common day of week</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display the most common start hour</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;\nThis took %s seconds.&quot;</span> % (time.time() - start_time))</span><br><span class="line">    print(<span class="string">&#x27;-&#x27;</span>*<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示：-2"><a href="#关键代码提示：-2" class="headerlink" title="关键代码提示："></a>关键代码提示：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取众数</span></span><br><span class="line">pd.Series.mode()</span><br><span class="line"><span class="comment">#输出格式化</span></span><br><span class="line">.format()</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出示例：-1"><a href="#输出示例：-1" class="headerlink" title="输出示例："></a>输出示例：</h3><p><img src="https://s1.ax1x.com/2018/08/06/PrsA3T.png" alt="PrsA3T.png"></p>
+<h2 id="station-stats-函数"><a href="#station-stats-函数" class="headerlink" title="station_stats()函数"></a>station_stats()函数</h2><h3 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">station_stats</span>(<span class="params">df</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;站点计算函数</span></span><br><span class="line"><span class="string">    针对筛选出的数据(df)，对出现频次最高的起始站、终点站和起点-终点线进行统计，并输出结果&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;\nCalculating The Most Popular Stations and Trip...\n&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display most commonly used start station</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display most commonly used end station</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display most frequent combination of start station and end station trip</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;\nThis took %s seconds.&quot;</span> % (time.time() - start_time))</span><br><span class="line">    print(<span class="string">&#x27;-&#x27;</span>*<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示：-3"><a href="#关键代码提示：-3" class="headerlink" title="关键代码提示："></a>关键代码提示：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#字符串的链接</span></span><br><span class="line">list_0 = list_1 + list_2</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出示例：-2"><a href="#输出示例：-2" class="headerlink" title="输出示例："></a>输出示例：</h3><p>与time_stats()函数类似</p>
+<h2 id="trip-duration-stats-函数"><a href="#trip-duration-stats-函数" class="headerlink" title="trip_duration_stats()函数"></a>trip_duration_stats()函数</h2><h3 id="代码详解-1"><a href="#代码详解-1" class="headerlink" title="代码详解"></a>代码详解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trip_duration_stats</span>(<span class="params">df</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    通勤时间计算函数</span></span><br><span class="line"><span class="string">    针对筛选出的数据(df)，对通勤总时间和平均时间进行计算，并输出结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;\nCalculating Trip Duration...\n&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display total travel time</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: display mean travel time</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;\nThis took %s seconds.&quot;</span> % (time.time() - start_time))</span><br><span class="line">    print(<span class="string">&#x27;-&#x27;</span>*<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示"><a href="#关键代码提示" class="headerlink" title="关键代码提示"></a>关键代码提示</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#求和</span></span><br><span class="line">.sum()</span><br><span class="line"><span class="comment">#求均值</span></span><br><span class="line">.mean()</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出示例：-3"><a href="#输出示例：-3" class="headerlink" title="输出示例："></a>输出示例：</h3><p><img src="https://s1.ax1x.com/2018/08/06/PrsmDJ.png" alt="PrsmDJ.png">、</p>
+<h2 id="user-stats-函数"><a href="#user-stats-函数" class="headerlink" title="user_stats()函数"></a>user_stats()函数</h2><h3 id="代码详解-2"><a href="#代码详解-2" class="headerlink" title="代码详解"></a>代码详解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_stats</span>(<span class="params">df</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    用户计算函数</span></span><br><span class="line"><span class="string">    针对筛选出的数据(df)，对不同类型的用户数量、不同性别的用户数量以及最老、最新和最多的出生年份进行统计、计算，并输出结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;\nCalculating User Stats...\n&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: Display counts of user types</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: Display counts of gender</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># TO DO: Display earliest, most recent, and most common year of birth</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;\nThis took %s seconds.&quot;</span> % (time.time() - start_time))</span><br><span class="line">    print(<span class="string">&#x27;-&#x27;</span>*<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键代码提示-1"><a href="#关键代码提示-1" class="headerlink" title="关键代码提示"></a>关键代码提示</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pandas 分类同积函数</span></span><br><span class="line">pd.Series.value_counts()</span><br><span class="line"><span class="comment">#最小最大值</span></span><br><span class="line">.min()   .max()</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出示例：-4"><a href="#输出示例：-4" class="headerlink" title="输出示例："></a>输出示例：</h3><p><img src="https://s1.ax1x.com/2018/08/06/Prs38K.png" alt="Prs38K.png"></p>
+<h2 id="main-函数"><a href="#main-函数" class="headerlink" title="main()函数"></a>main()函数</h2><p>main()函数是项目中最重要的函数，是程序的入口。</p>
+<p>如果你接手一个项目，想快速了解项目中的代码都实现了哪些功能的话，那就要去查看main()函数，这也就是为什么叫<code>main</code>的原因了。</p>
+<p>但是在本项目中，该函数并不需要大家去编写或者修改，完成以上所有函数后，就可以尝试在本地进行测试，然后提交啦~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    while True:</span><br><span class="line">        city, month, day &#x3D; get_filters()</span><br><span class="line">        df &#x3D; load_data(city, month, day)</span><br><span class="line"></span><br><span class="line">        time_stats(df)</span><br><span class="line">        station_stats(df)</span><br><span class="line">        trip_duration_stats(df)</span><br><span class="line">        user_stats(df)</span><br><span class="line"></span><br><span class="line">        restart &#x3D; input(&#39;\nWould you like to restart? Enter yes or no.\n&#39;)</span><br><span class="line">        if restart.lower() !&#x3D; &#39;yes&#39;:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目提交"><a href="#项目提交" class="headerlink" title="项目提交"></a>项目提交</h2><p>项目提交前，请查看：<a target="_blank" rel="noopener" href="https://review.udacity.com/#!/rubrics/1713/view">项目审阅标准</a>，提高你的一次通过率！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们已经完成了本项目，回想一下，在这个项目中：</p>
+<ul>
+<li>你都用到了哪些python基础函数？</li>
+<li>你都用到了哪些pandas中的函数？</li>
+<li>在你定义的不同函数中，都解决了哪些问题？</li>
+<li>项目通过之后，再想想你编写的函数是完美的吗？或者说，你有哪些想要进一步完善的？<ul>
+<li>怎样提高用户的体验？比如：get_filters()函数中，用户输入了NewYork，也可以实现正确识别等等</li>
+<li>怎样保持程序不会报错？比如：华盛顿用户的性别和出生年月。</li>
+</ul>
+</li>
+<li>除了项目中的研究内容，你还想继续探究数据中的哪些因素？</li>
+</ul>
+<h2 id="加油！！！等你们的好消息！！！"><a href="#加油！！！等你们的好消息！！！" class="headerlink" title="加油！！！等你们的好消息！！！"></a>加油！！！等你们的好消息！！！</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-reward-image.svg" alt="Allen Jia 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay-reward-image.svg" alt="Allen Jia 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/lesson-guide/" rel="tag"># lesson guide</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/python%E5%85%A5%E9%97%A8.html" rel="prev" title="每周导学-第二周-python基础">
+                  <i class="fa fa-chevron-left"></i> 每周导学-第二周-python基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AF%BC%E5%AD%A6.html" rel="next" title="每周导学-第五周-阶段总结&项目二优化">
+                  每周导学-第五周-阶段总结&项目二优化 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Jia</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2018/%E9%A1%B9%E7%9B%AE%E4%BA%8C.html",
+    }, {"enable":true,"appId":"1GIsNa4yl3cJmXFEcFxWgNJX-gzGzoHsz","appKey":"sAf2Iz8P4JMH7Ac7YKeoojii","placeholder":"畅所欲言吧，朋友！","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":false,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
