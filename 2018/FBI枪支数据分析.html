@@ -19,13 +19,13 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.capallen.top","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"capallen.gitee.io","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
   <meta name="description" content="Stop being afraid of what could go wrong and start being positive about what could go right.  Hi，同学们，经过了前两周的学习，我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用以及使用matplotlib&amp;Pandas进行可视化的技巧，那么本周我们就真刀实枪地找一套数据集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每周导学-第八周-FBI枪支数据分析">
-<meta property="og:url" content="https://www.capallen.top/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
+<meta property="og:url" content="https://capallen.gitee.io/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="Stop being afraid of what could go wrong and start being positive about what could go right.  Hi，同学们，经过了前两周的学习，我们掌握了数据分析的基本流程、Pandas在数据分析各个流程中的基本应用以及使用matplotlib&amp;Pandas进行可视化的技巧，那么本周我们就真刀实枪地找一套数据集">
 <meta property="og:locale" content="zh_CN">
@@ -40,7 +40,7 @@
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/09/03/Pz6nds.md.png">
 
 
-<link rel="canonical" href="https://www.capallen.top/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
+<link rel="canonical" href="https://capallen.gitee.io/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
 
 
 <script class="page-configurations">
@@ -274,7 +274,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.capallen.top/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
+    <link itemprop="mainEntityOfPage" href="https://capallen.gitee.io/2018/FBI%E6%9E%AA%E6%94%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -550,7 +550,7 @@
 
 <p>百分号的处理方式同上类似。</p>
 <p><strong>数据融合</strong></p>
-<p>我们在之前的导学中总结过Pandas做数据融合的方法，就此项目而言，两个数据以索引（Index，也就是各州的州名）为键进行融合，最简单的方法就是用join()函数了。如果你忘了，可以点<a href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/">这里</a>复习一下。</p>
+<p>我们在之前的导学中总结过Pandas做数据融合的方法，就此项目而言，两个数据以索引（Index，也就是各州的州名）为键进行融合，最简单的方法就是用join()函数了。如果你忘了，可以点<a target="_blank" rel="noopener" href="http://www.capallen.top/dand-vip/2018/08/21/%E7%AC%AC%E5%85%AD%E5%91%A8-2-%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/">这里</a>复习一下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_2016 = df_gun_2016.join(df_census_2016)</span><br></pre></td></tr></table></figure>
 
 <p>好，至此我们的数据就算是整理完毕了，接下来就是探索性分析及可视化阶段，这里没有什么特别需要注意的地方，大家就随性而为。</p>
