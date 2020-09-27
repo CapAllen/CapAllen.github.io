@@ -50,9 +50,9 @@
     
     <category term="Python" scheme="https://capallen.gitee.io/tags/Python/"/>
     
-    <category term="Machine Learning" scheme="https://capallen.gitee.io/tags/Machine-Learning/"/>
-    
     <category term="Spark" scheme="https://capallen.gitee.io/tags/Spark/"/>
+    
+    <category term="Machine Learning" scheme="https://capallen.gitee.io/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -287,9 +287,9 @@
     <category term="DAND-VIP" scheme="https://capallen.gitee.io/categories/DAND-VIP/"/>
     
     
-    <category term="Numpy" scheme="https://capallen.gitee.io/tags/Numpy/"/>
-    
     <category term="lesson guide" scheme="https://capallen.gitee.io/tags/lesson-guide/"/>
+    
+    <category term="Numpy" scheme="https://capallen.gitee.io/tags/Numpy/"/>
     
     <category term="pandas" scheme="https://capallen.gitee.io/tags/pandas/"/>
     
@@ -571,9 +571,9 @@
     <category term="DAND-VIP" scheme="https://capallen.gitee.io/categories/DAND-VIP/"/>
     
     
-    <category term="matplotlib" scheme="https://capallen.gitee.io/tags/matplotlib/"/>
-    
     <category term="lesson guide" scheme="https://capallen.gitee.io/tags/lesson-guide/"/>
+    
+    <category term="matplotlib" scheme="https://capallen.gitee.io/tags/matplotlib/"/>
     
     <category term="visualization" scheme="https://capallen.gitee.io/tags/visualization/"/>
     
